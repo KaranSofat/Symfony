@@ -1,0 +1,75 @@
+<html ng-app="myApp">
+<head>
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="model.js"></script>
+<script src="ui-bootstrap-tpls-0.10.0.min.js"></script>
+<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="//code.angularjs.org/1.2.20/angular.js"></script>
+<script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
+<script src="//code.angularjs.org/1.2.13/angular-cookies.js"></script>
+</head>
+<h1><center>CRUD Using Angular js</center></h1>
+
+<body ng-controller="insert">
+	<div>
+
+		<div class="row">
+        <div class="col-md-2">PageSize:
+            <select ng-model="entryLimit" class="form-control">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </div>
+
+		<!---Search-- starts here--->
+		<label>Search</label>
+		<input type="text" ng-model="search" ng-change="filter()">
+		<!---Search-- Ends here--->
+		<label>Name</label>
+		<input type="text" name="name" ng-model="name">
+		<input type="submit" value="submit" ng-click="add()">
+
+	</div>
+
+	<!--display data from database--->
+	<div ng-init="fetch()" style="float:left;width:50%;">
+		 <p ng-repeat="x in filtered = (names | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+
+			<b>{{x.id}}</b>
+			<b>{{x.name}}</b>
+			<a href=""  ng-click='deletes(x.id)' >Delete</a>|<a href="#edit"  ng-click='edit(x.id)' >Edit</a>
+		</p>
+
+<div class="col-md-12" ng-show="filteredItems > 0">    
+            <div pagination="" page="currentPage" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+        </div>
+<!--display data from database--->
+
+<!---show htmls files here----->
+	<div ng-view>
+
+	</div>
+<!---show htmls files here----->
+<div>
+ <h5>Total {{ filtered.length }} of {{ totalItems}} data</h5>
+
+</div>
+
+
+</div>
+<div style="float:left; width:50%;">
+<form>
+<label>Name</label>
+<input type="text" name="userName" ng-model="userName">
+<input type="submit" value="submit" ng-click="login()">
+</form>
+</div>
+<div>
+</body>
+
+</html>
