@@ -1,0 +1,50 @@
+$>sudo gedit /var/www/index.php/var/www/Symfony$ sudo mkdir -p /home/sfprojects/jobeet
+/var/www/Symfony$ sudo mkdir -p /home/sfprojects/jobeet
+..........create  or edit a new file
+$ sudo chmod -R 0777 /var/www............for editing
+	
+sudo apt-get install php5 libapache2-mod-php5.........for installing php
+$ sudo service mysql start..........for instaling mysql
+sudo apt-get install apache.......... for instaling apache
+http://tutorial.symblog.co.uk/docs/configuration-and-templating.html$ sudo /etc/init.d/apache2 restart...........for restarting apache
+mobiletod.com........................ ..   ..Installing lamp
+wine:...............we can install software with the help of wine
+file should be saved in filesystem->var->www
+
+Install wordpress:
+mysql -u root -p
+Then enter password of mysql
+CREATE DATABASE wordpress;
+CREATE USER wordpressuser;
+GRANT ALL PRIVILEGES ON wordpress.* TO wordpressuser@localhost IDENTIFIED BY ‘password’;
+Exit
+
+
+bwc@BWC-SEO:~$ locate php.ini
+/etc/php5/apache2/php.ini
+/etc/php5/apache2/php.ini.save
+/etc/php5/apache2/php.ini.save.1
+/usr/share/php5/php.ini-production
+/usr/share/php5/php.ini-production-dist
+/usr/share/php5/php.ini-production.cli
+bwc@BWC-SEO:~$ sudo gedit /etc/php5/apache2/php.ini
+    sudo -s (gives the root access)
+    apt-get update (get the updates)
+    apt-get upgrade (upgrades the system)
+/var/www/Symfony$ sudo php app/console init:bundle "SfTuts\JobeetBundle" src
+$ cd /var/www/Symfony
+http://tutorial.symblog.co.uk/docs/configuration-and-templating.html
+/var/www/symfony$ sudo chmod -R 0777 /var/www/symfony/app/cache
+http://sourceforge.net/p/p5chi-xshare/wiki/Lesson%204%3A%20Adding%20Users%20%28registration,%20login,%20edit%20profile..%29%20/
+http://www.9lessons.info/2010/07/youtube-like-rating-jquery-and-ajax.html
+
+http://stackoverflow.com/questions/9009365/update-entity-with-form-values-symfony2-framework
+http://stackoverflow.com/questions/16137492/symfony2-updating-data-with-a-form
+
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-get-started-with-symfony-2-on-an-ubuntu-vps:install symfony
+
+
+ php app/console generate:bundle --namespace=Blogger/BlogBundle --format=yml:bundle create
+
+
