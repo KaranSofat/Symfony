@@ -1,0 +1,2674 @@
+
+/* #Media Queries
+================================================== */
+
+/* ipad portrait */
+
+@media only screen and ( max-width: 1024px) {
+/*--------index page-----------*/
+
+#header div {
+    margin-left: 0px !important;
+}
+#logo nav
+{
+margin-left:0px !important;
+}
+#header {
+    width: 87% !important;
+}
+.login li {
+    margin-top: 10px;
+}
+
+.review {
+    float: left;
+    width: 100%;
+}
+/* .map_container .cont .search_outer {
+    padding: 10px;							--	01-11-2015  updated by grace--
+    width: 46.1%;
+} */
+
+.maor_in.more_state.go {
+    float: right;
+    margin-right: 55px;
+    margin-top: 22px;
+    width: 18%;
+}
+
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 91.4%;
+}
+.title h2 {
+    color: #222;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 27px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: none;
+}
+.pagination {
+    margin: auto !important;
+    width: 100% !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 21px !important;
+    padding: 0;
+    width: 89%;
+}
+.wrapper {
+ 
+    width: 100%;
+}
+.title.orange > h2 {
+    font-size: 17px;
+}
+
+.smet {
+    border-right: 1px dotted #cacaca;
+    float: left;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0px 0px 0;
+    padding-right: 0px;
+    text-align: center;
+    width: 49%;
+}
+
+
+
+.newsletter {
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    width: 94% !important;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 58% !important;
+}
+.social_icon > ul {
+    float: left;
+    margin-left: 31%;
+    width: 50%;
+}
+.links > ul {
+    margin-left: 16% !important;
+}
+.browsw-logo h5 {
+padding-left:16px;
+}
+
+.browsw-logo {
+    float: left;
+    padding: 6px;
+    text-align: center;
+    width: 100%;
+}
+.browsw-logo h5 {
+    color: #8c8c8c;
+ width:100%;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 7px;
+    padding-top: 6px;
+}
+
+.letter input[type="text"] {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #ccc inset;
+    color: #000000;
+    float: left;
+    font-size: 17px;
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 56.4%;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 100% !important;
+}
+
+
+/* .map_container .cont .search_outer {
+    padding: 10px;			--	01-11-2015  updated by grace--
+    width: 63.1%;
+} */
+.links > ul {
+    width: 100%;
+}
+.links li {
+    float: left;
+}
+
+.map_container .cont {
+    padding: 0px 0px;
+    width: 92%;
+}
+.map_container .cont {
+    left: 0;
+  float:left;
+    position: relative;
+    text-align: center;
+    top: 91px;
+    width: 64% !important;
+}
+
+/* .map_container .cont .search_outer {
+    background-color: rgba(2, 0, 2, 0.4);		--01-11-2015 removed by grace--
+    float: left ;
+    padding: 17px 20px ;
+    width: 94% ;
+}
+ */
+#header {
+    width: 87% !important;
+}
+
+
+.map_container .cont {
+    float: none;
+    left: 0;
+    position: relative;
+    text-align: center;
+    top: 91px;
+    width: 64% !important;
+}
+
+.wrapper.top_header {
+    margin: auto;
+    width: 100%;
+}
+nav
+{
+  float: left;
+    margin-left: 111px !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 175px !important;
+    padding: 0;
+    width: 82%;
+}
+
+#cssmenu {
+    float: left;
+    width: 100% !important;
+}
+
+.logins {
+    margin-left: 208px;
+}
+.sch_butt {
+    margin: 0 6px 0 0;
+}
+/*** 01-10-2015 updated by gracecruz start ***/
+/* .left-sec-70 {
+    width: 67%;
+    margin: 0 0 0 20px;
+} */
+/*** 01-10-2015 updated by gracecruz end ***/
+
+#header div {
+    margin-left: 13px !important;
+}
+/*---------css-----------*/
+
+.left-sec-70 {
+    width: 50%;
+}
+
+/*---------css-----------*/
+
+/*-------index page end-------*/
+}
+/** 01-11-2015 grace start***/
+ @media only screen and ( max-width:968px) {
+.map_container .cont .search_outer{width:80%;}  
+ .browse_button.more.state_top.goto{ padding:10px 0px;}
+ /** 01-11-2015 grace end***/
+
+ }
+
+
+
+
+
+
+
+
+
+@media only screen and ( min-width: 768px) and ( max-width: 980px ) {
+ body {
+
+}
+.right, .alignright {
+    display: inline;
+    float: right;
+    width: 100%;
+}
+/* .right-sec-30 {
+   
+    width: 100%;
+} */
+/* .left-sec-70 {
+ 
+        width: 100%;
+}
+ */
+ /*  .shell {
+ padding: 0 10px;
+ width: 97%;
+} */
+/*01-10-2015 update by gracecruz end ***/
+
+.ad {
+    width: 100%;
+text-align:center;
+}
+.main h3 {
+    text-align: center;
+}
+
+.review {
+    float: left;
+    width: 100%;
+}
+.right_col .rating, .left_col .rating {
+    width: 56%;
+}
+
+.footer_bottom {
+       width: 98%;
+}
+.wrapper.top_header {
+ width: 98%;
+}
+.map_container .cont {
+    padding: 24px 30px;
+    width: 92%;
+}
+.review_outer {
+    background: #F8F7F7;
+    float: left;
+    width: 100%;
+	overflow:hidden;
+}
+.links ul.small {
+    width: auto !important;
+}
+.links ul {
+    width:auto;
+}.footer_bottom .left_bar {
+    float: none;
+    margin: 0 auto;
+   
+}
+/*** 01-10-2015 reverted back updates on 01-07-2015 gracecruz ***/
+/* .top_header.shell {
+ padding: 0 10px;
+ width: 93%;
+} */
+.input_outer.one > input {
+ width:85%;
+}
+ .input_outer.two > input {
+ width:69%;
+}
+.input_outer.three > input {
+ width:34%;
+}
+.main {
+ margin: auto;
+ padding: 47px 0 0;
+ width: 100%;
+}
+ .browse .col2 {
+ margin-left: 1%;
+ width: 37%;
+}
+.grid_50 .search_list {
+ height: auto;
+}
+ .main section {
+background: url(../images/t-section-shadow.png) no-repeat center bottom;
+
+}
+.footer_inner li h2 {
+ line-height: 20px;
+ padding-bottom: 0;
+}
+.more_prices li:nth-child(3n+3) {
+ margin-right:16px !important;
+}
+.footer_inner li:first-child {
+    border: 0 none;
+    float: left;
+    margin-bottom: 10px;
+    padding-left: 0;
+    width:97%;
+}
+.footer_inner .image, .footer_inner img {
+ width: 100% !important;
+}
+.map_container {
+    padding: 0;
+    width: 99%;
+}
+
+/* .map_container .cont .search_outer {
+    float: none;
+    margin: 0 auto;						--	01-11-2015  updated by grace--
+    padding: 10px;
+    width: 96.6% !important;
+} */
+
+.map_container .cont input[type="text"] {
+    width: 38.4%;
+}.trans-buton {
+ margin:0px auto;
+}
+
+.left_bar ul li a {
+      padding: 0 4px;
+	  }
+
+.footer_inner .last_f {
+ width: 14% !important;
+}
+.like {
+ width: 43%;
+}
+.map_container .cont .one {
+ width:40.3%;
+}
+
+.right_header {
+    width: 60%;
+}
+.map_container .cont .three {
+ width: 16.5%;
+}
+.main .content .left_sidebar {
+ float: left;
+ width:100%;
+}
+ .main .content h2 {
+ font-size: 15px;
+}
+.main .content .left_sidebar, .grid_60 {
+    width: 71% !important;
+}
+.category ul li {
+    margin-right: 18px;
+    width: 23.5%;
+}
+.img-responsive 
+{
+	width:100%;
+	height:auto;
+}
+
+.main .content .right_sidebar .review_right img {
+    width: 30%;
+}
+.review_right .div {
+    width: 66%;
+}
+.main .content {
+ width: 94%;
+}
+.footer_inner li {
+ margin-bottom: 15px;
+ min-height: 0;
+ padding: 0 29px !important;
+}
+.footer_inner li ul li:first-child {
+ width:100%;
+}
+ .footer_inner li:last-child {
+ padding-right: 0 !important;
+}
+.main .content h2 {
+ font-size: 18px;
+}
+.category ul li {
+    margin-right: 18px;
+    width: 23.1%;
+}/* .map_container .cont input[type="button"] {
+    width: 5%;  		--01-11-2015 removed by gracebb --
+} */
+
+.map_container .cont input[type="text"] {
+    width: 93.4%;
+}
+
+/* .map_container .cont .search_outer {
+    float: left;
+    margin: 0 auto;
+    padding: 10px;						--	01-11-2015  updated by grace--
+    width: 96.6% !important;
+} */
+#header {
+    width: 100% !important;
+}
+nav {
+    float: right;
+margin-left:137px !important;
+  
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 136px !important;
+    padding: 0;
+    width: 89%;
+}
+
+#cssmenu {
+    float: left;
+    width: 100% !important;
+}
+
+.logins {
+    margin-left: 208px;
+}
+.sch_butt {
+    margin: 0 20% 0 0;
+}
+
+/*---------css-----------*/
+
+.left-sec-70 {
+    width: 50%;
+}
+
+
+.dash_right {
+    width: 54% !important;
+}
+
+/*---------css-----------*/
+}
+@media only screen and ( max-width: 800px) {
+/*--------index page-----------*/
+
+#header div {
+    margin-left: 0px !important;
+}
+#logo nav
+{
+margin-left:0px !important;
+}
+#header {
+    width: 56% !important;
+}
+.login li {
+    margin-top: 10px;
+}
+
+.review {
+    float: left;
+    width: 100%;
+}
+
+/* .map_container .cont .search_outer {
+    padding: 10px;						--	01-11-2015  updated by grace--
+    width: 46.1%;
+} */
+
+.maor_in.more_state.go {
+    float: right;
+    margin-right: 55px;
+    margin-top: 22px;
+    width: 18%;
+}
+
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 99.4%;
+}
+.title h2 {
+    color: #222;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 27px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: none;
+}
+.pagination {
+    margin: auto !important;
+    width: 100% !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 21px !important;
+    padding: 0;
+    width: 89%;
+}
+.wrapper {
+ 
+    width: 100%;
+}
+.title.orange > h2 {
+    font-size: 17px;
+}
+
+.smet {
+    border-right: 1px dotted #cacaca;
+    float: left;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0px 0px 0;
+    padding-right: 0px;
+    text-align: center;
+    width: 49%;
+}
+
+
+
+.newsletter {
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    width: 94% !important;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 58% !important;
+}
+.social_icon > ul {
+    float: left;
+    margin-left: 31%;
+    width: 50%;
+}
+.links > ul {
+    margin-left: 16% !important;
+}
+.browsw-logo h5 {
+padding-left:16px;
+}
+
+.browsw-logo {
+    float: left;
+    padding: 6px;
+    text-align: center;
+    width: 100%;
+}
+.browsw-logo h5 {
+    color: #8c8c8c;
+ width:100%;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 7px;
+    padding-top: 6px;
+}
+
+.letter input[type="text"] {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #ccc inset;
+    color: #000000;
+    float: left;
+    font-size: 17px;
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 56.4%;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 100% !important;
+}
+
+
+/* .map_container .cont .search_outer {
+    padding: 10px;							--	01-11-2015  updated by grace--
+    width: 63.1%;
+} */
+.links > ul {
+    width: 100%;
+}
+.links li {
+    float: left;
+}
+
+.map_container .cont {
+    padding: 0px 0px;
+    width: 92%;
+}
+.map_container .cont {
+    left: 0;
+  float:left;
+    position: relative;
+    text-align: center;
+    top: 91px;
+    width: 64% !important;
+}
+
+/* .map_container .cont .search_outer {
+    background-color: rgba(2, 0, 2, 0.4);
+    float: left ;										--	01-11-2015  updated by grace--
+    padding: 17px 20px ;
+    width: 94% ;
+} */
+
+#cssmenu #menu-button > a {
+    padding: 2px 49px 0 295px;
+}
+
+#header {
+    width: 79% !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 87px !important;
+    padding: 0;
+    width: 89%;
+}
+
+
+.sch_butt {
+    margin: 0 41px 0 0;
+}
+
+/*--------css---------*/
+
+.map_container .cont input[type="text"] {
+    width: 89.4%;
+}
+
+.left-sec-70 {
+    width: 50%;
+}
+
+
+
+
+.dash_right {
+    width: 54% !important;
+}
+.moonray-form .moonray-form-element-wrapper-contracted {
+    width: 37%!important;
+}
+
+/*--------css---------*/
+/*-------index page end-------*/
+.bew_f{margin:0 auto !important;} /***01-11-2015 grace ***/
+}
+
+@media only screen and ( max-width: 768px) {
+
+/*--------index page-----------*/
+
+#header div {
+    margin-left: 0px !important;
+}
+#logo nav
+{
+margin-left:0px !important;
+}
+#header {
+    width: 56% !important;
+}
+.login li {
+    margin-top: 10px;
+}
+
+.review {
+    float: left;
+    width: 100%;
+}
+/* .map_container .cont .search_outer {
+    padding: 10px;						--	01-11-2015  updated by grace--
+    width: 46.1%;
+} */
+
+.maor_in.more_state.go {
+    float: right;
+    margin-right: 55px;
+    margin-top: 22px;
+ /*   width: 18%;  */   /*01-11-2015 updated by grace ***/
+}
+
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 99.4%;
+}
+.title h2 {
+    color: #222;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 27px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: none;
+}
+.pagination {
+    margin: auto !important;
+    width: 100% !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 21px !important;
+    padding: 0;
+    width: 89%;
+}
+.wrapper {
+ 
+    width: 100%;
+}
+.title.orange > h2 {
+    font-size: 17px;
+}
+
+.smet {
+    border-right: 1px dotted #cacaca;
+    float: left;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0px 0px 0;
+    padding-right: 0px;
+    text-align: center;
+    width: 49%;
+}
+
+
+
+.newsletter {
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    width: 94% !important;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 58% !important;
+}
+.social_icon > ul {
+    float: left;
+    margin-left: 31%;
+    width: 50%;
+}
+.links > ul {
+    margin-left: 16% !important;
+}
+.browsw-logo h5 {
+padding-left:16px;
+}
+
+.browsw-logo {
+    float: left;
+    padding: 6px;
+    text-align: center;
+    width: 100%;
+}
+.browsw-logo h5 {
+    color: #8c8c8c;
+ width:100%;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 7px;
+    padding-top: 6px;
+}
+
+.letter input[type="text"] {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #ccc inset;
+    color: #000000;
+    float: left;
+    font-size: 17px;
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 56.4%;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 100% !important;
+}
+
+
+/* .map_container .cont .search_outer {
+    padding: 10px;							--	01-11-2015  updated by grace--
+    width: 63.1%;
+} */
+.links > ul {
+    width: 100%;
+}
+.links li {
+    float: left;
+}
+
+.map_container .cont {
+    padding: 0px 0px;
+    width: 92%;
+}
+.map_container .cont {
+    left: 0;
+  float:left;
+    position: relative;
+    text-align: center;
+    top: 91px;
+    width: 64% !important;
+}
+
+/* .map_container .cont .search_outer {
+    background-color: rgba(2, 0, 2, 0.4);	--	01-11-2015  updated by grace--
+    float: left ;
+    padding: 17px 20px ;
+    width: 94% ;
+} */
+#header {
+    width: 78% !important;
+}
+#cssmenu #menu-button > a {
+    padding: 2px 49px 0 283px;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 67px !important;
+    padding: 0;
+    width: 89%;
+}
+/***updated by: gracecruz 12-04-2014 -footer opt in box ***/
+.newsletter .letter input[type="text"]{width: 53% !important;font-size: 13px !important;}
+.browse_button.news{width: 23% !important;padding: 3px 29px !important;font-size: 14px !important;} 
+.newsletter .letter label{font-size: 25px !important;float: none !important;margin: 0 auto !important;width: 85% !important;margin-bottom: 4% !important;}
+nav{float: right !important;margin-left: 0px !important;left: 62% !important;position: relative;top: 0px;}
+#cssmenu{width: 69%;margin-top: -36px !important;float: right;}
+#cssmenu #menu-button > a{color: #FFF !important;}
+#cssmenu > ul > li > a {display: block !important;}
+.login{/*display:none;  */ margin-top: 0px !important;float: right !important;width: 63% !important; }
+.main{padding: 0px 0 0 !important; }
+.links{width: 100% !important;margin: 0 auto !important;}
+#myGallery1{margin:0 auto !important;}
+.left-sec-70 h4{ margin-top: 0px !important;margin: 0px 0 0 1px !important;}
+.airlines ul li{width:36% !important;}
+.left-sec-70 {width: 94% !important;}
+
+
+.pagination {
+    margin: 0 !important;
+}
+
+
+/***end of 12-04-2014 ***/
+/*-------index page end-------*/
+/***write a review page *****/
+/***12-11-2014 gracecruz updates starts ***/
+/*  #written-review{width:55% !important;}
+ .star-group{ float: none;margin-left: 10%;position: relative;}
+ *//***12-11-2014 gracecruz updates ends ***/
+ /***12-23-2014 added by grace ***/
+.total{float: none !important;
+margin: 0 auto !important;
+width: 50% !important;
+}
+
+}
+
+
+
+@media only screen and ( max-width: 760px) {
+
+ body {
+width: auto;
+}
+.login {
+    display: none;
+}
+.login.resp {
+    display: block;
+}
+
+
+.review {
+    float: left;
+    width: 100%;
+}
+/*** 01-10-2015 reverted back 01-07-2015 gracecruz ***/
+/*  .shell {  
+width: 100%;
+margin: 0 auto;
+} */
+/* .map_container .cont .search_outer {
+    width: 99%;						--	01-11-2015  updated by grace--
+} */
+ .map_container .cont {
+ float: left;
+ height: auto;
+ left: 0;
+ margin: auto auto auto 5px;
+ padding: 12px;
+ text-align: center;
+ width: 90%;
+}
+.map_container {
+ float: left;
+ height: auto;
+ margin: 20px 0;
+ padding: 0;
+ width: 100%;
+}
+.main .content .right_sidebar {
+      width: 100%;
+}
+.input_outer.one > input {
+ width: 82%;
+}
+ .input_outer.two > input {
+ width: 81%;
+}
+.input_outer.three > input {
+ width: 65%;
+}
+ .margin_right {
+ margin-right:0;
+}
+
+
+.category ul li a {
+       width: 100%;
+}
+.category {
+       width: 93.8%;
+}
+.category ul li {
+    width:100%;
+}
+
+.map_container .cont .one, .map_container .cont .two, .map_container .cont .three {
+ margin-bottom: 10px;
+ width: 94%;
+}
+/*  .map_container .cont input[type="button"] {
+ width: 99.8%;				--01-11-2015 removed by grace --
+} */
+#header {
+ width: 95%;
+}
+ #header {
+position: relative;
+z-index: 1000;
+padding-left: 0;
+padding-right: 0;
+}
+#logo a {
+ padding-left: 10px;
+}
+
+.footer_bottom .left_bar, .footer_bottom .right_bar  {
+  padding: 0 10px;
+    width: 94%;
+}
+
+.footer_bottom h2 {
+    margin: 13px 10px 0 0;
+}
+ #logo {
+ display: block;
+ float: left;
+ margin: 10px auto 0;
+ padding: 0;
+ width: 56%;
+}
+.main {
+ padding: 40px 0 0;
+ width: 100%;
+}
+
+#logo a img {
+ border: 0 none;
+ width: 100%;
+}
+.footer_inner .last_f {
+ padding-right: 0 !important;
+ width: 100% !important;
+}
+.footer_inner li {
+ border-right: 0 none !important;
+ margin-bottom: 15px;
+ padding: 0 !important;
+ text-align: center;
+ width: 100% !important;
+}
+.footer_inner li h2 {
+ line-height: 20px;
+ padding-bottom: 0;
+ width:98%;
+}
+.footer_inner img {
+ margin-left: 0;
+}
+
+#navigation {
+    margin-top: 10px;
+}
+.login {
+    float: right;
+    margin-top: 10px;
+}
+#navigation ul li a {
+    margin: 0 0.7em;
+}
+.right_header {
+    width: 98%;
+}
+.right_header_top {
+    width: 29%;
+}
+.top_header {
+ background: url("../images/top_header.jpg") repeat scroll left top transparent;
+ float: left;
+ height: auto;
+ width: 100%;
+}
+.wrapper.top_header {
+    margin: auto;
+    width: 100%;
+}.img-responsive
+{
+	width:100%;
+	height:auto;
+}
+.links {
+    padding: 0;
+}
+.links li {
+    float: none;
+}
+.links ul li a {
+    border-left: none;
+}/* .map_container .cont .search_outer {
+    padding: 0px;				--	01-11-2015  updated by grace--
+} */
+.map_container .cont input[type="text"] {
+    width: 86.4%;
+	margin-bottom:10px;
+}
+.category {
+    margin: 0 auto;
+    width: 96.8%;
+	float:none;
+}.map_container {
+
+}
+.trans-buton .orange a {
+    margin: 8px 3px 10px 5px;
+}
+
+ }
+@media only screen and ( max-width: 670px) {.map_container .cont .search_outer{width:50%;}}
+@media only screen and ( max-width: 640px) {
+/*--------index page-----------*/
+.login {
+    display: none;
+}
+.login.resp {
+    display: block;
+}
+#header div {
+    margin-left: 0px !important;
+}
+#logo nav
+{
+margin-left:0px !important;
+}
+#header {
+    width: 56% !important;
+}
+.login li {
+    margin-top: 10px;
+}
+
+/* .map_container .cont .search_outer {
+    padding: 10px;					--	01-11-2015  updated by grace--
+    width: 46.1%;
+} */
+
+.maor_in.more_state.go {
+    float: right;
+    margin-right: 55px;
+    margin-top: 22px;
+    width: 18%;
+}
+
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 99.4%;
+}
+.title h2 {
+    color: #222;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 27px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: none;
+}
+.pagination {
+    margin: auto !important;
+    width: 100% !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 21px !important;
+    padding: 0;
+    width: 89%;
+}
+.wrapper {
+ 
+    width: 100%;
+}
+
+.review {
+    width: 100%;
+}
+
+.right_col .people .name {
+    width: 31%;
+}
+.right_col .rating {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-left: 84px;
+}
+.title.orange > h2 {
+    font-size: 17px;
+}
+
+.smet {
+    border-right: 1px dotted #cacaca;
+    float: left;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0px 0px 0;
+    padding-right: 0px;
+    text-align: center;
+    width: 49%;
+}
+
+
+
+.newsletter {
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    width: 94% !important;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 58% !important;
+}
+.social_icon > ul {
+    float: left;
+    margin-left: 31%;
+    width: 50%;
+}
+.links > ul {
+    margin-left: 5% !important;
+}
+.browsw-logo h5 {
+padding-left:16px;
+}
+
+.browsw-logo {
+    float: left;
+    padding: 6px;
+    text-align: center;
+    width: 95%;
+}
+.browsw-logo h5 {
+    color: #8c8c8c;
+ width:100%;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 7px;
+    padding-top: 6px;
+}
+
+.letter input[type="text"] {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #ccc inset;
+    color: #000000;
+    float: left;
+    font-size: 17px;
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 56.4%;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 100% !important;
+}
+
+
+/* .map_container .cont .search_outer {
+    padding: 10px;					--	01-11-2015  updated by grace--
+    width: 63.1%;
+} */
+.links > ul {
+    width: 90%;
+}
+.links li {
+    float: left;
+}
+
+.social_icon {
+    width: 98%;
+}
+
+/* .map_container .cont .search_outer {
+    padding: 10px;							--	01-11-2015  updated by grace--
+    width: 87.1%;
+} */
+#cssmenu #menu-button > a {
+    padding: 2px 49px 0 128px;
+}
+#cssmenu > ul > li > a {display: block !important;}
+
+
+
+
+
+
+.rating {
+    width: 77% !important;
+    float: left;
+}
+
+
+.hero-unit {
+    float: left;
+    width: 94%;
+	padding:10px !important; /***01-10-2015 updated by gracecruz ***/
+}
+.pull-right.img-polaroid {
+    height: auto !important;
+	margin:0 auto;float:none; /***01-10-2015 added by garcecruz ***/
+}
+
+.pagination {
+    margin: 0 20px !important;
+    width: 100% !important;
+}
+
+
+.logins {
+    margin-left: 0;
+}
+
+.float-img {
+    margin-left: 0px;
+}
+.review-details {
+    margin: 11px 0 0 !important;
+    float: left;
+}
+.review-hadding {
+    margin: 16px 0 10px !important;
+}
+.travel-ex {
+    margin: 0 !important;
+}
+.review-star-line.star_ns {
+    margin: 0;
+}
+
+.star-group {
+    float: right;
+    max-width: 250px;
+    width: 54%;
+}
+
+.right-sec-30 {
+    width: 95%;
+}
+
+
+.sch_butt {
+    margin: 0 13px 0 0;
+}
+.jRatingColor {
+    width: 100% !important;
+}
+.reveal-modal {
+    width: 100%!important;
+}
+
+
+.right-sec-30 {
+    max-width: 100% !important;
+margin-left: 14px;
+}
+
+.new_form fieldset {
+    border: medium none;
+    float: left !important;
+}
+.new_form fieldset p {
+    margin: 37px 17px 0 0;
+}
+
+/*-------csss-------*/
+
+.maor_in.more_state.go {
+    margin-right: 0;
+    width: 25%;
+}
+
+.titles {
+    margin-left: 0px;
+width:100%;
+}
+fieldset {
+    width: 100%;
+}
+.moonray-form .moonray-form-element-wrapper-contracted {
+    width: 100% !important;
+}
+ #content-left {
+    padding-left: 18px;
+}
+.col-3 {
+    width: 50% !important;
+}
+
+/*-------csss-------*/
+/*-------index page end-------*/
+/***12-11-2014 gracecruz updates starts ***/
+/***registration page ***/
+.new_form fieldset{margin:0px !important;}
+/***12-11-2014 gracecruz updates ends ***/
+
+}
+
+
+ @media only screen and ( max-width:480px) {
+/* 	 .map_container .cont .search_outer {
+    padding: 10px;									--	01-11-2015  updated by grace--
+    width: 92.1%;
+} */
+.map_container .cont .search_outer { width:34%; }
+.browse_button.more.state_top.goto {padding: 10px 0px; }
+.login {
+    display: none;
+}
+.login.resp {
+    display: block;
+}
+.review {
+    float: left;
+    width: 100% !important;
+}
+	 .review .cols {
+    float: left;
+    width: 94%;
+}
+/*** 01-10-2015 removed by gracecruz to fix conflicts on resp layouts start ***/
+/* .pull-right.img-polaroid {
+    height: auto !important;
+    max-width: 100px !important;
+} */
+/*** 01-10-2015 removed by gracecruz to fix conflicts on resp layouts end ***/
+
+.logins {
+    margin-left: 0;
+}
+
+.float-img {
+    margin-left: 65px;
+}
+.review-details {
+    margin: 11px 0 0 !important;
+}
+.review-hadding {
+    margin: 16px 0 10px !important;
+}
+.travel-ex {
+    margin: 0 !important;
+}
+.review-star-line.star_ns {
+    margin: 0;
+}
+.titles {
+    width: 87%;
+    margin-left: 31px;
+}
+.rating {
+    width: 98% !important;
+}
+
+
+
+.right_col .people {
+    float: left;
+    margin-bottom: 25px;
+    width: 100%;
+}.recent-reviews-wrapper .rating {
+    width: 90%;
+}
+.right_header {
+   display:none;
+}.title h2 {
+    line-height: 25px;
+}.login {
+    float: right;
+    margin-top: 0;
+}
+.trans-buton a {
+    font-size: 11px;
+    margin: 8px 10px 10px 5px;
+    padding: 7px;
+}.right_col .people .name .image, .left_col .people .name .image {
+
+    float: none;  
+    margin: auto;
+}
+.right_col .people .name, .left_col .people .name {
+    width: 32%;
+    margin-left: 28px;
+}
+.time {
+    margin: 8px 0 15px;
+    width: 100%;
+}
+.right_col .rating, .left_col .rating {
+    width: 86%;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-left: 43px;
+}
+.filter {
+    padding: 0 10px;
+    width: 94%;
+}
+
+ .wr_rev {width: 100%;margin-left: 58;clear: both;margin-bottom: 2%;}
+/* .form-input textarea{width:55% !important;} */
+fieldset{width:73%;}
+#recommend-box label{clear:both; padding:2%;}
+/*** end of gracecruz revisions 12-04-2014**/
+.star-label{font-size:12px !important;}
+#content-left{margin-top: 4% !important;}  /***added on 12-05-2014 by gracecruz **/
+ .realtor {
+    padding: 10px 0 0;
+    width: 95%;
+}
+.right-sec-30 {    padding-left: 0;
+    width: 100%;
+}
+.realtor {
+    padding: 10px 0 0;
+    width: 100%;
+}
+.write-review {
+   
+    font-size: 12px;
+    padding: 10px 2%; 
+}
+.relators-inner .image {
+    float: none;
+    margin: 0 auto;
+}
+#agent-to-review-agency {
+ 
+    width: 100%;
+text-align:center;
+}
+.star-group-left {
+    float: none;
+    margin: 0 auto;
+   width: 100%;
+}
+.right-sec-30 {
+    margin: 0 auto;
+    padding-left: 0;
+    width: 95% !important;
+float:none;
+}.image-box {
+    float: none;
+}
+.relators-inner .content-box {
+    padding-left: 0px;
+    width: 100%;
+}.left-side-realator { 
+    width: 100%;
+}
+.relators-inner #agent-overall-rating-wrapper {
+    text-align: center;
+    width: 100%;
+}
+
+/*--------index page-----------*/
+
+#header div {
+    margin-left: 0px !important;
+}
+#logo nav
+{
+margin-left:0px !important;
+}
+#header {
+    width: 56% !important;
+}
+.login li {
+    margin-top: 10px;
+}
+
+/* .map_container .cont .search_outer {
+    padding: 10px;
+    width: 46.1%;
+}
+ */
+/* .maor_in.more_state.go {
+    float: right;
+    margin-right: 55px;			--01-11-2015 removed by grace --
+    margin-top: 22px;
+    width: 18%;
+} */
+
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 99.4%;
+	font-size: 11px;  /** 01-12-2015 addedb by grace **/
+}
+.title h2 {
+    color: #222;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 27px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: none;
+}
+
+/* .hero-unit {
+    float: left;   updated by grace
+    width: 91%;
+} */
+.pagination {
+    margin: 0 16px !important;
+    width: 100% !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 21px !important;
+    padding: 0;
+    width: 89%;
+}
+.wrapper {
+ 
+    width: 100%;
+}
+.title.orange > h2 {
+    font-size: 17px;
+}
+
+.smet {
+    border-right: 1px dotted #cacaca;
+    float: left;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0px 0px 0;
+    padding-right: 0px;
+    text-align: center;
+    width: 49%;
+}
+
+
+
+.newsletter {
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    width: 94% !important;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 58% !important;
+}
+.social_icon > ul {
+    float: left;
+    margin-left: 31%;
+    width: 50%;
+}
+.links > ul {
+    margin-left: 10% !important;
+}
+.browsw-logo h5 {
+padding-left:16px;
+}
+
+.browsw-logo {
+    float: left;
+    padding: 6px;
+    text-align: center;
+    width: 98%;
+}
+.browsw-logo h5 {
+    color: #8c8c8c;
+ width: 95%;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 7px;
+    padding-top: 6px;
+}
+
+.letter input[type="text"] {
+    margin-left: 21px;
+    width: 87%;
+}
+.titles {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #ccc inset;
+    color: #000000;
+    float: left;
+    font-size: 17px;
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 56.4%;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 100% !important;
+}
+
+/* .map_container .cont .search_outer {
+    padding: 10px;
+    width: 64.1%;
+} */
+form .stars1{float:left;} /***01-11-2015 grace ***/
+#cssmenu #menu-button > a {
+    padding: 2px 49px 0 80px;.titles {
+    margin-left: 21px;
+    width: 87%;
+}
+     color: #424242 !important;
+}
+#cssmenu > ul > li > a {display: block !important;}
+.name > img {
+    margin-left: 0;
+    width: 50% !important;
+}
+.links ul li a {
+    border-left: 1px solid #373737;
+    color: #fff;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 16px;
+    padding: 0 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.reveal-modal {
+    width: 100%!important;
+}
+/*-------index page end-------*/
+
+/*---12-11-2014 updated by gracecruz 12-11-2014 starts--*/ 
+
+.fake-file{width:74% !important; }
+.airlines h4 a{font-size:12px !important;}
+.titles h2{font-size:24px !important; }
+
+#sliderb_container  { margin-left:0px !important;}
+
+/*---12-11-2014 updated by gracecruz ends--*/
+.maor_in.more_state.go {
+    margin-right: 0;
+    width: 37%;
+}
+
+#mr-field-element-632334038149.moonray-form-input {
+    margin-left: 44px;
+}
+.moonray-form .moonray-form-element-wrapper-contracted {
+    width: 100%;
+}
+.map_container .cont {
+    left: 58px;
+    top: 20px;
+}
+/*-------css--------*/
+.titles {
+    margin-left: 0px;
+width:100%;
+}
+fieldset {
+    width: 100%;
+margin-left: -13px!important;
+}
+.moonray-form .moonray-form-element-wrapper-contracted {
+    width: 100% !important;
+}
+ #content-left {
+    padding-left: 18px;
+}
+
+.dash_right {
+    margin: 0;
+    max-width: 563px;
+    width: 100% !important;
+}
+.new_form fieldset {
+    border: medium none;
+    float: left !important;
+}
+.new_form fieldset p {
+    margin: 37px 17px 0 0;
+}
+
+/*-------css--------*/
+ }
+ @media only screen and ( max-width:360px) {
+/*--------index page-----------*/
+.login {
+    display: none;
+}
+.login.resp {
+    display: block;
+}
+#header div {
+    margin-left: 0px !important;.titles {
+    margin-left: 21px;
+    width: 87%;
+}
+}
+#logo nav
+{
+margin-left:0px !important;
+}
+#header {
+    width: 56% !important;
+}
+.login li {
+    margin-top: 10px;
+}
+
+/* .map_container .cont .search_outer {
+    padding: 10px;						--	01-11-2015  updated by grace--
+    width: 29.1%;
+} */
+.map_container .cont .search_outer { width:24%; }   /** 01-11-2015  updated by grace--  ***/
+
+
+.maor_in.more_state.go {
+    float: right;
+    margin-top: 22px;
+  /***updates by gracecruz on 12-04-2014 ***/
+/*	width: 18%;  */
+ /*   margin-right: 55px;  */
+	width: 40.1%;
+	margin-right:7px;
+	/*** end of updates :garcecruz 12-04-2014 **/
+}
+
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 99.4%;
+	font-size:13px;  /** updates by gracecruz 12-04-2014 **/
+}
+.title h2 {
+    color: #222;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 27px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: none;
+}
+.pagination {
+    margin: auto !important;
+    width: 100% !important;
+}
+
+#index {
+    float: left;
+    margin: 0 0 20px 21px !important;
+    padding: 0;
+    width: 89%;
+}
+
+
+
+
+.rating {
+    width: 96% !important;
+    float: left;
+}
+/** 01-10-2015 updated by gracecruz start ***/
+/* .hero-unit {
+    float: left;
+    width: 87%;
+} */
+/* .pull-right.img-polaroid {
+    height: auto !important;
+    max-width: 100px !important;
+} */
+/** 01-10-2015 updated by gracecruz end ***/
+
+.pagination {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+
+.logins {
+    margin-left: 0;
+}
+
+.float-img {
+    margin-left: 100px;
+}
+.review-details {
+    margin: 11px 0 0 !important;
+    float: left;
+}
+.review-hadding {
+    margin: 16px 0 10px !important;
+}
+.travel-ex {
+    margin: 0 !important;
+}
+.review-star-line.star_ns {
+    margin: 0;
+}
+.star-group {
+    width: 54%!important;;
+}
+
+
+.titles {
+    margin-left: 21px;
+    width: 87%;
+}
+
+
+
+.wrapper {
+ 
+    width: 100%;
+}
+.title.orange > h2 {
+    font-size: 17px;
+}
+
+.smet {
+    border-right: 1px dotted #cacaca;
+    float: left;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0px 0px 0;
+    padding-right: 0px;
+    text-align: center;
+    width: 49%;
+}
+
+
+
+.newsletter {
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    width: 94% !important;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 58% !important;
+}
+.social_icon > ul {
+    float: left;
+    margin-left: 25%;
+    width: 60%;
+}
+.links > ul {
+    margin-left: 6% !important;
+}
+.browsw-logo h5 {
+padding-left:16px;
+}
+.browsw-logo {
+    float: left;
+    padding: 6px;
+    text-align: center;
+    width: 100%;
+}
+.browsw-logo h5 {
+    color: #8c8c8c;
+ width:100%;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 7px;
+    padding-top: 6px;
+}
+
+.letter input[type="text"] {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #ccc inset;
+    color: #000000;
+    float: left;
+    font-size: 17px;
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 95.4%;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 100% !important;
+}
+/* .map_container .cont .search_outer {
+    padding: 10px;							--	01-11-2015  updated by grace--
+    width: 33.1%;
+} */
+/* .map_container .cont .search_outer {
+    padding: 10px;						--	01-11-2015  updated by grace--	
+	width: 40.1%;
+}
+ */
+#cssmenu #menu-button > a {
+    padding: 2px 49px 0 100px;
+    color:#fff!important;  /***01-10-2015 updated by grace ***/
+}
+#cssmenu > ul > li > a {display: block !important;}
+.name > img {
+margin-left: 25%;
+    width: 50% !important;
+}
+.links li {
+    float: left;
+    width: 147px !important;
+}
+.reveal-modal {
+    width: 100%!important;
+}
+
+/*-------css-------*/
+
+
+.map_container.map_top {
+    background-size: cover;
+    margin: 0;
+}
+
+.map_container .cont .search_outer {
+    width: 31%;
+}
+
+
+.maor_in.more_state.go {
+    margin-right: 0;
+    width: 36%;
+}
+
+.titles {
+    margin-left: 2px;
+}
+fieldset {
+    width: 100%;
+margin-left: -13px!important;
+}
+.moonray-form .moonray-form-element-wrapper-contracted {
+    width: 100% !important;
+}
+ #content-left {
+    padding-left: 18px;
+}
+.col-3 {
+    width: 45% !important;
+}
+.dash_right {
+    margin: auto 2% auto auto;
+    max-width: 563px;
+    width: 100% !important;
+}
+.new_form fieldset {
+    border: medium none;
+    float: left !important;
+}
+.new_form fieldset p {
+    margin: 37px 17px 0 0;
+}
+/*-------css-------*/
+
+
+/*-------index page end-------*/
+.row-fluid.well p{width:100% !important;max-width:203px !important;}
+.row-fluid p.cment{margin: 0 0 0 88px !important;}
+}
+
+
+
+
+
+ @media only screen and ( max-width:320px) {
+/*-----css------*/
+.titles {
+    margin-left: 0;
+    width: 87%;
+}
+fieldset {
+    width: 100%;
+margin-left: -13px!important;
+}
+.map_container.map_top {
+    margin: 0;
+}
+
+.moonray-form .moonray-form-element-wrapper-contracted {
+    width: 100%!important;
+}
+
+
+.left-sec-70 {
+    width: 50%;
+}
+
+.col-3 {
+    width: 46% !important;
+}
+
+.dash_right {
+    margin: auto 2% auto auto;
+    max-width: 563px;
+    width: 100% !important;
+}
+.new_form fieldset {
+    border: medium none;
+    float: left !important;
+}
+.new_form fieldset p {
+    margin: 37px 17px 0 0;
+}
+/*-----css------*/
+ body {
+width: auto;
+}
+.login {
+    display: none;
+}
+.login.resp {
+    display: block;
+}
+.log_3
+{
+display:block !important;
+}
+
+.right_header_top {
+    width:42% !important;
+}.active.first > a:first-child {
+    margin-left: 0 !important;
+}
+/*** 01-10-2015 updated by gracecruz ***/
+/*  .shell {
+width: 100%;
+margin: 0 auto;
+} */
+/* .map_container .cont input[type="button"] {
+    margin-left: -4px;				--01-11-2015 reoved by grace--
+} */.title {
+    margin: 17px 0 15px; 
+}.title h2 {
+    line-height: 21px; 
+}
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 82.4%;
+}
+/* .map_container .cont .search_outer {
+    padding: 10px;							--	01-11-2015  updated by grace--
+    width: 92.1%;
+} */
+ .map_container .cont {
+ float: left;
+ height: auto;
+ left: 0;
+ margin: auto auto auto 5px;
+ padding: 12px;
+ text-align: center;
+ width: 90%;
+}
+.map_container {
+ float: left;
+ height: auto;
+ margin: 0 0 20px;
+ padding: 0;
+ width: 100%;
+}
+.input_outer.one > input {
+ width: 82%;
+}
+ .input_outer.two > input {
+ width: 81%;
+}
+.input_outer.three > input {
+ width: 65%;
+}
+ .margin_right {
+ margin-right:0;
+}
+
+.category ul li a {
+       width: 100%;
+}
+.category {
+       width: 93.8%;
+}
+.category ul li {
+    width:100%;
+}
+
+.reveal-modal {
+    width: 97%!important;
+}
+.review {
+    float: left;
+    width: 100% !important;
+}
+
+.review .cols.right_col {
+    margin-left: 0;
+	 margin-top: 25px;
+}
+.review .cols {
+    float: left;
+    width: 98%;
+}
+.float-img {
+    margin-left: 65px;
+}
+.review-star-line {
+    float: left;
+    margin: 10px 0 !important;
+}
+.review-details {
+    margin: 11px 0 0 !important;
+}
+.review-hadding {
+    margin: 16px 0 10px !important;
+}
+.travel-ex {
+    margin: 0 !important;
+}
+.review-star-line.star_ns {
+    margin: 0;
+}
+.star-group {
+    width: 53%!important;
+}
+.logins {
+    margin-left: 0;
+}
+.rating {
+    width: 95% !important
+}
+
+.social_icon {
+    width: 97%;
+}
+/** 01-10-2015 removed by gracecruz start ***/
+/* .hero-unit {
+    float: left;
+    width: 87%;
+} */
+
+/* .pull-right.img-polaroid {
+    height: auto !important;
+    max-width: 100px !important;
+} */
+
+/* .hero-unit h1 {
+    font-size: 32px;
+     line-height: 2;
+}
+ */
+/** 01-10-2015 removed by gracecruz end ***/
+
+.map_container .cont .one, .map_container .cont .two, .map_container .cont .three {
+    margin-bottom: 10px;
+    width: 91%;
+}
+/*  .map_container .cont input[type="button"] {
+ width: 98%;			--01-11-2015 removed by grace --
+} */
+#header {
+ width: 95%;
+}
+ #header {
+position: relative;
+z-index: 1000;
+padding-left: 0;
+padding-right: 0;
+}
+#logo a {
+ padding-left: 10px;
+}
+
+.footer_bottom .left_bar, .footer_bottom .right_bar  {
+  padding: 0 10px;
+    width: 94%;
+}
+
+.footer_bottom h2 {
+    margin: 13px 10px 0 0;
+}
+ #logo {
+ display: block;
+ float: left;
+ margin: 10px auto 0;
+ padding: 0;
+ width: 98%;
+}
+.main {
+ padding: 40px 0 0;
+ width: 100%;
+}
+ .main section {
+padding:0 17px 0px;
+width: 89% !important;
+}
+ .main .content {
+ margin-bottom: 0px;
+}
+
+#logo a img {
+ border: 0 none;
+ width: 100%;
+}
+.footer_inner .last_f {
+ padding-right: 0 !important;
+ width: 100% !important;
+}
+.footer_inner li {
+ border-right: 0 none !important;
+ margin-bottom: 15px;
+ padding: 0 !important;
+ text-align: center;
+ width:100% !important;
+}
+.grid_50 .search_list {
+ height: auto;
+}
+.footer_inner li h2 {
+ line-height: 20px;
+ padding-bottom: 0;
+ width:100%;
+}
+
+.footer_inner img {
+ margin-left: 0;
+}
+
+#navigation {
+    margin-top: 20px;
+}
+#navigation ul li a {
+    margin: 0 0.7em;
+}
+.right_header {
+    width: 94%;
+}
+.top_header {
+ background: url("../images/top_header.jpg") repeat scroll left top transparent;
+ float: left;
+ height: auto;
+ width: 100%;
+}
+.main .content .left_sidebar {
+ float: left;
+ width: 100%;
+}
+
+.main .content .right_sidebar {
+      width: 100%;
+}
+#recommend-box {
+    color: #666666;
+    float: right;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 29px;
+    padding-bottom: 0;
+    padding-top: 16px;
+}.agent-to-review-heading {
+
+    line-height: 24px;
+}#recommend-box label {
+
+    height: 28px;
+
+}#subscription-box label {
+
+    line-height: 19px;
+  
+}.login {
+    float: right;
+    margin-top: 0;
+}
+.trans-buton a {
+    font-size: 11px;
+    margin: 8px 10px 10px 5px;
+    padding: 7px;
+}
+.right_col .people .name .image, .left_col .people .name .image {
+
+    float: none;  
+    margin: auto;
+}
+.right_col .people .name, .left_col .people .name {
+    width: 32%;
+   margin-left: 10px
+}
+.time {
+    margin: 8px 0 15px;
+    width: 100%;
+}
+.right_col .rating, .left_col .rating {
+    width: 86%;
+    margin-left: 34px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.filter {
+    padding-right: 0;
+    width: 100%;
+}
+.left-sec-70 {
+    width: 99%;
+ }
+.filter {
+    padding: 0 10px;
+    width: 94%;
+}
+.right-sec-30 {    padding-left: 0;
+    width: 100%;
+}
+
+.name > img {
+    margin-left: 0;
+    width: 80%!important;
+    float: left;
+}
+
+/*--------index page-----------*/
+
+#header div {
+    margin-left: 0px !important;
+}
+#logo nav
+{
+margin-left:0px !important;
+}
+#header {
+    width: 56% !important;
+}
+.login li {
+    margin-top: 10px;
+}
+
+ .map_container .cont .search_outer {
+    padding: 10px;							
+    width: 36%;
+}
+ .browse_button.more.state_top.goto{width:80px; }
+.maor_in.more_state.go {
+    float: right;
+    margin-right: 55px;
+    margin-top: 22px;
+    width: 18%;
+}
+
+.map_container .cont input[type="text"] {
+    margin-bottom: 10px;
+    width: 99.4%;
+}
+.title h2 {
+    color: #222;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 27px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: none;
+}
+.pagination {
+    margin: 0 !important;
+    width: 100% !important;
+    
+}
+
+
+#index {
+    float: left;
+    margin: 0 0 20px 21px !important;
+    padding: 0;
+    width: 89%;
+}
+.wrapper {
+ 
+    width: 100%;
+}
+.title.orange > h2 {
+    font-size: 17px;
+}
+
+.smet {
+    border-right: 1px dotted #cacaca;
+    float: left;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 0 0px 0px 0;
+    padding-right: 0px;
+    text-align: center;
+    width: 49%;
+}
+
+
+
+.newsletter {
+    margin-bottom: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    width: 94% !important;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 58% !important;
+}
+.social_icon > ul {
+    float: left;
+    margin-left: 25%;
+    width: 60%;
+}
+.links > ul {
+    margin-left: 16% !important;
+}
+.browsw-logo h5 {
+padding-left:16px;
+}
+.browsw-logo {
+    float: left;
+    padding: 6px;
+    text-align: center;
+    width: 98%;
+}
+
+.browsw-logo h5 {
+    color: #8c8c8c;
+    width: 93%;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 7px;
+    padding-top: 6px;
+}
+.letter input[type="text"] {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #ccc inset;
+    color: #000000;
+    float: left;
+    font-size: 17px;
+    margin-right: 15px;
+    padding: 10px 20px;
+    width: 95.4%;
+}
+.letter label {
+    color: #222222;
+    float: left;
+    font-family: "proxima_nova_cn_rgregular";
+    font-size: 20px;
+    margin-top: 9px;
+    width: 100% !important;
+}
+
+/* .map_container .cont .search_outer {
+    padding: 10px;									--	01-11-2015  updated by grace--
+    width: 41.1%;
+} */
+
+#cssmenu #menu-button > a {
+    padding: 2px 49px 0 20px;
+    color: #de6b15 !important;
+    margin-top: 40px;
+}
+.links li {
+    float: left;
+    width: 147px !important;
+}
+.reviewDesc {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+/*-------css------*/
+
+
+.map_container.map_top {
+    margin: 0!important;
+}
+
+/*-------index page end-------*/
+
+/*.......profile.......*/
+
+.cment {
+    margin-left: 90px !important;
+}
+.row-fluid.well p {
+    width: 72% !important;
+}
+
+
+
+ }
+ @media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi) {
+ #logo a {
+-webkit-background-size: 81px 33px;
+-moz-background-size: 81px 33px;
+background-size: 81px 33px;
+}
+ .top_header {
+ background: url("../images/top_header.jpg") repeat scroll left top transparent;
+ float: left;
+ height: auto;
+ width: 100%;
+}
+/*----------Start-- Index Page----------*/
+.search_outer
+{
+ margin: -70px 0 0 -61px !important;
+}
+/* .map_container .cont .search_outer {
+padding: 10px;								--	01-11-2015  updated by grace--
+    width: 41.1%;
+    } */
+  .left-sec-70{width:98% !important;}  
+/*----------End Index Page----------*/
+
+}
+ @media only screen and ( max-width: 240px){
+ .map_container .cont .search_outer{ float: left;
+margin-left: -33%;}
+.browse_button.more.state_top.goto {
+width: 80px;}
+ }

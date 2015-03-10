@@ -1,0 +1,8 @@
+rar_web:
+    resource: "@RARWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+rar_admin:
+    resource: "@RARAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+

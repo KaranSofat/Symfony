@@ -1,0 +1,8 @@
+raa_admin:
+    resource: "@RAAAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+raa_web:
+    resource: "@RAAWebBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,27 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: review-an-airline
+    database_user: root
+    database_password: root
+    mailer_transport: smtp
+    mailer_encryption: 
+    mailer_auth_mode: "login"
+    mailer_host: mail.reviewanairline.com
+    mailer_port: 25
+    mailer_user: info@reviewanairline.com
+    mailer_password: info@123
+    locale: en
+    secret: 123456789
+    facebook.app_id: 863291650356318
+    facebook.secret: 6b05f5cc69c430d62ed8b41e528fde95   
+    web_url: http://reviewanairline.com/web/success
+    reg_url: http://reviewanairline.com/web/registered
+    website_url: http://localhost/review-an-airline/
+    gbl_root_dir: /review-an-airline/
+    gbl_email_support: support@reviewanairline.com
+    gbl_email_service: service@reviewanairline.com
+    gbl_email_administrator: administrator@reviewanairline.com
+    current_url: http://review-an-airline/web/profile/

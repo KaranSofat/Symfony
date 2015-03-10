@@ -1,0 +1,91 @@
+<!-- Start: Fancy box files -->
+<script src="<?php echo $this->getSkinUrl('js/jquery-1.10.2.min.js')?>"></script> 
+
+<script src="<?php echo $this->getSkinUrl('fancybox/jquery.validate.js') ?>"></script>
+<script src="<?php echo $this->getSkinUrl('fancybox/jquery.mousewheel-3.0.6.pack.js') ?>"></script>
+<script src="<?php echo $this->getSkinUrl('fancybox/jquery.fancybox.js') ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('fancybox/jquery.fancybox.css') ?>" />
+<script type="text/javascript">
+	var noconfi1 =$.noConflict();
+	noconfi1(document).ready(function(){
+		noconfi1(".fancyboxHS").fancybox({
+
+			autoScale:true,
+			'width'  : 590,
+	
+		});
+
+	});
+
+
+</script>
+<style type="text/css">
+	.fancybox-custom .fancybox-skin {
+		box-shadow: 0 0 50px #222;
+	}
+	.error{ color:red;}
+</style>
+<!-- END: Fancy box files -->
+
+		<div id="fancyboxHS1" style="width:600px;display: none;"">
+	<!--	<h3 style="font-size: 20px;"><?php //echo $this->__('Submit Your Query') ?></h3>-->
+		<p>
+			<form action="<?php echo Mage::getBaseUrl().'getquote/index/mail' ?>" method="post" id="category_support_form" enctype="multipart/form-data">		
+			<input type ="hidden" name="catId" value="<?php echo Mage::registry('current_category'); ?>">		
+				<div class="">					
+					<ul class="form-list" id="sender_options">
+						<li class="fields">
+							<div class="field">
+								<label for="sender_name" class="required"><em>*</em><?php echo $this->__('Your Name:') ?></label>
+								<div class="input-box">
+									<input name="sender_name" value="<?php //echo $this->htmlEscape($this->getUserName()) ?>" id="sender_name" type="text" class="input-text required-entry" />
+								</div>
+							</div>
+							<div class="field">
+							   <label for="sender_email" class="required"><em>*</em><?php echo $this->__('Your Email:') ?></label>
+							   <div class="input-box">
+								   <input name="sender_email" value="<?php //echo $this->htmlEscape($this->getEmail()) ?>" id="sender_email" type="text" class="input-text required-entry email" />
+							   </div>
+							</div>
+						</li>
+
+
+						<li class="wide">
+							<label for="sender_subject" class="required"><em>*</em><?php echo $this->__('Subject:') ?></label>
+							<div class="input-box">
+							   <input name="sender_subject" value="" id="sender_subject" type="text" class="input-text required-entry" />
+						   </div>
+						</li>
+						<li class="wide">
+							<label for="sender_message" class="required"><em>*</em><?php echo $this->__('Your Message:') ?></label>
+							<div class="input-box">
+								<textarea name="sender_message" class="input-text required-entry" id="sender_message" cols="3" rows="3"><?php //echo $this->htmlEscape($this->getMessage())?></textarea>
+							</div>
+						</li>
+						
+					</ul>
+				</div>				
+								
+
+				<div style="float: right; margin-right: 23px;margin-bottom: 25px;">                
+					<input class="btn btn-success btn-large" type="submit" name="send" id="send" value="<?php echo $this->__('Submit Query') ?>">
+				</div>
+				
+				<style type="text/css">					
+					label.error{ color:red;}
+				</style>
+
+			</form>
+			
+		</p>
+	</div>
+
+
+
+
+<script type="text/javascript">
+	//<![CDATA[
+	var sampleForm = new VarienForm('category_support_form');
+	//]]>  
+</script>
+

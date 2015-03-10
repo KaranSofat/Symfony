@@ -1,0 +1,2018 @@
+
+
+.non{
+display:none !important;
+}
+
+
+@media only screen and ( max-width:1024px){
+/*---Reviews Page Css Starts Here---*/
+.col-3
+{
+width:14% !important;
+}
+.ads
+{
+width:230px; !important;
+}
+.active1
+{
+
+width:198px; !important;
+}
+.links ul {
+    width: 100% !important;
+}
+
+/*---Reviews Page Css Ends Here---*/
+
+
+
+.wrapper {
+    width: 100% !important;
+}
+
+#header {
+    float: left;
+    height: auto;
+    margin-left: 20px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+     nav {
+    margin:0 !important;
+    width: 66% !important;
+}
+
+
+#cssmenu {
+    float: left;
+    margin-left: 37%;
+    width: 67% !important;
+}
+
+.map_container.map_top {
+     width: 41%;
+}
+.map_container .cont {
+    width: 100%;
+}
+.map_container .cont input[type="text"] {
+    font-size: 13px;
+    width: 100%;
+}
+.map_container .cont .search_outer {
+    float: left;
+}
+.bew_f {
+    margin: -70px 0 0 48%;
+}
+.browse_button.more.state_top.goto {
+    padding: 4px 37px;
+    margin-left: 17px;
+}
+
+.title h2 {
+    line-height: 34px;
+    font-size: 34px;
+}
+.category.state {
+    margin: 0 !important;
+     padding: 10px;
+     width: 100%;
+}
+
+
+.category ul li {
+    margin-left: 48px;
+    width: 20%;
+}
+
+.maor.brouse {
+    margin: 0;
+    width: 100%;
+}
+
+.maor_in.more_state.go {
+    margin-bottom: 0 !important;
+}
+.maor_in {
+    margin-left: 0 !important;
+    width: 100%;
+    margin-bottom: 40px !important;
+}
+.wrapper {
+    width: 100%;
+}
+
+.smet {
+    margin: 0;
+    width: 47%;
+}
+
+.smet > h4 {
+    margin: 31px 20px 24px;
+}
+
+.right_col .people .name, .left_col .people .name {
+    width: 27%;
+    margin-left: 30px;
+     border: medium none;
+}
+.review_description {
+    margin-left: 58px !important;
+}
+
+.reviw_submit ul {
+    margin: 0 0 0 25%;
+    width: auto;
+}
+.rating > p {
+    margin-left: 58px !important;
+}
+
+
+.rating {
+    margin: 0 !important;
+}
+
+.col-md-4.feature {
+    margin-left: 25px;
+    width: 42%;
+}
+
+.letter label {
+    width: 100%;
+    font-size: 24px;
+}
+
+.letter input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+}
+.browse_button.news {
+    padding: 0 12px;
+}
+
+
+/* writeReview page start heres */
+
+.wr_rev {
+    margin-left: 14px !important;
+    width: 90% !important;
+}
+
+.left-sec-70 {
+    margin-left:0px;
+    width: 61%;
+}
+
+#content-left {
+    width: 94%  !important;
+   padding: 10px;
+}
+.content-left-wrapper {
+    padding-right: 0;
+}
+#review-agent-step-2 > fieldset {
+    padding: 10px;
+}
+
+.right-sec-30 {
+    width: 35%;
+}
+.titles {
+    margin: 12px 0 15px;
+}
+
+.titles h2 {
+    font-size: 34px;
+    line-height: 28px;
+}
+.rating > p {
+    margin-left: 10px !important;
+}
+
+/* writeReview page end heres */
+/* realtors page start heres */
+
+
+.map_container .cont .search_outer {
+    width: 82%;
+    padding: 10px;
+ }
+
+.column {
+    margin-left: 18px;
+}
+.navBase.pagingNav {
+    margin-left: 0 !important;
+}
+.countSummary {
+    margin-left: 29% !important;
+    width: 60% !important;
+}
+.ad_side {
+    margin-left: 0;
+}
+#myGallery1 {
+    height: 80px !important;
+    width: 100% !important;
+}
+#myGallery1 img {
+    height: auto !important;
+    left: 0 !important;
+}
+
+.realtor {
+    padding: 10px 10px 0;
+    width: 70%;
+}
+
+.right-sec-30.border-left.right-sec-23 {
+    width: 24% !important;
+}
+
+
+.left-sec-70.left-width {
+    margin-left: 15px !important;
+    width: 69% !important;
+}
+
+/* realtors page end heres */
+/* registration page start heres */
+fieldset {
+    margin: 0 !important;
+}
+
+.new_form p {
+    margin-left: 20px !important;
+     width: 42% !important;
+}
+.parsley-validated {
+    width: 100% !important;
+}
+.new_form fieldset label {
+    width: 90%;
+}
+.form_right > input {
+    width: 100% !important;
+}
+.new_form input {
+    width: 100% !important;
+}
+.registration_button {
+    margin: 0;
+}
+
+/* registration page end heres */
+/*-----manage listing starts here------*/
+.dash_right {
+    width: 47% !important;
+}
+
+.relators-inner .content-box {
+    width: 86% !important;
+}
+.star-3 {
+    display: none;
+}
+/*------manage listing ends here------*/
+
+hr {
+    margin-top: 60px !important;
+}
+/*-----addproperty Start here------*/
+
+
+.new_form {
+    width: 100% !important;
+}
+.divPropImages > input {
+    margin-left: 20px !important;
+}
+.buttonClass {
+    width: 75% !important;
+}
+
+/*-----addproperty end here------*/
+/*-----changeplan start here------*/
+.rplans {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+.rplans2 {
+    height: auto !important;
+    margin-left:0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+}
+/*-----changeplan end here------*/
+/*-----My Property2 start here------*/
+
+.perty {
+    width: 96% !important;
+}
+.youtub {
+    margin: 0;
+    width: 100% !important;
+}
+.video {
+    width: 41% !important;
+    height:46% !important;
+}
+.map {
+    width: 41% !important;
+}
+
+.information {
+    width: 100% !important;
+}
+
+/*-----My Property2 end here------*/
+
+/* dashboard page start heres */
+#_brand2 > img {
+    width: 269px;
+}
+
+
+
+/* dashboard page end heres */
+}
+
+
+
+
+@media only screen and ( max-width:980px){
+
+     nav {
+    margin:0 !important;
+    width:64% !important;
+}
+
+#cssmenu {
+    float: left;
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100% !important;
+}
+
+#cssmenu > ul {
+    margin-left: 34% !important;
+}
+
+#header {
+    width: 98%;
+}
+.bew_f {
+    margin: -70px 0 0 48% !important;
+}
+
+.map_container.map_top {
+     width: 41%;
+}
+.map_container .cont {
+    width: 100%;
+}
+.map_container .cont input[type="text"] {
+    font-size: 13px;
+    width: 100%;
+}
+.map_container .cont .search_outer {
+    float: left;
+}
+.browse_button.more.state_top.goto {
+    padding: 4px 37px;
+    margin-left: 17px;
+}
+
+.title h2 {
+    line-height: 34px;
+    font-size: 34px;
+}
+.category.state {
+    margin: 0 !important;
+     padding: 10px;
+     width: 94%;
+}
+
+.category ul li {
+    margin-left: 10px;
+    width: 20%;
+}
+
+.maor.brouse {
+    margin: 0;
+    width: 100%;
+}
+
+.maor_in.more_state.go {
+    margin-bottom: 0 !important;
+}
+.maor_in {
+    margin-left: 0 !important;
+    width: 100%;
+    margin-bottom: 40px !important;
+}
+.wrapper {
+    width: 100%;
+}
+
+.smet {
+    margin: 0;
+    width: 45%;
+}
+
+.right_col .people .name, .left_col .people .name {
+    width: 27%;
+    margin-left: 30px;
+     border: medium none;
+}
+.review_description {
+    margin-left: 58px !important;
+}
+
+.reviw_submit ul {
+      margin: 0 0 0 24%;
+    width: auto;
+}
+.rating > p {
+    margin-left: 58px !important;
+}
+
+
+.rating {
+    margin: 0 !important;
+}
+
+.col-md-4.feature {
+    margin-left: 25px;
+    width: 42%;
+}
+
+.letter label {
+    width: 100%;
+    font-size: 24px;
+}
+
+.letter input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+}
+.browse_button.news {
+    padding: 0 12px;
+}
+
+/* writeReview page start heres */
+
+
+
+
+.wr_rev {
+    margin-left: 14px !important;
+    width: 90% !important;
+}
+
+.left-sec-70 {
+    margin-left:0px;
+    width: 61%;
+}
+
+#content-left {
+    width: 94%  !important;
+   padding: 10px;
+}
+.content-left-wrapper {
+    padding-right: 0;
+}
+#review-agent-step-2 > fieldset {
+    padding: 10px;
+}
+
+.right-sec-30 {
+    width: 35%;
+}
+.titles {
+    margin: 12px 0 15px;
+}
+
+.titles h2 {
+    font-size: 34px;
+    line-height: 28px;
+}
+.rating > p {
+    margin-left: 10px !important;
+}
+/* writeReview page end heres */
+
+/* realtors page start heres */
+
+
+.map_container .cont .search_outer {
+    width: 82%;
+    padding: 10px;
+ }
+
+.column {
+    margin-left: 18px;
+}
+.navBase.pagingNav {
+    margin-left: 0 !important;
+}
+.countSummary {
+    margin-left: 29% !important;
+    width: 60% !important;
+}
+.ad_side {
+    margin-left: 0;
+}
+#myGallery1 {
+    height: 80px !important;
+    width: 100% !important;
+}
+#myGallery1 img {
+    height: auto !important;
+    left: 0 !important;
+}
+
+.realtor {
+    padding: 10px 10px 0;
+    width: 70%;
+}
+
+.right-sec-30.border-left.right-sec-23 {
+    width: 24% !important;
+}
+
+
+.left-sec-70.left-width {
+    margin-left: 15px !important;
+    width: 69% !important;
+}
+
+/* realtors page end heres */
+/* profile page start heres */
+
+.column.relators-inner {
+    margin-left: 15px !important
+}
+.content-box > div {
+    margin: 0 !important;
+}
+
+.overviewProfile1 {
+    margin-left: 0;
+    width: 97%;
+}
+iframe {
+    height: auto !important;
+    width: 100% !important;
+}
+.des {
+    float: left;
+    font-size: 13px;
+    height: auto;
+    margin-left: 0;
+}
+.des.detail.mapd {
+     height: auto;
+      margin-left: 0;
+}
+
+
+.average_rating {
+    margin-right: 0;
+    width: 50%;
+}
+
+.over_outer {
+    padding-left: 10px;
+}
+
+/* profile page end heres */
+/* registration page start heres */
+fieldset {
+    margin: 0 !important;
+}
+
+.new_form p {
+    margin-left: 17px !important;
+     width: 42% !important;
+}
+.parsley-validated {
+    width: 100% !important;
+}
+.new_form fieldset label {
+    width: 90%;
+}
+.form_right > input {
+    width: 100% !important;
+}
+.new_form input {
+    width: 100% !important;
+}
+.registration_button {
+    margin: 0;
+}
+
+/* registration page end heres */
+
+/*-----manage listing starts here------*/
+.dash_right {
+    width: 47% !important;
+}
+.relators-inner .content-box {
+    width: 100% !important;
+}
+/*------manage listing ends here------*/
+hr {
+    margin-top: 60px !important;
+}
+/*-----addproperty Start here------*/
+
+
+.new_form {
+    width: 100% !important;
+}
+.divPropImages > input {
+    margin-left: 20px !important;
+}
+.buttonClass {
+    width: 75% !important;
+}
+
+/*-----addproperty end here------*/
+/*-----changeplan start here------*/
+.rplans {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+.rplans2 {
+    height: auto !important;
+    margin-left:0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+}
+/*-----changeplan end here------*/
+/*-----My Property2 start here------*/
+
+.perty {
+    width: 96% !important;
+}
+.youtub {
+    margin: 0;
+    width: 100% !important;
+}
+.video {
+    width: 41% !important;
+    height:auto !important;
+}
+.map {
+    width: 41% !important;
+}
+
+.information {
+    width: 100% !important;
+}
+
+/*-----My Property2 end here------*/
+
+/*-----MtransactionDetail start here------*/
+
+.paypal {
+    height: auto !important;
+}
+fieldset {
+         height: auto !important;
+}
+
+
+/*-----MtransactionDetail end here------*/
+}
+
+
+
+
+
+@media only screen and ( max-width:800px){
+
+nav {
+    margin: 0 !important;
+    width: 59% !important;
+}
+.non{
+display:block !important;
+}
+#cssmenu {
+    margin-left: 19px;
+}
+
+#cssmenu > ul {
+    margin-left: 70% !important;
+}
+.login {
+    display: none;;
+}
+.map_container.map_top {
+     width: 41%;
+}
+.map_container .cont {
+    width: 100%;
+}
+.map_container .cont input[type="text"] {
+    font-size: 13px;
+    width: 100%;
+}
+.map_container .cont .search_outer {
+    float: left;
+}
+.browse_button.more.state_top.goto {
+    padding: 4px 37px;
+    margin-left: 17px;
+}
+
+.title h2 {
+    line-height: 34px;
+    font-size: 34px;
+}
+.category.state {
+    margin: 0 !important;
+     padding: 10px;
+     width: 94%;
+}
+.bew_f {
+    margin: -70px 0 0 20% !important;
+}
+.category ul li {
+    margin-left: 10px;
+    width: 20%;
+}
+
+.maor.brouse {
+    margin: 0;
+    width: 100%;
+}
+
+.maor_in.more_state.go {
+    margin-bottom: 0 !important;
+}
+.maor_in {
+    margin-left: 0 !important;
+    width: 100%;
+    margin-bottom: 40px !important;
+}
+.wrapper {
+    width: 100%;
+}
+
+.smet {
+    margin: 0;
+    width: 47%;
+}
+
+.right_col .people .name, .left_col .people .name {
+    width: 27%;
+    margin-left: 30px;
+     border: medium none;
+}
+.review_description {
+    margin-left: 58px !important;
+}
+
+.reviw_submit ul {
+    margin: 0 0 0 17%;
+    width: auto;
+}
+.rating > p {
+    margin-left: 58px !important;
+}
+
+
+.rating {
+    margin: 0 !important;
+}
+
+.col-md-4.feature {
+    margin-left: 25px;
+    width: 42%;
+}
+
+.letter label {
+    width: 100%;
+    font-size: 24px;
+}
+
+.letter input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+}
+.browse_button.news {
+    padding: 0 12px;
+}
+.social_icon ul {
+    width: 30% !important;
+}
+
+.links ul {
+    width: 100% !important;
+}
+.links ul li a {
+    padding: 0 14px !important;
+}
+
+/* writeReview page start heres */
+
+.wr_rev {
+    margin-left: 14px !important;
+    width: 90% !important;
+}
+
+.left-sec-70 {
+    margin-left:0px;
+    width: 61%;
+}
+
+#content-left {
+    width: 94%  !important;
+   padding: 10px;
+}
+.content-left-wrapper {
+    padding-right: 0;
+}
+#review-agent-step-2 > fieldset {
+    padding: 10px;
+}
+
+.right-sec-30 {
+    width: 35%;
+}
+.titles {
+    margin: 12px 0 15px;
+}
+
+.titles h2 {
+    font-size: 34px;
+    line-height: 28px;
+}
+.rating > p {
+    margin-left: 10px !important;
+}
+
+.smet > h4 {
+    margin: 31px 20px 24px;
+}
+/* writeReview page end heres */
+
+/* realtors page start heres */
+
+
+.map_container .cont .search_outer {
+    width: 82%;
+    padding: 10px;
+ }
+
+.column {
+    margin-left: 18px;
+}
+.navBase.pagingNav {
+    margin-left: 0 !important;
+}
+.countSummary {
+    margin-left: 29% !important;
+    width: 60% !important;
+}
+.ad_side {
+    margin-left: 0;
+}
+#myGallery1 {
+    height: 80px !important;
+    width: 100% !important;
+}
+#myGallery1 img {
+    height: auto !important;
+    left: 0 !important;
+}
+
+.realtor {
+    padding: 10px 10px 0;
+    width: 70%;
+}
+
+.right-sec-30.border-left.right-sec-23 {
+    width: 24% !important;
+}
+
+
+.left-sec-70.left-width {
+    margin-left: 15px !important;
+    width: 69% !important;
+}
+
+/* realtors page end heres */
+
+/* profile page start heres */
+
+.column.relators-inner {
+    margin-left: 15px !important
+}
+.content-box > div {
+    margin: 0 !important;
+}
+
+.overviewProfile1 {
+    margin-left: 0;
+    width: 97%;
+}
+iframe {
+    height: auto !important;
+    width: 100% !important;
+}
+.des {
+    float: left;
+    font-size: 13px;
+    height: auto;
+    margin-left: 0;
+}
+.des.detail.mapd {.new_form input {
+    width: 30% !important;
+}
+     height: auto;
+      margin-left: 0;
+}
+
+
+.average_rating {
+    margin-right: 0;
+    width: 50%;
+}
+
+.over_outer {
+    padding-left: 10px;
+}
+
+/* profile page end heres */
+/* registration page start heres */
+fieldset {
+    margin: 0 !important;
+}
+
+.new_form p {
+    margin-left: 20px !important;
+     width: 42% !important;
+}
+.parsley-validated {
+    width: 100% !important;
+}
+.new_form fieldset label {
+    width: 90%;
+}
+.form_right > input {
+    width: 100% !important;
+}
+.new_form input {
+    width: 100% !important;
+}
+.registration_button {
+    margin: 0;
+}
+
+/* registration page end heres */
+/* dashboard page start heres */
+
+.wrapper.top_header {
+    width: 100% !important;
+}
+
+.dash_left {
+    margin-left: 10px !important;
+    width: 29% !important;
+}
+
+.dash_right {
+    margin: 0 !important;
+    width: 65% !important;
+}
+.dash_property {
+    width: 47% !important;
+}
+.dash_reviews {
+     width: 48% !important;
+}
+.ads {
+    margin-left: 35px !important;
+     width: 22% !important;
+}
+.Cont_css {
+    height: auto !important;
+    width: 100% !important;
+}
+.active1 {
+    width: 100%;
+}
+/* dashboard page end heres */
+/*-----manage listing starts here------*/
+    .manageText {
+    margin-left: 0 !important;
+    margin-top: 27px !important;
+}   
+.edittList {
+    width: 100% !important;
+}
+.relators-inner .content-box {
+    width: 100% !important;
+}
+/*------manage listing ends here------*/
+hr {
+    margin-top: 60px !important;
+}
+/*-----addproperty Start here------*/
+
+
+.new_form {
+    width: 100% !important;
+}
+.divPropImages > input {
+    margin-left: 20px !important;
+}
+.buttonClass {
+    width: 75% !important;
+}
+
+/*-----addproperty end here------*/
+/*-----changeplan start here------*/
+.rplans {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+.rplans2 {
+    height: auto !important;
+    margin-left:0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+}
+/*-----changeplan end here------*/
+/*-----My Property2 start here------*/
+
+.perty {
+    width: 96% !important;
+}
+.youtub {
+    margin: 0;
+    width: 100% !important;
+}
+.video {
+    width: 41% !important;
+    height:auto !important;
+}
+.map {
+    width: 41% !important;
+}
+
+.information {
+    width: 100% !important;
+}
+
+/*-----My Property2 end here------*/
+
+}
+
+
+@media only screen and ( max-width:640px){
+nav {
+    margin: 0 !important;
+    width: 43% !important;
+}
+#header {
+    width: 90% !important;
+}
+.non{
+display:block !important;
+}
+#cssmenu {
+    float: left;
+    margin-left: 19px !important;
+    margin-top: 20px;
+    width: 30%;
+}
+#cssmenu > ul {
+    margin-left: 44% !important;
+}
+.login {
+    display: none;;
+}
+.map_container.map_top {
+     width: 41%;
+}
+.map_container .cont {
+    width: 85% !important;
+     margin-left: 10%;
+   
+}
+.map_container .cont input[type="text"] {
+    font-size: 13px;
+    width: 100%;
+}
+.browse_button.more.state_top.goto {
+    padding: 4px 37px;
+    margin-left: 3px;
+}
+.bew_f {
+    margin: -70px 0 0 39px !important;
+}
+
+.title h2 {
+    line-height: 34px;
+    font-size: 34px;
+}
+.category.state {
+    margin: 0 !important;
+     padding: 10px;
+     width: 94%;
+}
+
+.category ul li {
+    margin-left: 10px;
+    width: 31%;
+}
+
+.maor.brouse {
+    margin: 0;
+    width: 100%;
+}
+
+.maor_in.more_state.go {
+    margin-bottom: 0 !important;
+}
+.maor_in {
+    margin-left: 0 !important;
+    width: 100%;
+    margin-bottom: 40px !important;
+}
+.wrapper {
+    width: 100%;
+}
+
+.smet {
+    margin: 0;
+    width: 45%;
+}
+
+.right_col .people .name, .left_col .people .name {
+    width: 27%;
+    margin-left: 30px;
+     border: medium none;
+}
+.review_description {
+    margin-left: 58px !important;
+}
+
+.reviw_submit ul {
+    margin: 0 0 0 69px;
+    width: auto;
+}
+.rating > p {
+    margin-left:10px !important;
+}
+
+
+.rating {
+    margin: 0 !important;
+}
+
+.col-md-4.feature {
+    margin-left: 25px;
+    width: 42%;
+}
+
+.letter label {
+    width: 100%;
+    font-size: 24px;
+}
+
+.letter input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+}
+.browse_button.news {
+    padding: 0 12px;
+}
+
+.social_icon ul {
+    width: 25%;
+}
+.reviw_submit ul li:first-child {
+    margin-bottom: 16px;
+    padding: 13px 28px;
+}
+.smet > h4 {
+    margin: 31px 10px 24px;
+}
+/* writeReview page start heres */
+
+.wr_rev {
+    margin-left: 14px !important;
+    width: 90% !important;
+}
+
+.left-sec-70 {
+    margin-left:0px;
+        width: 61% !important;
+}
+
+
+#content-left {
+    width: 94%  !important;
+   padding: 10px;
+}
+.content-left-wrapper {
+    padding-right: 0;
+}
+#review-agent-step-2 > fieldset {
+    padding: 10px;
+}
+
+
+
+.right-sec-30 {
+    width: 35%;
+}
+.titles {
+    margin: 12px 0 15px;
+}
+
+.titles h2 {
+    font-size: 34px;
+    line-height: 28px;
+}
+
+/* writeReview page end heres */
+
+/* realtors page start heres */
+
+.fb_btn {
+    margin: 0 20px 0 0 !important;
+    width: 30% !important;
+}
+.map_container .cont .search_outer {
+    width: 82%;
+    padding: 10px;
+ }
+
+.column {
+    margin-left: 18px;
+}
+.navBase.pagingNav {
+    margin-left: 0 !important;
+}
+.countSummary {
+    margin-left: 29% !important;
+    width: 60% !important;
+}
+.ad_side {
+    margin-left: 0;
+}
+#myGallery1 {
+    height: 80px !important;
+    width: 100% !important;
+}
+#myGallery1 img {
+    height: auto !important;
+    left: 0 !important;
+}
+
+.realtor {
+    padding: 10px 10px 0;
+    width: 70%;
+}
+.right-sec-30.border-left.right-sec-23 {
+    width: 24% !important;
+}
+
+.left-sec-70.left-width {
+    width: 64% !important;
+    margin-left: 25px !important;
+}
+
+/* realtors page end heres */
+
+/* profile page start heres */
+
+.column.relators-inner {
+    margin-left: 15px !important
+}
+.content-box > div {
+    margin: 0 !important;
+}
+
+.overviewProfile1 {
+    margin-left: 0;
+    width: 97%;
+}
+iframe {
+    height: auto !important;
+    width: 100% !important;
+}
+.des {
+    float: left;
+    font-size: 13px;
+    height: auto;
+    margin-left: 0;
+}
+.des.detail.mapd {
+     height: auto;
+      margin-left: 0;
+}
+
+
+.average_rating {
+    margin-right: 0;
+    width: 50%;
+}
+
+.over_outer {
+    padding-left: 10px;
+}
+
+/* profile page end heres */
+/* registration page start heres */
+fieldset {
+    margin: 0 !important;
+}
+
+.new_form p {
+    margin-left: 15px !important;
+     width: 42% !important;
+}
+.parsley-validated {
+    width: 100% !important;
+}
+.new_form fieldset label {
+    width: 90%;
+}
+.form_right > input {
+    width: 100% !important;
+}
+.new_form input {
+    width: 100% !important;
+}
+.registration_button {
+    margin: 0;
+}
+
+/* registration page end heres */
+/* dashboard page start heres */
+
+.wrapper.top_header {
+    width: 100% !important;
+}
+
+.dash_left {
+    margin-left: 10px !important;
+    width: 29% !important;
+}
+
+.dash_right {
+    margin: 0 !important;
+    width: 65% !important;
+}
+.dash_property {
+    width: 47% !important;
+}
+.dash_reviews {
+     width: 48% !important;
+}
+.ads {
+    margin-left: 35px !important;
+     width: 22% !important;
+}
+.Cont_css {
+    height: auto !important;
+    width: 100% !important;
+}
+
+
+.right_col .people .name, .left_col .people .name {
+    width: 27%;
+    margin-left: 30px;
+     border: medium none;
+     padding-right: 10px;
+}
+
+.active1 {
+    width: 100%;
+margin: 13px -22px -23px -28px;
+}
+#divBanner {
+    display: none;
+}
+
+.dash_list ul li a {
+    margin: 3px 0 0 !important;
+}
+
+/* dashboard page end heres */
+
+/*---Reviews Page Css Starts Here---*/
+/*----Css by karan---*/
+.col-3
+{
+width:9% !important;
+margin-left:119px !important;
+}
+.reply1 {
+    float: left;
+    margin-left: 72% !important;
+    margin-top: 23px!important;
+}
+.col-1 {
+    float: left;
+    text-align: left;
+    width: 19% !important;
+}
+.col-4 > img
+{
+width:36px !important;
+}
+/*----Css by karan---*/
+/*---Reviews Page Css Ends Here---*/
+/*-----manage listing starts here------*/
+    .manageText {
+    margin-left: 0 !important;
+    margin-top: 27px !important;
+}   
+
+.relators-inner .content-box {
+    width: 100% !important;
+}
+/*------manage listing ends here------*/
+
+hr {
+    margin-top: 60px !important;
+}
+/*-----addproperty Start here------*/
+
+
+.new_form {
+    width: 100% !important;
+}
+.divPropImages > input {
+    margin-left: 20px !important;
+}
+.buttonClass {
+    width: 75% !important;
+}
+.registration_button {
+    float: right;
+    margin: 0 27px 0 0;
+    width: 29%;
+}
+
+/*-----addproperty end here------*/
+/*-----My Property2 start here------*/
+
+.perty {
+    width: 96% !important;
+}
+.youtub {
+    margin: 0;
+    width: 100% !important;
+}
+.video {
+    width: 100% !important;
+}
+.map {
+    width: 100% !important;
+}
+.information {
+    width: 100% !important;
+}
+/*-----My Property2 end here------*/
+
+
+/*-----changeplan start here------*/
+.rplans {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+.rplans2 {
+    height: auto !important;
+    margin-left:0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+}
+/*-----changeplan end here------*/
+}
+
+@media only screen and ( max-width:480px){
+
+#header {
+    margin-left: 0;
+    width: 100% !important;
+}
+
+
+#cssmenu {
+    float: left;
+    margin-left: 48px !important;
+    margin-top: 40px;
+    width: 71% !important;
+}
+#cssmenu > ul {
+    margin-left: 5% !important;
+}
+
+
+.rating > p {
+    margin-left: 58px !important;
+}
+.col-md-4.feature {
+     margin-left: 20%;
+    width: 55%;
+}
+.bew_f {
+    margin: -70px 0 0 -22px!important;
+}
+
+.resultsPaging {
+    float: left;
+    width: 100%;
+}
+.left-sec-70 {
+    width: 99% !important;
+}
+.countSummary {
+    margin-left: -2% !important;
+    width: 100% !important;
+}
+.left-sec-70.left-width {
+    width: 90% !important;
+    margin-left: 25px !important;
+}
+.social_icon ul {
+    width: 34% !important;
+}
+.relators-inner .content-box {
+    width: 100% !important;
+}
+
+.registration_button {
+    float: right;
+    margin: 0 27px 0 0;
+    width: 29%;
+}
+
+
+/*-----addproperty start here------*/
+
+
+.new_form p {
+    width: 80% !important;
+}
+#divbanner {
+    display: none;
+}
+
+/*-----addproperty end here------*/
+/*-----My Property2 start here------*/
+
+
+.textP {
+    padding-left: 0;
+}
+/*-----My Property2 end here------*/
+
+/*-----changeImage end here------*/
+.changeImagess {
+    margin-top: 29px !important;
+    width: 65% !important;
+}
+
+
+
+
+/*-----changeImage end here------*/
+}
+
+
+@media only screen and ( max-width:360px){
+
+
+#logo {
+    width: 100%;
+}
+
+
+nav {
+    margin:0 !important;
+ width:90% !important;
+}
+.non{
+display:block !important;
+}
+#cssmenu {
+    float: left;
+    margin-left: 54px;
+    margin-top: 40px;
+    width: 80% !important;
+}
+
+#cssmenu > ul {
+    float: right;
+    margin-left: 0 !important;
+    width: 45%;
+}
+.login {
+    display: none;;
+}
+.map_container.map_top {
+    width: 27%;
+    margin-left: 9%;
+}
+.map_container .cont {
+    width: 91%!important;
+     margin-left: 0;
+}
+.map_container .cont input[type="text"] {
+    font-size: 13px;
+    width: 100%;
+}
+.browse_button.more.state_top.goto {
+    padding: 4px 37px;
+    margin-left: -10px;
+}
+
+.title h2 {
+    line-height: 34px;
+    font-size: 34px;
+}
+.category.state {
+    margin: 0 !important;
+     padding: 10px;
+     width: 94%;
+}
+
+.category ul li {
+    margin-left: 47px !important;
+    width: 31% !important;
+}
+
+.maor.brouse {
+    margin: 0;
+    width: 100%;
+}
+
+.maor_in.more_state.go {
+    margin-bottom: 0 !important;
+}
+.maor_in {
+    margin-left: 0 !important;
+    width: 100%;
+    margin-bottom: 40px !important;
+}
+.wrapper {
+    width: 100%;
+}
+
+.smet {
+    width: 100%;
+    margin: 0 22px 0 0;
+}
+
+.bew_f {
+    margin: -70px 0 0 -43px!important;
+}
+
+.right_col .people .name, .left_col .people .name {
+    width: 27%;
+    margin-left: 30px;
+    padding-right: 10px;
+}
+.review_description {
+    margin-left: 58px !important;
+}
+.rating {
+    margin: 0 !important;
+}
+.reviw_submit ul {
+    margin: 0 0 0 31px;
+    width: auto;
+}
+.rating > p {
+    margin-left: 10px !important;
+}
+
+.col-md-4.feature {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.letter label {
+    width: 100%;
+    font-size: 24px;
+}
+
+.letter input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+}
+.browse_button.news {
+    padding: 0 12px;
+}
+
+.social_icon ul {
+    width: 50% !important;
+}
+
+
+.reviw_submit ul li:first-child {
+    margin-bottom: 16px;
+    padding: 10px 28px;
+}
+.smet > h4 {
+    margin: 31px 8px 24px;
+}
+/* writeReview page start heres */
+
+.wr_rev {
+    margin-left: 14px !important;
+    width: 90% !important;
+}
+
+.left-sec-70 {
+    margin-left:0px;
+}
+
+#content-left {
+    width: 94%  !important;
+   padding: 10px;.rplans {
+    border: 1px solid #efefef;
+    float: left;
+    height: 154px;
+    margin-left: 6px;
+    margin-top: -38px;
+    width: 100%;
+}
+}
+#written-review {
+    margin-left: 0 !important;
+}
+.content-left-wrapper {
+    padding-right: 0;
+}
+#review-agent-step-2 > fieldset {
+    padding: 10px;
+}
+.star-5 {
+    display: none !important;
+}
+/* writeReview page end heres */
+
+
+/* realtors page start heres */
+
+.fb_btn {
+    margin: 0 20px 0 0 !important;
+    width: 43% !important;
+}
+.map_container .cont .search_outer {
+    width: 82%;
+}
+
+.left-sec-70.left-width {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+.column {
+    margin-left: 18px;
+}
+.navBase.pagingNav {
+    margin-left: 0 !important;
+}
+.countSummary {
+    margin-left: 35px !important;
+}
+.ad_side {
+    margin-left: 0;
+}
+#myGallery1 {
+    height: 80px !important;
+    width: 100% !important;
+}
+#myGallery1 img {
+    height: auto !important;
+    left: 0 !important;
+}
+.countSummary {
+    margin-left: 1% !important;
+    width: 90% !important;
+}
+#lower input {
+    margin-right: 10px;
+    width: 24%;
+}
+.open {
+    width: 44% !important;
+}
+
+/* realtors page end heres */
+
+/* profile page start heres */
+
+.column.relators-inner {
+    margin-left: 0 !important;
+}
+.content-box > div {
+    margin: 0 !important;
+}
+
+.overviewProfile1 {
+    margin-left: 0;
+    width: 97%;
+}
+iframe {
+    height: auto !important;
+    margin-left: 47%;
+    width: 50% !important;
+}
+.des {
+    float: left;
+    font-size: 13px;
+    height: auto;
+    margin-left: 0;
+}
+.des.detail.mapd {
+     height: auto;
+      margin-left: 0;
+}
+
+.average_rating {
+    margin-right: 0px;
+    width: 100%;
+}
+
+/* profile page end heres */
+
+/* login page start heres */
+   
+#login {
+    width: 100%;
+}
+
+/* login page end heres */
+
+/* registration page start heres */
+fieldset {
+    margin: 0 !important;
+}
+
+.new_form p {
+    margin-left: 0 !important;
+     width: 87% !important;
+}
+textarea {
+    margin-left: 17px;
+}
+.parsley-validated {
+    width: 100% !important;
+}
+.new_form fieldset label {
+    width: 90%;
+}
+.form_right > input {
+    width: 100% !important;
+}
+.new_form input {
+    width: 100% !important;
+}
+.registration_button {
+    margin: 2px 0 0 20px;
+}
+
+/* registration page end heres */
+
+/* dashboard page start heres */
+
+.wrapper.top_header {
+    width: 100% !important;
+}
+
+.dash_left {
+    width: 60% !important;
+    margin: 20px 0 0 50px !important;
+}
+.dash_right {
+    margin-left: 6px !important;
+    width: 96% !important;
+}
+.dash_property {
+    width: 100% !important;
+}
+.dash_reviews {
+    width: 100% !important;
+}
+.ads {
+    margin-left: 35px !important;
+    width: 82% !important;
+}
+.Cont_css {
+    height: auto !important;
+    width: 100% !important;
+}
+#divBanner {
+    display: none;
+}
+.active1 {
+    margin: 22px 0 0 !important;
+    width: 98%;
+}
+/* dashboard page end heres */
+
+
+/*-----manage listing starts here------*/
+    .manageText {
+    margin-left: 0 !important;
+    margin-top: 27px !important;
+}   
+hr {
+    margin-top: 82px !important;
+}
+
+/*------manage listing ends here------*/
+/*-----manage propertyListing starts here------*/
+
+
+/*-----manage propertyListing ends here------*/
+
+/*-----addproperty Start here------*/
+
+
+.new_form {
+    width: 100% !important;
+}
+.divPropImages > input {
+    margin-left: 20px !important;
+}
+.buttonClass {
+    width: 75% !important;
+}
+/*-----addproperty end here------*/
+
+/*-----My Property2 start here------*/
+
+.perty {
+    width: 96% !important;
+}
+.youtub {
+    margin: 0;
+    width: 100% !important;
+}
+.video {
+    width: 100% !important;
+}
+.map {
+    width: 100% !important;
+}
+
+
+/*-----My Property2 end here------*/
+
+/*-----changeplan start here------*/
+.rplans {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+.rplans2 {
+    height: auto !important;
+    margin-left:0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+}
+/*-----changeplan end here------*/
+
+/*-----Profile start here------*/
+
+.textP {
+    padding-left: 0;
+}
+
+
+/*-----Profile end here------*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

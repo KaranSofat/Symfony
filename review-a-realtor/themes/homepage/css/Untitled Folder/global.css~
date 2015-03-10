@@ -1,0 +1,788 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*================Review a air line====================*/
+/*pagination*/	
+#index {
+	margin:0 0 20px;
+	padding: 0;
+	float:left;
+	width:100%;
+}
+#index li {
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#index a:link, #index a:visited {
+	background:#FAFAFA;
+	color: navy;
+	display: block;
+	padding: 0.45em 0.74em;
+	border:1px solid #F1F1F1;
+	text-align: center;
+	text-decoration: none;
+}
+#index a:hover, #index a.active {
+	background:#0D99E1;
+	color: #fff;
+	text-decoration: underline;
+}
+/*============content*/
+.cont_air {
+	float:left;
+	margin-bottom:25px;
+	padding-bottom:10px;
+	border-bottom:1px solid #F1F1F1;
+}
+.cont_air p {
+	margin-bottom:15px;
+	line-height:20px;
+}
+.airlines {
+	float:left;
+	width:100%;
+}
+.airlines ul {
+	margin-bottom:20px;
+	float:left;
+}
+.airlines ul li {
+	background: none repeat scroll 0 0 #fff;
+	border: 1px solid #ccc;
+	box-shadow: 0 1px 4px #ccc;
+	float: left;
+	list-style: none outside none;
+	margin-left: 15px;
+	padding:10px;
+	width: 20.3%;
+}
+.airlines h4 a {
+	color:#0D99E1;
+	font-family: "anita__semi-squareregular";
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom:5px;
+	float:left;
+	text-align:center;
+	text-transform: uppercase;
+}
+.airlines h5 {
+	float: left;
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+}
+.airlines ul li:first-child {
+	margin-left:0;
+}
+.airlines ul li .airline_logo {
+	float:left;
+	width:100%;
+}
+.airlines ul li .airline_logo img {
+	float:left;
+	width:100%;
+	height:auto;
+}
+/*===================================write review*/
+/*--------------------------Review a Realator------------------------*/
+.write_review #content-left {
+	font-size: 14px;
+	margin-bottom: 20px;
+	padding-right: 18px;
+	width: 680px;
+}
+.write_review .content-left-wrapper {
+	padding-right: 20px;
+}
+.write_review .padding_top_20 {
+	clear: both;
+	padding-top: 20px !important;
+}
+.write_review {
+	float:left;
+	width:100%;
+}
+.write_review .form-section-padding {
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+.write_review .form-input-padding {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+.write_review .agent-to-review {
+	position: relative;
+}
+.write_review #agent-to-review-name {
+	color: #0D99E1;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 17px 0 6px;
+}
+.write_review #agent-to-review-agency {
+	float:left;
+	font-size: 14px;
+	font-weight: 600;
+}
+.write_review .form-input {
+	margin-top: 10px;
+}
+.write_review .form-input input[type="text"], .form-input input[type="email"], .form-input input[type="password"] {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #E9E9E9;
+	border-radius: 5px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05) inset;
+	box-sizing: border-box;
+	color: #000000;
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 8px;
+	transition: all 0.2s ease-in-out 0s;
+	width: 100%;
+}
+.write_review .form-input textarea {
+	border: 1px solid #E9E9E9;
+	border-radius: 5px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05) inset;
+	box-sizing: border-box;
+	color: #000000;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	height: 100%;
+	padding: 15px;
+	resize: none;
+	transition: all 0.2s ease-in-out 0s;
+	width: 100%;
+}
+.write_review #agent-task {
+	border: 1px solid #E9E9E9;
+	border-radius: 5px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05) inset;
+	box-sizing: border-box;
+	float: right;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 5px;
+	width: 100%;
+	color:#4B5459;
+}
+.write_review #recommend-box-label {
+	float: left;
+	font-size: 16px;
+	font-weight: 500;
+	padding-bottom: 20px;
+	padding-top: 40px;
+}
+.write_review #recommend-box {
+	color: #666666;
+	float: right;
+	font-size: 16px;
+	font-weight: 300;
+	padding-bottom: 20px;
+	padding-top: 40px;
+}
+.write_review #recommend-box label {
+	display: block;
+	float: left;
+	height: 10px;
+	line-height: 20px;
+	margin-right: 25px;
+	width: auto;
+}
+.write_review .star-label {
+	color: #666666;
+	float: left;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 19px;
+	padding-bottom: 3px;
+	padding-right: 15px;
+	padding-top: 10px;
+}
+.write_review .star-group {
+	float: right;
+	width: 250px;
+}
+.write_review .padding_top_20 {
+	clear: both;
+	padding-top: 20px !important;
+}
+.write_review input[type="checkbox"], input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+.write_review #subscription-box label {
+	display: inline;
+	float: right;
+	height: 0;
+	line-height: 19px;
+	text-align: left;
+	width: 96%;
+}
+.write_review .rating-star, .rating-star {
+	background: url("../images/bg-reviews-empty.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+	display: block;
+	float: right;
+	height: 30px;
+	width: 30px;
+	cursor:pointer;
+}
+.write_review .rating-star:hover {
+	background: url("../images/star_blue.png") repeat scroll 0 0
+}
+.write_review .rating-input {
+	display: none;
+	left: 0;
+	position: absolute;
+	top: -50px;
+}
+.write_review .agent-to-review-heading {
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 10px;
+	padding-bottom: 0 !important;
+	padding-top: 30px !important;
+}
+.write_review .review-star-line:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+.write_review .review-star-line {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+.write_review .review-button {
+	background: rgb(247,184,66); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(247, 184, 66, 1) 0%, rgba(247, 150, 33, 1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(247, 184, 66, 1)), color-stop(100%, rgba(247, 150, 33, 1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(247, 184, 66, 1) 0%, rgba(247, 150, 33, 1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(247, 184, 66, 1) 0%, rgba(247, 150, 33, 1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(247, 184, 66, 1) 0%, rgba(247, 150, 33, 1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(247, 184, 66, 1) 0%, rgba(247, 150, 33, 1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7b842', endColorstr='#f79621', GradientType=0 ); /* IE6-9 */
+	border: 0 none;
+	border-radius: 4px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	color: #FFFFFF;
+	cursor: pointer;
+	float: right;
+	font-size: 16px;
+	font-weight: 300;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	padding: 10px;
+	text-decoration: none;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4), 0 -1px 1px rgba(0, 0, 0, 0.2);
+	transition: all 0.2s ease-in-out 0s;
+	vertical-align: top;
+	width: auto;
+}
+.write_review .review-percentage-wrapper {
+	background:#F1F1F1;
+	overflow:hidden;
+	padding: 10px;
+}
+.write_review .review-percentage {
+	font-family: 'anita__semi-squareregular';
+	font-size: 36px;
+	line-height: normal;
+	font-weight: 300;
+	padding-right: 15px;
+	padding-top: 4px;
+	width:75px;
+	float:left;
+}
+.write_review .right-sec-30 {
+	float: left;
+	padding-left: 2%;
+	width: 27%;
+}
+.write_review .star-group-left {
+	float: left;
+}
+.write_review .left-sec-70 {
+	width:70%;
+	float:left;
+	margin-bottom:10px;
+}
+.write_review .recent-reviews-wrapper .right_col .people {
+	margin-bottom: 0px;
+}
+.write_review .recent-reviews-wrapper .right_col .rating {
+	margin: 10px;
+	padding: 10px;
+}
+.write_review .recent-reviews-wrapper .rating {
+	width: 85%;
+}
+.write_review .recent-reviews-wrapper {
+	background: none repeat scroll 0 0 #F1F1F1;
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.write_review .image {
+	border: 7px solid #ffffff;
+	border-radius: 0;
+	float: left;
+	height: 88px;
+	margin-left: -3px;
+	overflow: hidden;
+	width: 93%;
+}
+.write_review .image-box {
+	float:left;
+}
+.write_review .content-box {
+	float:left;
+	padding-left:25px;
+}
+.write_review #agent-overall-rating-wrapper {
+	padding-top:25px;
+}
+.write_review #agent-overall-rating {
+	padding-bottom:10px;
+}
+.write_review .recent-review {
+	background:#000000;
+}
+.write_review .review-text {
+	float: left;
+	width: 142px;
+	padding-top: 6px;
+}
+.write_review .recent-reviews-wrapper .rating p {
+	padding:5px 0px
+}
+/*=======ariline_review css start here=========*/
+
+.left-sec-70 h4 {
+	font-size: 17px;
+	margin: 48px 0 0 16px;
+	width: 100%;
+}
+.left-sec-70 span {
+	color: #3333ff;
+	font-weight: normal;
+	margin: 0 0 0 12px;
+}
+.form-input > label {
+	float: left;
+	margin: 15px 0 9px;
+}
+.write_review #recommend-box-label {
+	float: left;
+	font-size: 16px;
+	font-weight: 500;
+	padding-bottom: 0;
+	padding-top: 40px;
+}
+.form-input.trip {
+	float: left;
+	width: 100%;
+}
+.trip_label {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.write_review #recommend-box {
+	padding-top:12px;
+}
+.trip_radio {
+	width: 100%;
+}
+.write_review #recommend-box-label {
+	padding-top: 8px;
+}
+.agent-to-review-heading > h4 {
+	margin: 0;
+}
+.initial {
+	float: left;
+	width: 100%;
+}
+.initial input {
+	border: 1px solid #e9e9e9;
+	border-radius: 5px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05) inset;
+	font-size: 16px;
+	padding: 8px;
+	margin-right: 17px;
+	width: 40%;
+}
+.initial {
+	float: left;
+	margin-bottom: 2px;
+	margin-top: 15px;
+	width: 100%;
+}
+/*=======ariline_review css start here=========*/
+
+
+/*=======airlines_passenger css start here=========*/
+
+.hero-unit {
+	background-color: #ffffff;
+	background-image: url("/img/starherobg.gif");
+	background-position: 260px -78px;
+	background-repeat: no-repeat;
+	border: 1px solid #e5e5e5;
+	border-radius: 6px;
+	color: inherit;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+	margin-bottom: 30px;
+	padding: 11px 18px;
+}
+.pull-right {
+	float: right;
+}
+.img-polaroid {
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	padding: 4px;
+}
+.hero-unit h1 {
+	margin-top: 0;
+}
+.hero-unit h1 {
+	color: inherit;
+	font-size: 50px;
+	letter-spacing: -1px;
+	line-height: 1;
+	margin-bottom: 0;
+}
+.hero-unit {
+	color: inherit;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+}
+small {
+	font-size: 85%;
+}
+.rating {
+	display: inline-block;
+}
+.jRatingColor {
+	background-color: #eb9f07;
+	height: 100%;
+	left: 0;
+	position: relative;
+	top: 0;
+	z-index: 2;
+}
+.jRatingAverage {
+	background-color: #f62929;
+	height: 100%;
+	left: 0;
+	position: relative;
+	top: 0;
+	z-index: 2;
+}
+.jStar {
+	left: 0;
+	position: relative;
+	z-index: 3;
+}
+.smalldeets {
+	font-size: 68%;
+}
+.smalldeets p {
+	line-height: 15px;
+}
+.addthis_default_style {
+	display: inline-block;
+}
+.stButtons {
+	color: #000;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 11px;
+	line-height: 16px;
+	margin-left: 3px;
+	margin-right: 3px;
+	position: relative;
+	text-decoration: none;
+	z-index: 1;
+}
+.stButtons .sharethis {
+	background-image:url(../img/sharethis_16.png);
+}
+.stButtons .facebook {
+	background-image: url(../img/facebook_16.png);
+}
+.stButtons .twitter {
+	background-image: url(../img/twitter_16.png);
+}
+.stButtons .linkedin {
+	background-image: url(../img/linkedin_16.png);
+}
+.stButtons .pinterest {
+	background-image: url(../img/pinterest_16.png);
+}
+.stButtons .email {
+	background-image: url(../img/email_16.png);
+}
+.smalldeets {
+	font-size: 68%;
+}
+.stButtons .chicklets {
+	background-repeat: no-repeat;
+	display: inline-block;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	height: 16px;
+	line-height: 16px;
+	margin: 0;
+	padding-left: 20px;
+	padding-right: 1px;
+	white-space: nowrap;
+}
+span.stButtons span.email, span.sharethis {
+	color: #000;
+}
+.btn {
+	border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+}
+.btn-small {
+	border-radius: 3px;
+	font-size: 11.9px;
+	padding: 2px 10px;
+}
+.btn {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-color: #f5f5f5;
+	background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+	background-repeat: repeat-x;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #a2a2a2;
+	border-image: none;
+	border-radius: 4px;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	color: #333;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 20px;
+	margin-bottom: 0;
+	padding: 4px 12px;
+	text-align: center;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	vertical-align: middle;
+	font-size: 12px;
+}
+.left-sec-70.ap span {
+	margin: 0;
+}
+/*===magdalena css here===*/
+
+.well {
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+	margin-bottom: 20px;
+	min-height: 20px;
+	padding: 19px;
+}
+.tags {
+	margin: 0 0 20px -20px;
+}
+.tags div:last-child {
+	border-radius: 0 5px 5px 0;
+}
+.date, .date2 {
+	background: #1e3c6f;
+	color: #ffffff;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0;
+	padding: 5px 10px;
+	z-index: 2;
+}
+h4 small {
+	font-size: 14px;
+}
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+	color: #999;
+	font-weight: normal;
+	line-height: 1;
+}
+em {
+	font-style: italic;
+}
+.passenger-rating {
+	margin: -35px 0 0;
+}
+.pull-right {
+	float: right;
+}
+.rating {
+	display: inline-block;
+}
+.main hr, .internal hr {
+	border-color: #e5e5e5;
+}
+hr {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	border-color: #eee -moz-use-text-color #fff;
+	border-image: none;
+	border-left: 0 none;
+	border-right: 0 none;
+	border-style: solid none;
+	border-width: 1px 0;
+	margin: 20px 0;
+}
+.row-fluid .span2 {
+	float: left;
+	margin: 0 0 0 13px;
+	width: 14.5299%;
+}
+.row-fluid:after {
+	clear: both;
+}
+.row-fluid:before, .row-fluid:after {
+	content: "";
+	display: table;
+	line-height: 0;
+}
+.row-fluid:after {
+	clear: both;
+}
+.row-fluid:before, .row-fluid:after {
+	content: "";
+	display: table;
+	line-height: 0;
+}
+p {
+	margin: 0 0 10px;
+	line-height: 20px;
+}
+.icon-forward {
+	background-position: -336px -72px;
+}
+[class^="icon-"], [class*=" icon-"] {
+ background-image: url("../img/glyphicons-halflings.png");
+ background-position: 14px 14px;
+ background-repeat: no-repeat;
+ display: inline-block;
+ height: 14px;
+ line-height: 14px;
+ margin-top: 1px;
+ vertical-align: text-top;
+ width: 14px;
+}
+.row-fluid .span4 {
+	width: 31.6239%;
+}
+/*==side bar here==*/
+.right-sec-30.sec_right {
+	float: right;
+}
+.row-fluid [class*="span"]:first-child {
+ margin-left: 0;
+}
+.icon-search {
+	background-position: -48px 0;
+}
+.tiles .module {
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+}
+.span4 .module {
+	margin-bottom: 20px;
+}
+.module .bluebox {
+	background-color: #fff;
+	padding: 20px 20px 40px;
+}
+.mrec {
+	display: block;
+	height: 250px;
+	margin: 0 auto;
+	text-align: center;
+	width: 300px;
+}
+.span4 .module {
+	margin-bottom: 20px;
+}
+.tiles .module img {
+	border-radius: 4px 4px 0 0;
+	width: 100%;
+}
+.fb_iframe_widget {
+	display: inline-block;
+	position: relative;
+}
+.fb-like-box {
+	display: block !important;
+	margin: 0 auto;
+	text-align: center;
+	width: 300px;
+}
+/*==side bar here==*/	
+	
+/*===magdalena css end===*/
+
+/*=======airlines_passenger css end here=========*/
+/*===right airlines passenger here====*/
+
+.input-append input {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px 0 0 4px;
+	padding: 6px 0 8px 12px;
+	width: 64%;
+}
+.date2, .r-search {
+	float: right;
+	padding: 5px 0 6px 11px !important;
+	text-align: center !important;
+}
+.rating_right > img {
+	text-align: center;
+	width: 100%;
+}
+.review-percentage-wrapper.start {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	padding:0;
+}
+.bluebox_r {
+	background-color: #fff;
+	padding: 20px 0 0;
+}
+.rating_right {
+	background: none repeat scroll 0 0 #fff;
+	border-radius: 3px;
+	box-shadow: 2px 0 2px #ccc;
+	float: left;
+	padding: 4px 6px 4px 7px;
+	width: 93%;
+}
+.rating_right.give {   
+	float: left;
+	margin-top: 22px;
+} 
+
+
+/*===right airlines passenger end here====*/

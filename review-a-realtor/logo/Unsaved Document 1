@@ -1,0 +1,5 @@
+
+element.style {
+    border-right: 1px solid;
+    width: 45%;
+}

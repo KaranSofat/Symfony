@@ -1,0 +1,26 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: review-a-realtor
+    database_user: root
+    database_password: root
+    mailer_transport: gmail
+    mailer_encryption: tls
+    mailer_auth_mode: "login"
+    mailer_host: mail.reviewarealtor.com
+    mailer_port: 25
+    mailer_user: nishantg@ocodewire.com
+    mailer_password: funjabimunde12345
+    locale: en
+    secret: 123456789
+    facebook.app_id: 863291650356318
+    facebook.secret: 37e71d2bf6f2fe96830c086d7043eb81   
+    website_url: localhost/review-a-realtor/
+    image_url: http://review-a-realtor/
+    reg_url: localhost/review-a-realtor
+    web_url: http://localhost/review-a-realtor/web/success
+    gbl_email_support: support@reviewarealtor.com
+    gbl_email_service: service@reviewarealtor.com
+    gbl_email_administrator: administrator@reviewarealtor.com
