@@ -1,0 +1,7 @@
+Steps to Upload Data in Git hub
+git clone  https://github.com/bunkyboy/Symfony.git
+git pull https://github.com/bunkyboy/Symfony.git
+git add --all
+git commit -a "all projects"
+git push -u origin master
+
