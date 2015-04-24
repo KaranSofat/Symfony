@@ -1,0 +1,10 @@
+
+#AddHandler application/x-httpd-php53 .php .php5 .php4 .php3
+DirectoryIndex app_dev.php
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /app_dev.php [L]
+
+
