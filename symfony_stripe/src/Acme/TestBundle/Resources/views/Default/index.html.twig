@@ -1,0 +1,18 @@
+{% extends "AcmeTestBundle::layout.html.twig" %}
+
+{% block content %}
+<h3>{{ message }}</h3>
+
+<form action="{{ path('dashboard') }}" method="post">
+  <input type="hidden" name="test" value="test"/>
+  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+          data-key="pk_test_ur0ebwOGBrsNzQrpdCNENIu4"
+          data-data-amount="1900" 
+          data-data-description="One year's subscription"
+          data-address='true'
+          data-name='Test'
+          data-description='Test Transaction'
+          data-panel-label='Checkout'
+          ></script>
+</form>
+{% endblock %}
