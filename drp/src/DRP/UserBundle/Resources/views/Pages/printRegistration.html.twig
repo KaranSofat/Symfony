@@ -1,0 +1,213 @@
+{% extends 'DRPUserBundle::layout.html.twig' %}
+
+{% block body %}
+
+<script>
+function printForm()
+{
+
+window.print();
+}
+</script>
+
+
+<div class="content" style="width:92%; height:50%;">
+	
+<div class="left_section">
+{% for registrationDetail in user %}
+{% if registrationDetail.picture %}
+		<img src="{{ asset([gbl_upload_path_user, registrationDetail.picture]|join) }}">
+		{% else %}
+			<img src="{{  asset('images/user_default.jpeg') }}">
+		{% endif %}
+
+
+{% endfor %}
+
+
+</div>
+<div class="token_number">
+
+<p>User Information</p>
+
+</div>
+
+
+  <h4 style="float:right;">  <a class="contact_button" onclick="printForm()"> Print </a> </h4>
+<div class="contact_right">
+          <div class="contat_form">
+          {% for registrationDetail in user %}
+            <div class="form-1">
+              <label>First Name</label>
+          <p>{{registrationDetail.first_name|default ("N.A")}}</p>
+            </div>
+
+
+
+ <div class="form-1">
+              <label>Middle Name</label>
+          <p>{{registrationDetail.middle_name|default ("N.A")}}</p>
+            </div>
+
+
+<div class="form-1">
+              <label>Last Name </label>
+             <p>{{registrationDetail.last_name|default ("N.A")}}</p>
+            </div>
+
+  <div class="form-1">
+              <label>Email</label>
+                 <p>{{registrationDetail.email|default ("N.A")}}</p>
+            </div>
+
+  <div class="form-1">
+              <label>Username</label>
+                 <p>{{registrationDetail.username|default ("N.A")}}</p>
+            </div>
+
+<div class="form-1">
+              <label>Passcode </label>
+              <p>{{registrationDetail.passcode|default ("N.A")}}</p>
+            </div>
+ 
+ <div class="form-1">
+              <label>Telephone </label>
+              <p>{{registrationDetail.nin|default ("N.A")}}</p>
+            </div>	  
+		
+            <div class="form-1">
+              <label>NIN </label>
+              <p>{{registrationDetail.nin|default ("N.A")}}</p>
+            </div>
+
+
+            <div class="form-1">
+              <label>TIN</label>
+              <p>{{registrationDetail.tin|default ("N.A")}}</p>
+              </div>
+
+
+
+{% endfor %}
+          </div>
+        </div>
+
+
+</div>
+
+<style>
+.left_section{
+width:40%;
+float:left;
+margin-top:32px;
+}
+.left_section img {
+    height: auto;
+    width: 30%;
+}
+
+
+.token_number {
+    float: left;
+    margin-top: 32px;
+    width: 47%;
+}
+.token_number
+{
+font-weight:bold;
+font-size:23px;
+
+}
+/* contact us css start here */
+
+.right_section.about.contact {
+    float: left;
+    width: 100%;
+}
+.contact_left{
+	width:50%;
+	float:left;
+}
+.contact_right{
+	width:74%;
+	float:right;
+}
+contact_left {
+    text-align: left;
+}
+.form-1 label {
+    float: left;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 7px 18px;
+    text-align: left;
+    width: 22%;
+	  margin-bottom: 9px;
+}
+.form-1 input {
+     background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 11px;
+    padding: 7px 18px;
+    width: 80%;
+}
+.form-1 textarea {
+    border-radius: 0;
+    box-shadow: none;
+    width: 80%;
+}
+.contact_button {
+   background: #ee1d25 none repeat scroll 0 0;
+    border: 1px solid transparent;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin: 4% 20%;
+    padding: 6px 24px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.google-map.contact_map {
+    height: 500px;
+    width: 100%;
+}
+.contact_left, .contact_right  h4 {
+    margin-bottom: 5%;
+}
+/*.login .content h4 {
+    color: #555;
+    float: right !important;
+}*/
+.form-1 p {
+    float: right;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 11px;
+    padding: 7px 8px;
+    width: 61%;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

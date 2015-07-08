@@ -1,0 +1,458 @@
+
+registrarAdmin_adminLogins:
+    pattern:  /registrarAdmin/
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:login }
+
+
+registrarAdmin_adminLogin:
+    pattern:  /registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:login }
+
+registrarAdmin_login:
+    pattern:  /registrarAdmin/login
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:login }
+
+
+registrarAdmin_dashboard:
+    pattern:  /dashboard/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:dashboard }
+
+registrarAdmin_logout:
+    pattern:  /registrarAdmin/logout
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:logout }
+
+registrarAdmin_forgotPassword:
+    pattern:  /forgotPassword/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:forgotPassword }
+
+registrarAdmin_resetPassword:
+    pattern:  /resetPassword/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:resetPassword }
+
+registrarAdmin_users:
+    pattern:  /users/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:showUsers }
+
+registrarAdmin_deleteUser:
+    pattern:  /delete/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteUser }
+
+registrarAdmin_editUser:
+    pattern:  /edit/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editUser }
+
+registrarAdmin_addUser:
+    pattern:  /addUser/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addUser }
+    requirements:
+        _method:  GET|POST
+
+registrarAdmin_showBusiness:
+    pattern:  /business/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:showBusiness }
+
+registrarAdmin_addCompany:
+    pattern:  /addCompany/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addCompany }
+    requirements:
+        _method:  GET|POST	
+
+registrarAdmin_editCompany:
+    pattern:  /editCompany/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editCompany }
+
+registrarAdmin_deleteCompany:
+    pattern:  /deleteCompany/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteCompany }
+
+registrarAdmin_changeStatus:
+    pattern:  /changeStatus/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:changeStatus }
+
+registrarAdmin_showPlans:
+    pattern:  /showPlans/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:showPlans }
+
+registrarAdmin_editPlan:
+    pattern:  /editPlan/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editPlan }
+
+registrarAdmin_addPlan:
+    pattern:  /addPlan/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addPlan }
+
+registrarAdmin_deletePlan:
+    pattern:  /deletePlan/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deletePlan }
+
+registrarAdmin_userProfile:
+    pattern:  /userProfile/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:userProfile }
+
+registrarAdmin_viewCompany:
+    pattern:  /viewCompany/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewCompany }
+
+registrarAdmin_viewPlan:
+    pattern:  /viewPlan/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewPlan }
+
+registrarAdmin_adminProfile:
+    pattern:  /adminProfile/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:adminProfile }
+
+registrarAdmin_adminSettings:
+    pattern:  /adminSettings/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:adminSettings }
+
+registrarAdmin_updateAdminInfo:
+    pattern:  /updateAdminInfo/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:updateAdminInfo }
+
+registrarAdmin_updateAdminImage:
+    pattern:  /updateAdminImage/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:updateAdminImage }
+
+registrarAdmin_changePassword:
+    pattern:  /changePassword/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:changePassword }
+
+registrarAdmin_managePayments:
+    pattern:  /managePayments/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:managePayments }
+
+registrarAdmin_manageLogs:
+    pattern:  /manageLogs/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:manageLogs }
+
+registrarAdmin_searchQuota:
+    pattern:  /searchQuota/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:searchQuota }
+
+registrarAdmin_instrumentType:
+    pattern:  /instrumentType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:instrumentType }
+
+registrarAdmin_businessType:
+    pattern:  /businessType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:businessType }
+
+registrarAdmin_registrationType:
+    pattern:  /registrationType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:registrationType }
+    requirements:
+        _method:  GET|POST
+
+
+registrarAdmin_editInstrument:
+    pattern:  /editInstrument/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editInstrument }
+
+registrarAdmin_deleteInstrument:
+    pattern:  /deleteInstrument/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteInstrument }
+
+registrarAdmin_addInstrument:
+    pattern:  /addInstrument/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addInstrument }
+
+registrarAdmin_editBusinessType:
+    pattern:  /editBusinessType/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editBusinessType }
+
+registrarAdmin_addBusinessType:
+    pattern:  /addBusinessType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addBusinessType }
+
+registrarAdmin_deleteBusinessType:
+    pattern:  /deleteBusinessType/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteBusinessType }
+
+registrarAdmin_editRegistrationType:
+    pattern:  /editRegistrationType/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editRegistrationType }
+
+registrarAdmin_addRegistrationType:
+    pattern:  /addRegistrationType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addRegistrationType }
+
+
+registrarAdmin_editLeaseRegistrationType:
+    pattern:  /editLeaseRegistrationType/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editLeaseRegistrationType }
+
+registrarAdmin_addLeaseRegistrationType:
+    pattern:  /addLeaseRegistrationType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addLeaseRegistrationType }
+
+
+registrarAdmin_deleteRegistrationType:
+    pattern:  /deleteRegistrationType/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteRegistrationType }
+
+
+registrarAdmin_deleteLeaseRegistrationType:
+    pattern:  /deleteLeaseRegistrationType/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteLeaseRegistrationType }
+
+
+registrarAdmin_registration:
+    pattern:  /registration/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:registration }
+    requirements:
+        _method:  GET|POST
+
+registrarAdmin_properties:
+    pattern:  /properties/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:manageProperties }
+
+registrarAdmin_addDRB:
+    pattern:  /addDRB/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addDRB }
+
+registrarAdmin_editDRB:
+    pattern:  /edtDRB/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editDRB }
+
+registrarAdmin_deleteLease:
+    pattern:  /deleteLease/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteLease }
+
+registrarAdmin_deleteDRB:
+    pattern:  /deleteDRB/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteDRB }
+
+registrarAdmin_manageLease:
+    pattern:  /manageLease/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:manageLease }
+
+
+registrarAdmin_addLease:
+    pattern:  /addLease/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addLease }
+
+
+registrarAdmin_editLease:
+    pattern:  /editLease/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editLease }
+
+
+registrarAdmin_checkEmail:
+    pattern:  /checkEmail/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:checkEmail }
+
+registrarAdmin_deletePayment:
+    pattern:  /deletePayment/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deletePayment }
+
+
+registrarAdmin_viewDRB:
+    pattern:  /viewDRB/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewDRB }
+
+
+registrarAdmin_viewLease:
+    pattern:  /viewLease/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewLease }
+
+registrarAdmin_showRegistrationType:
+    pattern:  /showRegistrationType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:showRegistrationType }
+
+
+
+
+registrarAdmin_referenceNumber:
+    pattern:  /registrarAdmin/referenceNumber
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:genrateReferenceNumber }
+
+
+
+registrarAdmin_getSerialNumber:
+    pattern:  /serialNumber/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:getSerialNumber }
+
+
+registrarAdmin_checkSerialNumber:
+    pattern:  /checkSerialNumber/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:checkSerialNumber }
+
+registrarAdmin_addSearches:
+    pattern:  /addSearches/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addSearches }
+
+
+registrarAdmin_removeSearches:
+    pattern:  /removeSearches/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:removeSearches }
+
+registrarAdmin_deleteLogs:
+    pattern:  /deleteLogs/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteLogs }
+
+
+registrarAdmin_admin:
+    pattern:  /manage/admin/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:manageAdmin }
+
+registrarAdmin_general:
+    pattern:  /manage/general/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:manageGeneral }
+
+registrarAdmin_addAdmin:
+    pattern:  /addAdmin/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addAdmin }
+
+registrarAdmin_addGeneral:
+    pattern:  /addGeneral/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addGeneral }
+
+
+registrarAdmin_deleteAdmin:
+    pattern:  /deleteAdmin/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteAdmin }
+
+registrarAdmin_deleteGeneral:
+    pattern:  /deleteGeneral/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:deleteGeneral }
+
+
+
+registrarAdmin_editGeneral:
+    pattern:  /editGeneral/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editGeneral }
+
+registrarAdmin_viewGeneral:
+    pattern:  /viewGeneral/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewGeneral }
+
+registrarAdmin_viewAdmin:
+    pattern:  /viewAdmin/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewAdmin }
+
+registrarAdmin_leaseRegistrationType:
+    pattern:  /leaseRegistrationType/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:leaseRegistrationType }
+
+registrarAdmin_editAdmin:
+    pattern:  /admin/editAdmin/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:editAdmin }
+
+registrarAdmin_viewDetail:
+    pattern:  /admin/viewDetail/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewDetail }
+
+
+registrarAdmin_genratePdfLease:
+    pattern:  /genratePdfLease/registrarAdmin/{code}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:genratePdfLease }
+
+
+registrarAdmin_genratePdfDRB:
+    pattern:  /genratePdfDRB/registrarAdmin/{code}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:genratePdfDRB }
+
+
+registrarAdmin_genrateSerialNumbers:
+    pattern:  /genrateSerialNumber/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:genrateSerialNumber }
+
+
+registrarAdmin_transaction:
+    pattern:  /registrarAdmin/transaction
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:transactionReports }
+
+
+registrarAdmin_result:
+    pattern:  /registrarAdmin/result
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:result }
+
+
+registrarAdmin_addDocuments:
+    pattern:  /registrarAdmin/addDocuments
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addDocuments }
+
+
+registrarAdmin_addDrbDocuments:
+    pattern:  /registrarAdmin/addDrbDocuments
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:addDrbDocuments }
+
+
+registrarAdmin_transactionDetail:
+    pattern:  /User/registrarAdmin/{id}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:viewTransactionDetail }
+
+
+registrarAdmin_searchRegistrationType:
+    pattern:  /registrarAdmin/searchRegistrationType
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:searchRegistrationType }
+
+
+registrarAdmin_searchLease:
+    pattern:  /lease/search/registrarAdmin/{code}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:searchLease }
+
+
+
+registrarAdmin_searchDrb:
+    pattern:  /drb/search/registrarAdmin/{code}
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:searchDrb }
+
+
+registrarAdmin_resultLease:
+    pattern:  /lease/search/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:resultLease }
+
+
+registrarAdmin_resultDRB:
+    pattern:  /drb/search/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:resultDRB }
+
+
+registrarAdmin_userLeaseDocuments:
+    pattern:  /user/registrarAdmin/userLeaseDocuments
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:userLeaseDocuments }
+
+registrarAdmin_userDRBDocuments:
+    pattern:  /user/registrarAdmin/userDRBDocuments
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:userDRBDocuments }
+
+registrarAdmin_globalDRB:
+    pattern:  /registrarAdmin/globalDRB
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:globalDRB }
+
+
+registrarAdmin_globalLease:
+    pattern:  /registrarAdmin/globalLease
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:globalLease }
+
+
+registrarAdmin_resultGlobalLease:
+    pattern:  /registrarAdmin/result/globalLease
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:resultGlobalLease }
+
+
+registrarAdmin_resultGlobalDRB:
+    pattern:  /registrarAdmin/result/globalDRB
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:resultGlobalDRB }
+
+
+
+
+
+
+registrarAdmin_showLease:
+    pattern:  /lease/{code}/registrarAdmin
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:properties }
+
+
+registrarAdmin_showpdrb:
+    pattern:  /drb/{code}/registrarAdmin/
+    defaults: { _controller: DRPRegistrarAdminBundle:RegistrarAdmin:showpdrb }
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>
+Error Page
+</title>
+<link href="{{asset('themes/admin/assets/admin/pages/css/error.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/uniform/css/uniform.default.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/assets/global/plugins/select2/select2.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}"/>
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+<link href="{{asset('themes/admin/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/fullcalendar/fullcalendar.min.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/jqvmap/jqvmap/jqvmap.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/plugins/morris/morris.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('themes/admin/assets/admin/pages/css/profile.css')}}" rel="stylesheet" type="text/css"/>
+<!-- END PAGE LEVEL PLUGIN STYLES -->
+<!-- BEGIN PAGE STYLES -->
+<link href="{{asset('themes/admin/assets/admin/pages/css/tasks.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/admin/pages/css/invoice.css')}}" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css')}}"/>
+
+<!--hello-->
+<!--<link href="{{ asset('themes/admin/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}"  rel="stylesheet" type="text/css" media="all"/>-->
+<link href="{{ asset('themes/admin/assets/admin/pages/css/profile-old.css') }}"  rel="stylesheet" type="text/css" media="all"/>
+<link href="{{asset('themes/admin/assets/global/plugins/dropzone/css/dropzone.css')}}" rel="stylesheet"/>
+
+<!-- END PAGE STYLES -->
+<!-- BEGIN THEME STYLES -->
+<!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
+<link href="{{asset('themes/admin/assets/global/css/components-rounded.css')}}" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/global/css/plugins.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/admin/layout4/css/layout.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset('themes/admin/assets/admin/layout4/css/themes/light.css')}}" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="{{asset('themes/admin/assets/admin/layout4/css/custom.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('themes/user/static.css') }}"  rel="stylesheet" type="text/css"/>
+<link href="{{ asset('themes/user/custom.css') }}"  rel="stylesheet" type="text/css"/>
+
+<link href="{{asset('themes/admin/assets/admin/pages/css/pricing-table.css')}}" rel="stylesheet" type="text/css"/>
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+
+<body>
+		<div class="row">
+	<div class="col-md-12 page-404">
+		<div class="number">
+			 404
+		</div>
+		<div class="details">
+			<h3>Oops! You're lost.</h3>
+			<p>
+				 We can not find the page you're looking for.<br/>
+				<!--<a href="index.html">
+				Return home </a>-->
+				or try the search bar below.
+			</p>
+			<form action="#">
+				<div class="input-group input-medium">
+					<input type="text" class="form-control" placeholder="keyword...">
+					<span class="input-group-btn">
+					<button type="submit" class="btn blue"><i class="fa fa-search"></i></button>
+					</span>
+				</div>
+				<!-- /input-group -->
+			</form>
+		</div>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+{% extends 'DRPUserBundle::layout_user_dash.html.twig' %}
+
+{% block body %}
+<div class="page-content-wrapper">
+		<div class="page-content">
+<div class="portlet light">
+
+<!--{% if userSearches == 0 %}
+<div id="option2" style="display: block; position: absolute; float: left; background-color: rgba(0, 0, 0, 0.798039); zoom: 1; z-index: 10; width: 100%; height: 100%; top: -76px; left: 0px; opacity: 1; min-height: 1050px; z-index: 33333333; text-align: center; ">
+
+
+
+            <div style="display: inline-block; background-color: white; border-radius: 10px 10px 10px 10px; border: 2px solid; z-index: 1111; position: relative; width: 50%; padding: 20px; top: 110px;">
+<img src ="{{asset('images/user.png')}}" style="width:30px; float:left;"/>
+<hr>
+
+<p>Hi {{app.session.get('name')}}, You do not have any searches left in your account, please go to the Registrar General to add additional searches to your account.</p>
+ Click Here for <a href ="{{ path("user_logout") }}">Log Out</a>              
+
+</div>
+</div>
+{% endif %}-->
+
+
+
+
+
+	
+									<h3 style="margin-top:0px">My Searches</h3>
+{% for userPlan in user %}
+									<div class="top-news">
+										<a class="btn green new_search" href="javascript:;">
+										<span>
+										Total Searches </span>
+										<em class="new_em">{{userPlan.search_count_total|default('0')}}</em>
+										
+										<i class="fa icon-magnifier top-news-icon"></i>
+										</a>
+										<a class="btn red new_search" href="javascript:;">
+										<span>
+Used Searches
+										 </span>
+<em class="new_em">{{userPlan.search_count_used|default("0")}}</em>
+										
+										
+										<i class="fa fa-globe top-news-icon"></i>
+										</a>
+										<a class="btn blue new_search" href="javascript:;">
+										<span>
+										Remaining Searches </span>
+										<em class="new_em">{{userPlan.search_count_balance|default("N.A")}}</em>
+										
+										<i class="fa icon-bell top-news-icon"></i>
+										</a>
+
+									
+{% endfor %}
+
+</div>
+
+<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-edit"></i> Recent Lease Searches
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="row">
+									<div class="col-md-6">
+										<!--<div class="btn-group">
+											<button  class="btn green" onclick="addUser()">
+											Add New <i class="fa fa-plus"></i>
+											</button>
+										</div>-->
+									</div>
+									<div class="col-md-6">
+										<!--<div class="btn-group pull-right">
+											<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-right">
+												<li>
+													<a href="javascript:;">
+													Print </a>
+												</li>
+												<li>
+													<a href="javascript:;">
+													Save as PDF </a>
+												</li>
+												<li>
+													<a href="javascript:;">
+													Export to Excel </a>
+												</li>
+											</ul>
+										</div>-->
+									</div>
+								</div>
+							</div>
+							<table class="table table-striped table-hover table-bordered">
+							<thead>
+							<tr>
+							<th>
+									#
+								</th>
+								<th>
+									 Serial Number
+								</th>
+								
+								<th>
+									Lessee Name
+								</th>
+								
+								<th>
+									Lessee NIN
+								</th>
+								<th>
+									Lessor Name
+								</th>
+								<th>
+									Lessor NIN
+								</th>
+								<th>
+									Situation of Land
+								</th>
+								<th>
+									OR Number
+								</th>
+								<th>
+									Date and Time
+								</th>
+								
+							</tr>
+							</thead>
+							<tbody>
+{% for recent in searchLease %}
+							<tr>
+								<td>
+								{{recent.id}}
+
+								</td>
+								<td>
+									{{recent.serial_number}}
+								</td>
+									
+								<td>
+									{{recent.lessee_name}}
+								</td>
+
+								<td>
+									{{recent.lessee_nin}}
+								</td>
+
+								<td>
+									{{recent.lessor_name}}
+								</td>
+								<td>
+									{{recent.lessor_nin}}
+								</td>
+
+
+								<td>
+									{{recent.land_situation}}
+								</td>
+
+
+								<td class="center">
+									{{recent.or_number }}
+								</td>
+  							    	<td>
+									{{recent.creation_datetime|date}}
+								</td>
+								
+								
+								
+							</tr>
+{% endfor %}
+							
+							</tbody>
+							</table>
+						</div>
+					</div>
+				<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-edit"></i> Recent DRB Searchs
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="row">
+									<div class="col-md-6">
+										<!--<div class="btn-group">
+											<button  class="btn green" onclick="addUser()">
+											Add New <i class="fa fa-plus"></i>
+											</button>
+										</div>-->
+									</div>
+									<div class="col-md-6">
+										<!--<div class="btn-group pull-right">
+											<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-right">
+												<li>
+													<a href="javascript:;">
+													Print </a>
+												</li>
+												<li>
+													<a href="javascript:;">
+													Save as PDF </a>
+												</li>
+												<li>
+													<a href="javascript:;">
+													Export to Excel </a>
+												</li>
+											</ul>
+										</div>-->
+									</div>
+								</div>
+							</div>
+							<table class="table table-striped table-hover table-bordered">
+							<thead>
+							<tr>
+							<th>
+									#
+								</th>
+
+								<th>
+									 Reference Number
+								</th>
+								<th>
+									 Serial Number
+								</th>
+								
+								<th>
+									Grantor Name
+								</th>
+								
+								<th>
+									Grantor NIN
+								</th>
+								<th>
+									Grantee Name
+								</th>
+								<th>
+									Grantee NIN
+								</th>
+								
+								<th>
+									OR Number
+								</th>
+								<th>
+									Date and Time
+								</th>
+
+								
+							</tr>
+							</thead>
+							<tbody>
+{% for drb in searchDRB %}
+							<tr>
+								<td>
+								{{drb.id}}
+
+								</td>
+								<td>
+									{{drb.reference_number}}
+								</td>
+									
+								<td>
+									{{drb.serial_number}}
+								</td>
+
+								<td>
+									{{drb.grantor_name}}
+								</td>
+
+								<td>
+									{{drb.grantor_nin}}
+								</td>
+								<td>
+									{{drb.grantee_name}}
+								</td>
+
+
+								<td>
+									{{drb.grantee_nin}}
+								</td>
+
+
+								<td class="center">
+									{{drb.or_number }}
+								</td>
+								  <td>
+									{{drb.creation_datetime|date('l, F j, Y') }}
+								</td>
+								<td>
+									{{drb.creation_datetime|date('h:iA') }}
+								</td>
+  							    
+								
+								
+							</tr>
+{% endfor %}
+							
+							</tbody>
+							</table>
+						</div>
+					</div>
+					
+<style>
+.new_search {
+    float: left;
+    margin-right: 24px;
+    width: 30%;
+}
+.new_em
+{
+text-align:center;
+font-size:38px !important;
+}
+
+</style>
+
+
+
+
+
+{% endblock %}

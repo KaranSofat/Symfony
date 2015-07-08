@@ -1,0 +1,630 @@
+
+{% extends 'DRPUserBundle::layout_user_dash.html.twig' %}
+{% block body %}
+<script>
+function updateInfo()
+{
+	if($("#fstname").val()=="")
+	{
+		
+		$("#fname").html('This field is requierd');
+		return false;
+	}
+	else
+	{
+		$("#fname").html(' ');
+
+	}	
+	 if($("#lstname").val()=="")
+	{
+		
+		$("#lname").html('This field is requierd');
+		return false;
+	}
+	else
+	{
+		$("#lname").html(' ');
+
+	}	
+
+	if ($("#emailN").val()=="")
+	{
+		
+		$("#email").html('This field is requierd');
+		return false;
+	}
+	else
+	{
+		$("#email").html(' ');
+
+	}
+
+
+	var data = $("form").serialize();
+	$.ajax({
+               	url : '{{ path("user_updateUserInfo") }}',
+                type:'POST',
+                data:'email='+data,
+                dataType:'html',   
+                success:function(data){
+                 	location.reload();
+}
+            });	
+}
+
+		function showimagepreview(input) 
+		{
+			if (input.files && input.files[0]) 
+			{
+				var filerdr = new FileReader();
+				filerdr.onload = function(e) 
+				{
+					$('#imgprvw').attr('src', e.target.result);
+				}
+				filerdr.readAsDataURL(input.files[0]);
+			}
+					
+
+
+		}
+	function updateImage(id)
+	{
+
+		var formData = new FormData();
+		formData.append('file', $('input[type=file]')[0].files[0]);
+		$.ajax({
+		url: "{{ path("user_updateUserImage") }}", // Url to which the request is send
+		type: "POST",             // Type of request to be send, called as method
+		 data:formData,
+		async: false,		 // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+		contentType: false,       // The content type used when sending data to the server.
+		cache: false,             // To unable request pages to be cached
+		processData:false,        // To send DOMDocument or non processed data file it is set to false
+		success: function(data)   // A function to be called if request succeeds
+		{
+			location.reload();
+		}
+		});
+	}
+
+	function changePassword()
+	{
+
+		if($("#oldPassword").val() == "")
+		 {
+			
+			$("#old").html('This field is requierd');
+			return false;
+	
+		 }
+
+		else
+		{
+			$("#old").html(' ');
+
+		}
+
+
+		 if($("#newPassword").val() == "")
+		 {
+			
+			$("#empty").html('This field is requierd');
+			return false;
+
+					
+		 }
+
+		else 
+		 {
+			
+			$("#empty").html(' ');
+			
+		
+		 }
+
+		var formData = $('#frmChangePassword').serialize();
+		$.ajax({
+	  		url: '{{ path("user_changePassword") }}',
+	  		type: 'POST',
+	  		data: formData,
+	  		success:function(result)
+	  		{
+				if( result == 'OLD_MISMATCH' )
+				{
+					$("#divFlashMessage").removeClass('msgSuccess');
+					$("#divFlashMessage").addClass('msgError');
+					$("#divFlashMessage").html("The Current Password entered by you is wrong.");
+					$("#oldPassword").focus();
+					return false;
+				}
+				else if( result == 'NEW_MISMATCH' )
+				{
+					$("#divFlashMessage").removeClass('msgSuccess');
+					$("#divFlashMessage").addClass('msgError');
+					$("#divFlashMessage").html("The password does not match.");
+					$("#repeatPassword").focus();
+					return false;
+				}
+				else
+				{
+					$("#divFlashMessage").removeClass('msgError');
+					$("#divFlashMessage").addClass('msgSuccess');
+					$("#divFlashMessage").html("Your password has been changed successfully.");
+					location.reload();
+				}
+	  		}
+	  	});
+}
+</script>
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN PAGE HEADER-->
+			<!-- BEGIN PAGE HEAD -->
+			<div class="page-head">
+				<!-- BEGIN PAGE TITLE -->
+				<div class="page-title">
+					<h1>User Account <small></small></h1>
+				</div>
+				<!-- END PAGE TITLE -->
+				<!-- BEGIN PAGE TOOLBAR -->
+				<div class="page-toolbar">
+					<!-- BEGIN THEME PANEL -->
+					<!--<div class="btn-group btn-theme-panel">
+						<a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-settings"></i>
+						</a>
+						<div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<h3>THEME</h3>
+									<ul class="theme-colors">
+										<li class="theme-color theme-color-default active" data-theme="default">
+											<span class="theme-color-view"></span>
+											<span class="theme-color-name">Dark Header</span>
+										</li>
+										<li class="theme-color theme-color-light" data-theme="light">
+											<span class="theme-color-view"></span>
+											<span class="theme-color-name">Light Header</span>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-12 seperator">
+									<h3>LAYOUT</h3>
+									<ul class="theme-settings">
+										<li>
+											 Theme Style
+											<select class="layout-style-option form-control input-small input-sm">
+												<option value="square" selected="selected">Square corners</option>
+												<option value="rounded">Rounded corners</option>
+											</select>
+										</li>
+										<li>
+											 Layout
+											<select class="layout-option form-control input-small input-sm">
+												<option value="fluid" selected="selected">Fluid</option>
+												<option value="boxed">Boxed</option>
+											</select>
+										</li>
+										<li>
+											 Header
+											<select class="page-header-option form-control input-small input-sm">
+												<option value="fixed" selected="selected">Fixed</option>
+												<option value="default">Default</option>
+											</select>
+										</li>
+										<li>
+											 Top Dropdowns
+											<select class="page-header-top-dropdown-style-option form-control input-small input-sm">
+												<option value="light">Light</option>
+												<option value="dark" selected="selected">Dark</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Mode
+											<select class="sidebar-option form-control input-small input-sm">
+												<option value="fixed">Fixed</option>
+												<option value="default" selected="selected">Default</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Menu
+											<select class="sidebar-menu-option form-control input-small input-sm">
+												<option value="accordion" selected="selected">Accordion</option>
+												<option value="hover">Hover</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Position
+											<select class="sidebar-pos-option form-control input-small input-sm">
+												<option value="left" selected="selected">Left</option>
+												<option value="right">Right</option>
+											</select>
+										</li>
+										<li>
+											 Footer
+											<select class="page-footer-option form-control input-small input-sm">
+												<option value="fixed">Fixed</option>
+												<option value="default" selected="selected">Default</option>
+											</select>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END THEME PANEL -->
+				</div>
+				<!-- END PAGE TOOLBAR -->
+			</div>
+			<!-- END PAGE HEAD -->
+			<!-- BEGIN PAGE BREADCRUMB -->
+			<!--<ul class="page-breadcrumb breadcrumb">
+				<li>
+					<a href="index.html">Home</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Pages</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">User Account</a>
+				</li>
+			</ul>-->
+			<!-- END PAGE BREADCRUMB -->
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN PROFILE SIDEBAR -->
+					<div class="profile-sidebar" style="width:250px;">
+						<!-- PORTLET MAIN -->
+						<div class="portlet light profile-sidebar-portlet">
+							<!-- SIDEBAR USERPIC -->
+							<div class="profile-userpic" >
+								{% if userInfo.picture == ""%}
+							
+								<img src="{{  asset('images/user_default.jpeg') }}" class="img-responsive adminProfile " alt="" style="height:30% !important;" />
+{% else %}
+
+								<img src="{{ asset([gbl_upload_path_user, userInfo.picture]|join) }}" class="img-responsive adminProfile " alt="" style="height:30% !important;" >
+
+{% endif %}
+							</div>
+							<!-- END SIDEBAR USERPIC -->
+							<!-- SIDEBAR USER TITLE -->
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									{{userInfo.first_name}} {{userInfo.middle_name}} {{userInfo.last_name}}
+								</div>
+								<!--<div class="profile-usertitle-job">
+									 Developer
+								</div>-->
+							</div>
+							<!-- END SIDEBAR USER TITLE -->
+							<!-- SIDEBAR BUTTONS -->
+							<!--<div class="profile-userbuttons">
+								<button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
+								<button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
+							</div>-->
+							<!-- END SIDEBAR BUTTONS -->
+							<!-- SIDEBAR MENU -->
+
+							<div class="profile-usermenu">
+								<ul class="nav">
+									<li>
+										<a href="{{path('user_userProfile',{'id':userInfo.id
+}) }}">
+										<i class="icon-home"></i>
+										Overview </a>
+									</li>
+										<li>
+										<a href="{{ path('user_userSettings',{'id':userInfo.id}) }}">
+										<i class="icon-settings"></i>
+										Account Settings </a>
+									</li>
+									<!--<li>
+										<a href="page_todo.html" target="_blank">
+										<i class="icon-check"></i>
+										Tasks </a>
+									</li>
+									<li>
+										<a href="extra_profile_help.html">
+										<i class="icon-info"></i>
+										Help </a>
+									</li>-->
+								</ul>
+							</div>
+							<!-- END MENU -->
+						</div>
+</div>
+			
+					<div class="profile-content">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="portlet light">
+									<div class="portlet-title tabbable-line">
+										<div class="caption caption-md">
+											<i class="icon-globe theme-font hide"></i>
+											<span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+										</div>
+										<ul class="nav nav-tabs">
+											<li class="active">
+												<a href="#tab_1_1" data-toggle="tab">Personal Info</a>
+											</li>
+											<li>
+												<a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
+											</li>
+											<li>
+												<a href="#tab_1_3" data-toggle="tab">Change Password</a>
+											</li>
+											<!--<li>
+												<a href="#tab_1_4" data-toggle="tab">Privacy Settings</a>
+											</li>-->
+										</ul>
+									</div>
+									<div class="portlet-body">
+										<div class="tab-content">
+											<!-- PERSONAL INFO TAB -->
+											<div class="tab-pane active" id="tab_1_1">
+												<form role="form" action="#">
+
+<input type="hidden" value="{{userInfo.id}}" name="id">
+
+													<div class="form-group">
+														<label class="control-label">First Name</label>
+														<input type="text"  class="form-control" value="{{userInfo.first_name}}" name="firstname" id="fstname"/>
+<span id="fname" style="color:red;"></span>
+													</div>
+
+
+
+<div class="form-group">
+														<label class="control-label">Middle Name</label>
+														<input type="text"  class="form-control" value="{{userInfo.middle_name}}" name="middlename"/>
+													</div>
+													<div class="form-group">
+														<label class="control-label">Last Name</label>
+														<input type="text"  class="form-control" value="{{userInfo.last_name}}" name="lastname" id="lstname"/>
+<span id="lname" style="color:red;"></span>
+
+													</div>
+
+													<div class="form-group">
+														<label class="control-label">Email</label>
+														<input type="email"  class="form-control" value="{{userInfo.email}}" name="email" id="emailN"/>
+<span id="email" style="color:red;"></span>
+													</div>
+<!--<div class="form-group">
+														<label class="control-label">Username</label>
+														<input type="email"  class="form-control" value="{{userInfo.username}}" name="username" disabled/>
+													</div>
+<div class="form-group">
+														<label class="control-label">Passcode</label>
+														<input type="email"  class="form-control" value="{{userInfo.passcode}}" name="passcode"/>
+													</div>
+<!--<div class="form-group">
+														<label class="control-label">Telephone1</label>
+														<input type="email"  class="form-control" value="{{userInfo.telephone1}}" name="telephone1"/>
+													</div>
+<div class="form-group">
+														<label class="control-label">Telephone2</label>
+														<input type="email"  class="form-control" value="{{userInfo.telephone2}}" name="telephone2"/>
+													</div>-->
+
+
+
+
+
+													<!--<div class="form-group">
+														<label class="control-label">Interests</label>
+														<input type="text" placeholder="Design, Web etc." class="form-control"/>
+													</div>
+													<div class="form-group">
+														<label class="control-label">Occupation</label>
+														<input type="text" placeholder="Web Developer" class="form-control"/>
+													</div>
+													<div class="form-group">
+														<label class="control-label">About</label>
+														<textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!"></textarea>
+													</div>
+													<div class="form-group">
+														<label class="control-label">Website Url</label>
+														<input type="text" placeholder="http://www.mywebsite.com" class="form-control"/>
+													</div>-->
+													<div class="margiv-top-10">
+														<a onclick="updateInfo()" class="btn green-haze">
+														Save Changes </a>
+														<a href="javascript:;" class="btn default">
+														Cancel </a>
+													</div>
+												</form>
+											</div>
+											<!-- END PERSONAL INFO TAB -->
+											<!-- CHANGE AVATAR TAB -->
+											<div class="tab-pane" id="tab_1_2">
+												<!--<p>
+													 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+												</p>-->
+												<form action="#" role="form" enctype="mutipart/form-data" method="POST">
+													<div class="form-group">
+														<div class="fileinput fileinput-new" data-provides="fileinput">
+															<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+																
+{%if userInfo.picture == "" %}
+<img src="{{  asset('images/user_default.jpeg') }}" id="imgprvw" alt=""/>
+
+{% else %}
+<img src="{{ asset([gbl_upload_path_user, userInfo.picture]|join) }}" id="imgprvw" alt=""/>
+{% endif %}
+
+
+
+															</div>
+															<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+															</div>
+															<div>
+																<span class="btn default btn-file">
+																<!--<span class="fileinput-new">
+																Select image </span>
+																<span class="fileinput-exists">
+																Change </span>-->
+																<input type="file" type="file" name="file"   onchange="showimagepreview(this)">
+																</span>
+																<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">
+																Remove </a>
+															</div>
+														</div>
+														<div class="clearfix margin-top-10">
+															<!--<span class="label label-danger">NOTE! </span>
+															<span>Attached image thumbnail is supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>-->
+														</div>
+													</div>
+
+													<div class="margin-top-10">
+														<a onclick="updateImage({{userInfo.id}})" class="btn green-haze">
+														Submit </a>
+														<a href="javascript:;" class="btn default">
+														Cancel </a>
+													</div>
+												</form>
+											</div>
+											<!-- END CHANGE AVATAR TAB -->
+											<!-- CHANGE PASSWORD TAB -->
+											<div class="tab-pane" id="tab_1_3">
+													<form id="frmChangePassword" name="frmChangePassword"  action=""  method = "POST" enctype="multipart/form-data">
+											
+											<div class="form-group">
+												<label class="control-label">Current Password</label>
+												<input type="password" class="form-control" name="oldPassword" id="oldPassword"/>
+	<div id="old" style="color:red;"></div>									</div>
+											<div class="form-group">
+												<label class="control-label">New Password</label>
+												<input type="password" class="form-control"   name="newPassword" id="newPassword"/>
+											</div>
+
+<div id="empty" style="color:red;"></div>
+
+											<div class="form-group">
+												<label class="control-label">Re-type New Password</label>
+												<input type="password" class="form-control"  name="repeatPassword" id="repeatPassword"/>
+											</div>
+											<div class="margin-top-10">
+												
+												<input onclick="javascript:changePassword();" type = "button" name = "submit" value= "Change Password"class="btn green-haze" >
+												
+												<div class="msgSuccess" id="divFlashMessage">
+												</div>	
+										
+											</div>
+										</form>	
+											</div>
+											<!-- END CHANGE PASSWORD TAB -->
+											<!-- PRIVACY SETTINGS TAB -->
+											<div class="tab-pane" id="tab_1_4">
+												<form action="#">
+													<table class="table table-light table-hover">
+													<tr>
+														<td>
+															 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus..
+														</td>
+														<td>
+															<label class="uniform-inline">
+															<input type="radio" name="optionsRadios1" value="option1"/>
+															Yes </label>
+															<label class="uniform-inline">
+															<input type="radio" name="optionsRadios1" value="option2" checked/>
+															No </label>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
+														</td>
+														<td>
+															<label class="uniform-inline">
+															<input type="checkbox" value=""/> Yes </label>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
+														</td>
+														<td>
+															<label class="uniform-inline">
+															<input type="checkbox" value=""/> Yes </label>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
+														</td>
+														<td>
+															<label class="uniform-inline">
+															<input type="checkbox" value=""/> Yes </label>
+														</td>
+													</tr>
+													</table>
+													<!--end profile-settings-->
+													<div class="margin-top-10">
+														<a href="javascript:;" class="btn green-haze">
+														Save Changes </a>
+														<a href="javascript:;" class="btn default">
+														Cancel </a>
+													</div>
+												</form>
+											</div>
+											<!-- END PRIVACY SETTINGS TAB -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END PROFILE CONTENT -->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<style>
+.adminProfile
+{
+min-width:200px;
+min-height:200px;
+max-width:200px;
+max-height:200px;
+}
+.msgError
+{
+color:red;
+}
+</style>
+
+
+
+{% endblock%}

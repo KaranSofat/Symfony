@@ -1,0 +1,3618 @@
+
+{% extends 'DRPAdminBundle::layout_dashboard.html.twig' %}
+
+
+
+
+
+{% block body %}
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp.&sensor=false&.js"></script>
+
+<script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng(13.422055,-15.3198853);
+  var mapOptions = {
+    zoom: 8,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+var fx = google.maps.InfoWindow.prototype.setContent;
+
+
+          //override the built-in setContent-method
+          google.maps.InfoWindow.prototype.setContent = function (content) {
+              //argument is a node
+              if (content.querySelector) {
+
+                  //search for the address
+                  var addr = content.querySelector('.gm-basicinfo .gm-addr');
+
+                  if (addr) {
+
+                     
+			$("#location").val(addr.textContent);
+
+                  }
+              }
+              //run the original setContent-method
+              fx.apply(this, arguments);
+          };
+
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Gambia'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>
+
+ <script>
+function checkSerialNumber(serial)
+{
+
+$.ajax({
+               	url : '{{ path("drp_checkSerialNumber") }}',
+                type:'POST',
+                data:'serial='+serial,
+                dataType:'html',   
+                success:function(data){
+			
+                 	if(data == 'SUCCESS')
+			{
+				$("#exists").html('Serial Number already Exists')
+
+			}
+			else
+			{
+				$("#exists").html(' ')
+
+			}		
+                 
+}
+            });
+}
+
+
+function serialNumber(id)
+{
+	$("#ref").val(id);
+$("#totalNumbers").hide();
+}
+function getReferenceNumber(value)
+{
+
+$("#totalNumbers").show();
+
+$.ajax({
+               	url : '{{ path("drp_getSerialNumber") }}',
+                type:'POST',
+                data:'value='+value,
+                dataType:'html',   
+                success:function(data){
+			
+                 	$('#totalNumbers').html(data);
+			/*if(data!=value)
+			{
+				$("#sucess").html('Please Enter Correct Serial Number')
+			}
+
+                 	else
+			{
+				$("#sucess").hide();
+
+			}*/
+	}
+		
+
+            });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*function initialize() {
+
+
+
+
+
+
+
+          var mapOptions = {
+              zoom: 14,
+              center: new google.maps.LatLng(52.5498783, 13.425209099999961),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          map = new google.maps.Map(document.getElementById('map_canvas'),
+          mapOptions);
+
+          //store the original setContent-function
+          var fx = google.maps.InfoWindow.prototype.setContent;
+
+          //override the built-in setContent-method
+          google.maps.InfoWindow.prototype.setContent = function (content) {
+              //argument is a node
+              if (content.querySelector) {
+                  //search for the address
+                  var addr = content.querySelector('.gm-basicinfo .gm-addr');
+                  if (addr) {
+
+                      alert(addr.textContent);
+			$("#location").val(addr.textContent);
+
+                  }
+              }
+              //run the original setContent-method
+              fx.apply(this, arguments);
+          };
+
+ 
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);*/
+
+    </script>
+<script>
+function showGrantor()
+{
+	
+	$("#form2Grantor").show();
+	$("#firstbuttonGrantor").hide();
+	$("#secondbuttonGrantor").show();
+	$("#firstRemoveGrantor").show();	
+	
+	//$(".drb").show();
+}
+function hideGrantor()
+{
+	$("#form2Grantor").hide();
+	$("#firstbuttonGrantor").show();
+	$("#secondbuttonGrantor").hide();
+	$("#firstRemoveGrantor").hide();
+}
+function showGrantor2()
+{
+	$("#form3Grantor").show();
+	$("#secondbuttonGrantor").hide();
+	$("#firstRemoveGrantor").hide();	
+	$("#secondRemoveGrantor").show();
+}
+function hideFormsGrantor()
+{
+	$("#form3Grantor").hide();
+	$("#secondbuttonGrantor").show();
+	$("#firstRemoveGrantor").show();
+	$("#secondRemoveGrantor").hide();	
+	
+}
+/*=========Grantee Starts here========*/
+function showGrantee()
+{
+	
+	$("#form2Grantee").show();
+	$("#firstbuttonGrantee").hide();
+	$("#secondbuttonGrantee").show();
+	$("#firstRemoveGrantee").show();	
+	
+	//$(".drb").show();
+}
+function hideGrantee()
+{
+	$("#form2Grantee").hide();
+	$("#firstbuttonGrantee").show();
+	$("#secondbuttonGrantee").hide();
+	$("#firstRemoveGrantee").hide();
+}
+function showGrantee2()
+{
+	$("#form3Grantee").show();
+	$("#secondbuttonGrantee").hide();
+	$("#firstRemoveGrantee").hide();	
+	$("#secondRemoveGrantee").show();
+}
+function hideFormsGrantee()
+{
+	$("#form3Grantee").hide();
+	$("#secondbuttonGrantee").show();
+	$("#firstRemoveGrantee").show();
+	
+}
+
+function showPR()
+{
+	
+	$("#form2PR").show();
+	$("#firstbuttonPR").hide();
+	$("#secondbuttonPR").show();
+	$("#firstRemovePR").show();	
+	
+	//$(".drb").show();
+}
+function hidePR()
+{
+	$("#form2PR").hide();
+	$("#firstbuttonPR").show();
+	$("#secondbuttonPR").hide();
+	$("#firstRemovePR").hide();
+}
+function showPR2()
+{
+	$("#form3PR").show();
+	$("#secondbuttonPR").hide();
+	$("#firstRemovePR").hide();	
+	$("#secondRemovePR").show();
+}
+function hideFormsPR()
+{
+	$("#form3PR").hide();
+	$("#secondbuttonPR").show();
+	$("#firstRemovePR").show();
+	
+}
+
+
+//function getReferenceNumber()
+//{
+	$(document).ready(function()
+	{
+		var url = document.URL;
+		var arrUrl = url.split("=")
+		var code  = arrUrl[1];		
+	$.ajax({
+               	url : '{{ path("drp_genrateSerialNumbers") }}?code='+code,
+                type:'POST',
+                data:{'code':code},
+                //dataType:'html',   
+                success:function(data){
+
+		
+		$("#hidRegNumber").val(data);
+		$("#regNumber").val(data);
+		$("#regNumber").attr('disabled',true);
+                 	
+}
+            });
+});
+
+
+//}
+
+
+function submit()
+{
+document.getElementById("submit_form").submit();	
+}
+</script>
+
+
+<div class="page-content-wrapper" >
+			<div class="page-content">
+				<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+				<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title">Modal title</h4>
+							</div>
+							<div class="modal-body">
+								 Widget settings form goes here
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn blue">Save changes</button>
+								<button type="button" class="btn default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+				<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+				<!-- BEGIN STYLE CUSTOMIZER -->
+				
+				
+				<div class="page-bar">
+					
+					<div class="page-toolbar">
+						<div class="btn-group pull-right">
+							
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="portlet box blue" id="form_wizard_1">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-gift"></i>Registering {{getType.type}} - <span class="step-title">
+									Step 1 of 5 </span>
+								</div>
+								<div class="tools hidden-xs">
+									<a href="javascript:;" class="collapse">
+									</a>
+									<a href="#portlet-config" data-toggle="modal" class="config">
+									</a>
+									<a href="javascript:;" class="reload">
+									</a>
+									<a href="javascript:;" class="remove">
+									</a>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<form action="#" class="form-horizontal" id="submit_form" method="POST">
+									<div class="form-wizard">
+										<div class="form-body">
+											<ul class="nav nav-pills nav-justified steps">
+												<li>
+													<a href="#tab1" data-toggle="tab" class="step">
+													<span class="number">
+													1 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Registration Number </span>
+													</a>
+												</li>
+												<li>
+													<a href="#tab2" data-toggle="tab" class="step">
+													<span class="number">
+													2 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Parties Involved </span>
+													</a>
+												</li>
+<li>
+													<a href="#tab6" data-toggle="tab" class="step">
+													<span class="number">
+													3 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Transaction Dates</span>
+													</a>
+												</li>
+
+
+
+
+
+												<li>
+													<a href="#tab3" data-toggle="tab" class="step active">
+													<span class="number">
+													4 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Party Registering </span>
+													</a>
+												</li>
+
+
+<li>
+													<a href="#tab5" data-toggle="tab" class="step">
+													<span class="number">
+													5 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Reciept Information </span>
+													</a>
+												</li>
+
+<li>
+													<a href="#tab7" data-toggle="tab" class="step">
+													<span class="number">
+													6 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Miscellaneous Notes </span>
+													</a>
+												</li>
+
+
+
+												<li>
+													<a href="#tab4" data-toggle="tab" class="step">
+													<span class="number">
+												7 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Confirm </span>
+													</a>
+												</li>
+
+
+
+
+											</ul>
+											<div id="bar" class="progress progress-striped" role="progressbar">
+												<div class="progress-bar progress-bar-success">
+												</div>
+											</div>
+											<div class="tab-content">
+												<div class="alert alert-danger display-none">
+													<button class="close" data-dismiss="alert"></button>
+													You have some form errors. Please check below.
+												</div>
+												<div class="alert alert-success display-none">
+													<button class="close" data-dismiss="alert"></button>
+													Your form validation is successful!
+												</div>
+												<div class="tab-pane active" id="tab1">
+													<!--<h3 class="block">Provide your account details</h3>-->
+													<div class="form-group">
+														<label class="control-label col-md-3">Serial Number 
+														</label>
+														<div class="col-md-4">
+															
+
+
+<input type="text" class="form-control" name="serialNumber" onkeyup="getReferenceNumber(this.value)" id="ref">
+<div style="color:red" id="sucess"></div>
+<div id="totalNumbers" class="total_numbers" style="display:none;"><p></p></div>
+
+
+
+
+
+															
+														</div>
+													</div>
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Reference Number <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															
+<input type="text" class="form-control" name="regNumber" id="regNumber" / >
+<input type="hidden" id="hidRegNumber" name="hidRegNumber">
+
+
+<div id="exists" style="color:red;"></div>
+
+
+															
+														</div>
+													</div>
+
+
+													
+											<div class="form-group drb">
+										<label class="col-md-3 control-label" >Nature of Instrument <span class="required">
+										* </span></label>
+										<div class="col-md-9">
+											<select class="form-control input-small" name="noi">
+<option value="">Select..</option>
+												{% for instrument in instrumentType%}	
+												<option value="{{instrument.id}}">{{instrument.type}}</option>
+												{% endfor %}
+											</select>
+										</div>
+										
+
+</div>
+
+
+
+
+
+
+										
+	
+									<div class="form-group">
+													<label class="col-md-3 control-label" >Situation of Land <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="sof" id="location">
+														</div>
+													
+												</div>	
+
+  <div id="map_canvas" ></div>
+
+												</div>
+
+
+
+												<div class="tab-pane" id="tab2">
+													<h3 class="block">Parties Involved </h3>
+													
+<h4 class="block" style="font-weight:bold">Grantor: </h4>
+
+
+	
+	<div class="row">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="company" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstname">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlename">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastname">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="nin">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dob" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="address">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="email">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												</div>	
+
+<input type="button" class="btn green" value="Add More" onclick="showGrantor()" id="firstbuttonGrantor"style="float: right;
+    margin-right: 32px;">
+		
+													
+
+<!---new Form-->
+<div class="row" style="display:none" id="form2Grantor">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="company1" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstname1">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlename1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastname1">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="nin1">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dob1" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="address1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel11">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel21">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="email1">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+<div style="float:right; width: 22%;">
+<input type="button" class="btn green" value="Add More" onclick="showGrantor2()" id="secondbuttonGrantor" style="display:none">
+<input type="button" class="btn green" value="Remove" onclick="hideGrantor()" id="firstRemoveGrantor" style="display:none">
+
+</div>
+
+
+
+
+<div class="row" style="display:none" id="form3Grantor">
+													
+														<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="company2" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstname2">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlename2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastname2">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="nin2">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dob2" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="address2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel12">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel22">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="email2">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+<input type="button" class="btn green" value="Remove" onclick="hideFormsGrantor()" id="secondRemoveGrantor" style="display:none; float: right;margin-right: 43px;">
+
+
+
+
+
+
+<h4 class="block" style="font-weight:bold">Grantee: </h4>
+
+
+	<div class="row">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="Lcompany" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="Lfirstname">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="Lmiddlename">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="Llastname">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="Lnin">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="Ldob" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="Laddress">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="Ltel1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="Ltel2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="Lemail">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>	
+<input type="button" class="btn green" value="Add More" onclick="showGrantee()" id="firstbuttonGrantee" style="float:right;margin-right:32px;">	
+
+
+													
+
+
+
+
+
+													
+
+<div class="row" style="display:none" id="form2Grantee">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companyL1" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnameL1">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenameL1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnameL1">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninL1">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobL1" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressL1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1L1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2L1">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailL1">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+<div style="float:right; width: 22%;">
+<input type="button" class="btn green" value="Add More" onclick="showGrantee2()" id="secondbuttonGrantee" style="display:none">
+<input type="button" class="btn green" value="Remove" onclick="hideGrantee()" id="firstRemoveGrantee" style="display:none">
+
+</div>
+
+
+
+
+
+<div class="row" style="display:none" id="form3Grantee">
+													
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companyL2" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnameL2">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenameL2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnameL2">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninL2">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobL2" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressL2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1L2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2L2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailL2">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+<input type="button" class="btn green" value="Remove" onclick="hideFormsGrantee()" id="secondRemoveGrantee" style="display:none;float:right;margin-right:32px;">
+
+<div class="form-group">
+														
+													</div>
+												</div>
+
+
+
+<div class="tab-pane" id="tab6">
+
+<h3 class="block">Transaction Dates</h3>
+
+
+
+
+
+
+
+
+	<div class="row">
+
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+										<label class="control-label col-md-3">Date of Execution <span class="required">
+										* </span></label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="doe" id="form_sample_3" placeholder="Date of Execution">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											
+										</div>
+
+
+
+</div>
+<div class="form-group">
+										<label class="control-label col-md-3" >Date of Reciept <span class="required">
+										* </span></label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="drp" placeholder="Date of Reciept">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											
+										</div>
+</div>
+
+</div>
+
+
+
+
+
+
+<!--<div class="form-group">
+														<label class="control-label col-md-3">Grantor <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="fullname"/>
+															<span class="help-block">
+															Provide your fullname </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Phone Number <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="phone"/>
+															<span class="help-block">
+															Provide your phone number </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Gender <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<div class="radio-list">
+																<label>
+																<input type="radio" name="gender" value="M" data-title="Male"/>
+																Male </label>
+																<label>
+																<input type="radio" name="gender" value="F" data-title="Female"/>
+																Female </label>
+															</div>
+															<div id="form_gender_error">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Address <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="address"/>
+															<span class="help-block">
+															Provide your street address </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">City/Town <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="city"/>
+															<span class="help-block">
+															Provide your city or town </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Country</label>
+														<div class="col-md-4">
+															<select name="country" id="country_list" class="form-control">
+																<option value=""></option>
+																<option value="AF">Afghanistan</option>
+																<option value="AL">Albania</option>
+																<option value="DZ">Algeria</option>
+																<option value="AS">American Samoa</option>
+																<option value="AD">Andorra</option>
+																<option value="AO">Angola</option>
+																<option value="AI">Anguilla</option>
+																<option value="AR">Argentina</option>
+																<option value="AM">Armenia</option>
+																<option value="AW">Aruba</option>
+																<option value="AU">Australia</option>
+																<option value="AT">Austria</option>
+																<option value="AZ">Azerbaijan</option>
+																<option value="BS">Bahamas</option>
+																<option value="BH">Bahrain</option>
+																<option value="BD">Bangladesh</option>
+																<option value="BB">Barbados</option>
+																<option value="BY">Belarus</option>
+																<option value="BE">Belgium</option>
+																<option value="BZ">Belize</option>
+																<option value="BJ">Benin</option>
+																<option value="BM">Bermuda</option>
+																<option value="BT">Bhutan</option>
+																<option value="BO">Bolivia</option>
+																<option value="BA">Bosnia and Herzegowina</option>
+																<option value="BW">Botswana</option>
+																<option value="BV">Bouvet Island</option>
+																<option value="BR">Brazil</option>
+																<option value="IO">British Indian Ocean Territory</option>
+																<option value="BN">Brunei Darussalam</option>
+																<option value="BG">Bulgaria</option>
+																<option value="BF">Burkina Faso</option>
+																<option value="BI">Burundi</option>
+																<option value="KH">Cambodia</option>
+																<option value="CM">Cameroon</option>
+																<option value="CA">Canada</option>
+																<option value="CV">Cape Verde</option>
+																<option value="KY">Cayman Islands</option>
+																<option value="CF">Central African Republic</option>
+																<option value="TD">Chad</option>
+																<option value="CL">Chile</option>
+																<option value="CN">China</option>
+																<option value="CX">Christmas Island</option>
+																<option value="CC">Cocos (Keeling) Islands</option>
+																<option value="CO">Colombia</option>
+																<option value="KM">Comoros</option>sdfdsf
+																<option value="CG">Congo</option>
+																<option value="CD">Congo, the Democratic Republic of the</option>
+																<option value="CK">Cook Islands</option>
+																<option value="CR">Costa Rica</option>
+																<option value="CI">Cote d'Ivoire</option>
+																<option value="HR">Croatia (Hrvatska)</option>
+																<option value="CU">Cuba</option>
+																<option value="CY">Cyprus</option>
+																<option value="CZ">Czech Republic</option>
+																<option value="DK">Denmark</option>
+																<option value="DJ">Djibouti</option>
+																<option value="DM">Dominica</option>
+																<option value="DO">Dominican Republic</option>
+																<option value="EC">Ecuador</option>
+																<option value="EG">Egypt</option>
+																<option value="SV">El Salvador</option>
+																<option value="GQ">Equatorial Guinea</option>
+																<option value="ER">Eritrea</option>
+																<option value="EE">Estonia</option>
+																<option value="ET">Ethiopia</option>
+																<option value="FK">Falkland Islands (Malvinas)</option>
+																<option value="FO">Faroe Islands</option>
+																<option value="FJ">Fiji</option>
+																<option value="FI">Finland</option>
+																<option value="FR">France</option>
+																<option value="GF">French Guiana</option>
+																<option value="PF">French Polynesia</option>
+																<option value="TF">French Southern Territories</option>
+																<option value="GA">Gabon</option>
+																<option value="GM">Gambia</option>
+																<option value="GE">Georgia</option>
+																<option value="DE">Germany</option>
+																<option value="GH">Ghana</option>
+																<option value="GI">Gibraltar</option>
+																<option value="GR">Greece</option>
+																<option value="GL">Greenland</option>
+																<option value="GD">Grenada</option>
+																<option value="GP">Guadeloupe</option>
+																<option value="GU">Guam</option>
+																<option value="GT">Guatemala</option>
+																<option value="GN">Guinea</option>
+																<option value="GW">Guinea-Bissau</option>
+																<option value="GY">Guyana</option>
+																<option value="HT">Haiti</option>
+																<option value="HM">Heard and Mc Donald Islands</option>
+																<option value="VA">Holy See (Vatican City State)</option>
+																<option value="HN">Honduras</option>
+																<option value="HK">Hong Kong</option>
+																<option value="HU">Hungary</option>
+																<option value="IS">Iceland</option>
+																<option value="IN">India</option>
+																<option value="ID">Indonesia</option>
+																<option value="IR">Iran (Islamic Republic of)</option>
+																<option value="IQ">Iraq</option>
+																<option value="IE">Ireland</option>
+																<option value="IL">Israel</option>
+																<option value="IT">Italy</option>
+																<option value="JM">Jamaica</option>
+																<option value="JP">Japan</option>
+																<option value="JO">Jordan</option>
+																<option value="KZ">Kazakhstan</option>
+																<option value="KE">Kenya</option>
+																<option value="KI">Kiribati</option>
+																<option value="KP">Korea, Democratic People's Republic of</option>
+																<option value="KR">Korea, Republic of</option>
+																<option value="KW">Kuwait</option>
+																<option value="KG">Kyrgyzstan</option>
+																<option value="LA">Lao People's Democratic Republic</option>
+																<option value="LV">Latvia</option>
+																<option value="LB">Lebanon</option>
+																<option value="LS">Lesotho</option>
+																<option value="LR">Liberia</option>
+																<option value="LY">Libyan Arab Jamahiriya</option>
+																<option value="LI">Liechtenstein</option>
+																<option value="LT">Lithuania</option>
+																<option value="LU">Luxembourg</option>
+																<option value="MO">Macau</option>
+																<option value="MK">Macedonia, The Former Yugoslav Republic of</option>
+																<option value="MG">Madagascar</option>
+																<option value="MW">Malawi</option>
+																<option value="MY">Malaysia</option>
+																<option value="MV">Maldives</option>
+																<option value="ML">Mali</option>
+																<option value="MT">Malta</option>
+																<option value="MH">Marshall Islands</option>
+																<option value="MQ">Martinique</option>
+																<option value="MR">Mauritania</option>
+																<option value="MU">Mauritius</option>
+																<option value="YT">Mayotte</option>
+																<option value="MX">Mexico</option>
+																<option value="FM">Micronesia, Federated States of</option>
+																<option value="MD">Moldova, Republic of</option>
+																<option value="MC">Monaco</option>
+																<option value="MN">Mongolia</option>
+																<option value="MS">Montserrat</option>
+																<option value="MA">Morocco</option>
+																<option value="MZ">Mozambique</option>
+																<option value="MM">Myanmar</option>
+																<option value="NA">Namibia</option>
+																<option value="NR">Nauru</option>
+																<option value="NP">Nepal</option>
+																<option value="NL">Netherlands</option>
+																<option value="AN">Netherlands Antilles</option>
+																<option value="NC">New Caledonia</option>
+																<option value="NZ">New Zealand</option>
+																<option value="NI">Nicaragua</option>
+																<option value="NE">Niger</option>
+																<option value="NG">Nigeria</option>
+																<option value="NU">Niue</option>
+																<option value="NF">Norfolk Island</option>
+																<option value="MP">Northern Mariana Islands</option>
+																<option value="NO">Norway</option>
+																<option value="OM">Oman</option>
+																<option value="PK">Pakistan</option>
+																<option value="PW">Palau</option>
+																<option value="PA">Panama</option>
+																<option value="PG">Papua New Guinea</option>
+																<option value="PY">Paraguay</option>
+																<option value="PE">Peru</option>
+																<option value="PH">Philippines</option>
+																<option value="PN">Pitcairn</option>
+																<option value="PL">Poland</option>
+																<option value="PT">Portugal</option>
+																<option value="PR">Puerto Rico</option>
+																<option value="QA">Qatar</option>
+																<option value="RE">Reunion</option>
+																<option value="RO">Romania</option>
+																<option value="RU">Russian Federation</option>
+																<option value="RW">Rwanda</option>
+																<option value="KN">Saint Kitts and Nevis</option>
+																<option value="LC">Saint LUCIA</option>
+																<option value="VC">Saint Vincent and the Grenadines</option>
+																<option value="WS">Samoa</option>
+																<option value="SM">San Marino</option>
+																<option value="ST">Sao Tome and Principe</option>
+																<option value="SA">Saudi Arabia</option>
+																<option value="SN">Senegal</option>
+																<option value="SC">Seychelles</option>
+																<option value="SL">Sierra Leone</option>
+																<option value="SG">Singapore</option>
+																<option value="SK">Slovakia (Slovak Republic)</option>
+																<option value="SI">Slovenia</option>
+																<option value="SB">Solomon Islands</option>
+																<option value="SO">Somalia</option>
+																<option value="ZA">South Africa</option>
+																<option value="GS">South Georgia and the South Sandwich Islands</option>
+																<option value="ES">Spain</option>
+																<option value="LK">Sri Lanka</option>
+																<option value="SH">St. Helena</option>
+																<option value="PM">St. Pierre and Miquelon</option>
+																<option value="SD">Sudan</option>
+																<option value="SR">Suriname</option>
+																<option value="SJ">Svalbard and Jan Mayen Islands</option>
+																<option value="SZ">Swaziland</option>
+																<option value="SE">Sweden</option>
+																<option value="CH">Switzerland</option>
+																<option value="SY">Syrian Arab Republic</option>
+																<option value="TW">Taiwan, Province of China</option>
+																<option value="TJ">Tajikistan</option>
+																<option value="TZ">Tanzania, United Republic of</option>
+																<option value="TH">Thailand</option>
+																<option value="TG">Togo</option>
+																<option value="TK">Tokelau</option>
+																<option value="TO">Tonga</option>
+																<option value="TT">Trinidad and Tobago</option>
+																<option value="TN">Tunisia</option>
+																<option value="TR">Turkey</option>
+																<option value="TM">Turkmenistan</option>
+																<option value="TC">Turks and Caicos Islands</option>
+																<option value="TV">Tuvalu</option>
+																<option value="UG">Uganda</option>
+																<option value="UA">Ukraine</option>
+																<option value="AE">United Arab Emirates</option>
+																<option value="GB">United Kingdom</option>
+																<option value="US">United States</option>
+																<option value="UM">United States Minor Outlying Islands</option>
+																<option value="UY">Uruguay</option>
+																<option value="UZ">Uzbekistan</option>
+																<option value="VU">Vanuatu</option>
+																<option value="VE">Venezuela</option>
+																<option value="VN">Viet Nam</option>
+																<option value="VG">Virgin Islands (British)</option>
+																<option value="VI">Virgin Islands (U.S.)</option>
+																<option value="WF">Wallis and Futuna Islands</option>
+																<option value="EH">Western Sahara</option>
+																<option value="YE">Yemen</option>
+																<option value="ZM">Zambia</option>
+																<option value="ZW">Zimbabwe</option>
+															</select>
+														</div>
+													</div>-->
+													<div class="form-group">
+														
+													</div>
+												</div>
+
+
+
+
+
+
+
+
+
+
+												<div class="tab-pane" id="tab3">
+													<h3 class="block">Party Registring</h3>
+
+
+	
+	<div class="row">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companynamePR" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnamePR">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenamePR">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnamePR">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninPR">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobPR" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressPR">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1PR">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2PR">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailPR">
+															</div>
+														</div>
+
+
+
+</div>
+
+													</div>
+
+<input type="button" class="btn green" value="Add More" onclick="showPR()" id="firstbuttonPR" style="float:right;margin-left:32px;">
+
+
+
+
+
+
+
+
+
+
+
+
+													<!--<div class="form-group">
+														<label class="control-label col-md-3">Card Holder Name <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="card_name"/>
+															<span class="help-block">
+															</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Card Number <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="card_number"/>
+															<span class="help-block">
+															</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">CVC <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" placeholder="" class="form-control" name="card_cvc"/>
+															<span class="help-block">
+															</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Expiration(MM/YYYY) <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" placeholder="MM/YYYY" maxlength="7" class="form-control" name="card_expiry_date"/>
+															<span class="help-block">
+															e.g 11/2020 </span>
+														</div>
+													</div>-->
+													<div class="form-group">
+														
+														<div class="col-md-4">
+															
+															<div id="form_payment_error">
+															</div>
+
+														</div>
+
+													</div>
+
+
+												</div>
+
+<div class="row" style="display:none" id="form2PR">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companynamePR1" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnamePR1">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenamePR1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnamePR1">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninPR1">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobPR1" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressPR1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1PR1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2PR1">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailPR1">
+															</div>
+														</div>
+
+
+
+</div>
+
+													</div>
+
+<div style="float:right; width: 22%;">
+<input type="button" class="btn green" value="Add More" onclick="showPR2()" id="secondbuttonPR" style="display:none">
+<input type="button" class="btn green" value="Remove" onclick="hidePR()" id="firstRemovePR" style="display:none">
+
+</div>
+
+
+
+
+
+<div class="row" style="display:none" id="form3PR">
+													<<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companynamePR2" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnamePR2">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenamePR2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnamePR2">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninPR2">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobPR2" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressPR2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1PR2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2PR2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailPR2">
+															</div>
+														</div>
+
+
+
+</div>
+
+													</div>
+
+
+<input type="button" class="btn green" value="Remove" onclick="hideFormsPR()" id="secondRemovePR" style="display:none" style="float:right;margin-left:32px;">
+
+
+
+
+<div class="tab-pane" id="tab7">
+
+													<h4 class="block" style="font-weight:bold;">Miscellaneous Notes</h4>
+
+<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+										<textarea name="notes" style="width:100%;height:34%;" placeholder="Type to note here..."></textarea>
+															</div>
+														</div>
+													
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane active" id="tab5">
+													<h4 class="block" style="font-weight:bold;">Recipient</h4>
+													<div class="row">
+												
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnameRP">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenameRP">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnameRP">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninRP">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobRP" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressRP">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1RP">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2RP">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailRP">
+															</div>
+														</div>
+
+
+
+</div>
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="recipientDate" placeholder="Received Date">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="OR Number" name="or">
+															</div>
+														</div>
+
+
+
+</div>
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Stamp Duty" name="sd">
+															</div>
+														</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="form-group">
+										
+										<div class="col-md-4">
+											
+											
+										</div>
+</div>
+
+
+													
+												</div>
+
+
+
+
+
+
+
+											<div class="tab-pane" id="tab4">
+<h3 class="block">Confirm your account</h3>
+<div class="container">
+  <div class="wrapper">
+    <div class="main">
+      <div class="head_top">
+        <label>Type of registration: {{getType.type}}</label>
+       <!--  <label style="margin-left:45px;">Registrar General: First name, last name</label>-->
+        <h4>Registration Info</h4>
+      </div>
+      <div class="main_srn">
+        <div class="col-sn-1">
+          <label>S. R. Number</label>
+         <p class="form-control-static" data-display="serialNumber"></p>
+        </div>
+        <div class="col-sn-1">
+          <label>Ref. Number</label>
+          <p  class="form-control-static" data-display="regNumber"></p>
+        </div>
+        <div class="col-sn-1">
+          <label>Instrument</label>
+          <p class="form-control-static" data-display="noi"></p>
+        </div>
+	 <div class="col-sn-1">
+          <label >Situation of Land</label>
+          <p class="form-control-static" data-display="sof"></p>
+        </div>
+      </div>
+      <!--parties start here-->
+      
+      <!--parties left start here-->
+      <div class="parties">
+        <h4>Parties Involved</h4>
+        <div class="lessor">
+          <p>Grantor</p>
+          <div class="lessor_in">
+            <label>Company</label>
+            <p class="form-control-static"  data-display="company"></p>
+          </div>
+          <div class="lessor_in last">
+            <label >Name</label>
+            <p class="form-control-static" data-display="firstname" style="float:left; width:auto;"></p>
+		  <p class="form-control-static" data-display="lastname" style=" width: auto; margin-left: -10px; text-indent: -15px;"></span>	
+          </div>
+          <div class="lessor_in min">
+            <div class="min_left">
+              <label>NIN</label>
+               <p class="form-control-static" data-display="nin"></p>
+            </div>
+            <div class="min_right">
+              <label>Date of Birth</label>
+              <p class="form-control-static" data-display="dob"></p>
+            </div>
+          </div>
+          <div class="lessor_in min add">
+            <div class="min_left adin">
+              <label>Address</label>
+               <p class="form-control-static" data-display="address"></p>
+            </div>
+            <div class="min_left adin">
+              <label>Tel1</label>
+             <p  class="form-control-static" data-display="tel1"></p>
+            </div>
+            <div class="min_right adin">
+              <label>Email</label>
+              <p class="form-control-static" data-display="email"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!--parties right start here-->
+        <div class="lessor sor_right">
+          <p>Grantee</p>
+          <div class="lessor_in">
+            <label>Company</label>
+             <p  class="form-control-static"data-display="Lcompany"></p>
+          </div>
+          <div class="lessor_in last">
+            <label>Name</label>
+           <p class="form-control-static" data-display="Lfirstname" style="float:left; width:auto;"></p>
+	  <p class="form-control-static" data-display="Llastname" style=" width: auto; margin-left: -10px; text-indent: -15px;"></span>	
+          </div>
+          <div class="lessor_in min">
+            <div class="min_left">
+              <label>NIN</label>
+               <p  class="form-control-static"data-display="Lnin"></p>
+            </div>
+            <div class="min_right">
+              <label>Date of Birth</label>
+             <p class="form-control-static" data-display="Ldob"></p>
+            </div>
+          </div>
+          <div class="lessor_in min add">
+            <div class="min_left adin">
+              <label>Address</label>
+             <p class="form-control-static"  data-display="Laddress"></p>
+            </div>
+            <div class="min_left adin">
+              <label>Tel1</label>
+             <p class="form-control-static" data-display="Ltel1"></p>
+            </div>
+            <div class="min_right adin">
+              <label>Email</label>
+             <p class="form-control-static" data-display="Lemail"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!--parties right end here-->
+        
+        <!--Transaction Dates-->
+        
+        <div class="dates number">
+          <h4>Transaction Dates</h4>
+          <div class="main_srn num">
+            <div class="col-sn-1">
+              <label>Date of Execution</label>
+             <p  class="form-control-static"data-display="doe"></p>
+            </div>
+            <div class="col-sn-1 num">
+              <label>Date of Receipt</label>
+             <p class="form-control-static" data-display="drp"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Party Registering -->
+        
+        <div class="dates reg">
+          <h4>Party Registring</h4>
+          <div class="main_srn">
+            <div class="col-sn-1 sant">
+              <label>Name</label>
+             <p class="form-control-static"data-display="firstnamePR" style="float:left; width:auto;"></p>
+		  <p class="form-control-static"data-display="lastnamePR" style="width: auto; margin-left: -10px; text-indent: -15px;"></span>	
+		
+              <div class="regstor">
+                <div class="regstor_in">
+                  <label>NIN</label>
+                 <p  class="form-control-static"data-display="ninPR"></p>
+                </div>
+                <div class="regstor_r">
+                  <label>Date of Birth</label>
+                 <p  class="form-control-static"data-display="dobPR"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sn-1 sant tel">
+              <div class="regstor">
+                <div class="regstor_in tel_in">
+                  <label>Address</label>
+                 <p  class="form-control-static"data-display="addressPR"></p>
+                </div>
+                <div class="regstor_r tel_in">
+                  <label>Tel1</label>
+                 <p  class="form-control-static"data-display="tel1PR"></p>
+                </div>
+                <div class="regstor_r tel_in">
+                  <label>Tel2</label>
+                 <p  class="form-control-static"data-display="tel2PR"></p>
+                </div>
+                <div class="regstor_r tel_in">
+                  <label>Email</label>
+                 <p class="form-control-static" data-display="emailPR"></p>
+                </div>
+              </div>
+            </div>
+            <div class="dates reg">
+              <h4>Recipient Information</h4>
+              <div class="main_srn recipient">
+		<label style="float:left;">Name</label>
+                 <p  class="form-control-static"data-display="firstnameRP" style=" float: left;
+    margin-left: -46px;
+    margin-top: 24px;
+    width: auto;"></p>
+		  <p  class="form-control-static"data-display="lastnameRP" style="float: left;
+    margin-left: -10px;
+    margin-top: 24px;
+    text-indent: -15px;
+    width: auto;"></span>	
+
+                <div class="col-sn-1 sant pient">
+                  
+                  <div class="regstor">
+                    <div class="regstor_in">
+                      <label>NIN</label>
+                     <p class="form-control-static" data-display="ninRP"></p>
+                    </div>
+                    <div class="regstor_r">
+                      <label>Date of Birth</label>
+                     <p class="form-control-static" data-display="dobRP"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sn-1 sant tel pient">
+                  <div class="regstor">
+                    <div class="regstor_in tel_in senv">
+                      <label>Address</label>
+                     <p class="form-control-static" data-display="addressRP"></p>
+                    </div>
+                    <div class="regstor_r tel_in senv">
+                      <label>Tel1</label>
+                     <p  class="form-control-static"data-display="tel1RP"></p>
+                    </div>
+                    <div class="regstor_r tel_in senv">
+                      <label>Email</label>
+                     <p class="form-control-static" data-display="emailRP"></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Party Registering end-->
+                
+              </div>
+              <div class="main_srn recipient recitp_right">
+                <div class="regstor_in right_tor">
+                  <label>Reciept Date</label>
+                 <p class="form-control-static" data-display="recipientDate"></p>
+                </div>
+                <div class="regstor_in right_tor">
+                  <label>O.R. Number</label>
+                 <p  class="form-control-static"data-display="or"> </p>
+                </div>
+                <div class="regstor_in right_tor">
+                  <label>Stamp Duty</label>
+                 <p  class="form-control-static"data-display="sd"></p>
+                </div>
+                
+              </div>
+            </div>
+            
+             <div class="dates reg">
+          <h4>Miscellaneous Notes</h4>
+          <div class="main_srn">
+            <div class="col-sn-1 sant">
+              <label>Notes</label>
+		  <p  class="form-control-static" data-display="notes" style="height:100px;"></p>
+
+             
+            
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+        
+        <!-- Party Registering end-->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+											<!--	<h3 class="block">Confirm your account</h3>
+													<h4 class="form-section">Registration Number</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3">Serial Number:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="serialNumber">
+															</p>
+														</div>
+													</div>
+													
+
+<div class="form-group">
+														<label class="control-label col-md-3">Reference Number:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="refNumber">
+															</p>
+														</div>
+													</div>
+													
+
+<div class="form-group">
+														<label class="control-label col-md-3">Nature of Instrument:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="noi">
+															</p>
+														</div>
+													</div>
+													
+
+<div class="form-group">
+														<label class="control-label col-md-3">Situation of Land:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="sof">
+															</p>
+														</div>
+													</div>
+													
+
+
+
+
+
+													<h4 class="form-section">Parties Involved</h4>
+
+<h4>Grantor</h4>
+													<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Company:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="company">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="firstname">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="middlename">
+															</p>
+														</div>
+													</div>
+
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lastname">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="nin">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Date of Birth:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="dob" placeholder="Date of Birth">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="address">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2">
+															</p>
+														</div>
+													</div>
+
+
+
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="email">
+															</p>
+														</div>
+													</div>
+													
+<h4>Grantee</h4>
+
+
+													<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Company:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lcompany">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lfirstname">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lmiddlename">
+															</p>
+														</div>
+													</div>
+
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Llastname">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lnin">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Date of Birth:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Ldob" placeholder="Date of Birth">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Laddress">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Ltel1">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+		
+
+												<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Ltel2">
+															</p>
+														</div>
+													</div>
+
+
+
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lemail">
+															</p>
+														</div>
+													</div>
+<h4 class="form-section">Transaction Dates:</h4>
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Date of Execution</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="doe">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Date of Reciept :</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="drp">
+															</p>
+														</div>
+													</div>
+<h4 class="form-section">Party Registring:</h4>
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Company Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="companynamePR">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="firstnamePR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="middlenamePR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lastnamePR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="ninPR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">DOB:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="dobPR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="addressPR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1PR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2PR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="emailPR">
+															</p>
+														</div>
+													</div>
+
+
+<h4>Recipient</h4>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="firstnameRP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="middlenameRP">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lastnameRP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="ninRP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">DOB:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="dobRP">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="addressRP">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1RP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2RP">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="emailRP">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Recipient Date:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="recipientDate">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">OR Number:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="or">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Stamp Duty :</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="sd">
+															</p>
+														</div>
+													</div>-->
+
+
+
+
+
+
+
+
+
+
+
+												</div>
+											</div>
+										</div>
+
+
+										<div class="form-actions">
+											<div class="row" style="margin-top:16px; margin-left: 101px !important;">
+												<div class="col-md-offset-3 col-md-9">
+													<a href="javascript:;" class="btn default button-previous">
+													<i class="m-icon-swapleft"></i> Back </a>
+													<a href="javascript:;" class="btn blue button-next">
+													Continue <i class="m-icon-swapright m-icon-white"></i>
+													</a>
+													<a onclick="submit()" class="btn green button-submit">
+													Submit <i class="m-icon-swapright m-icon-white"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- EN
+
+
+
+
+									</div>
+								</div>
+								
+	<!-- END CONTENT -->
+</div>
+<style>
+.col-md-6 {
+   width: 27% !important;
+}
+
+#map_canvas {
+    margin:0;
+    height:50%;
+	width:50%;
+margin-left:92px;
+}
+.controls {
+        margin-top: 16px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+#target {
+        width: 345px;
+      }
+.col-md-7 {
+    width: 24.333% !important;
+    height:60px; !important;	
+}
+.col-md-8 {
+     width: 33.667% !important;
+}
+
+	.col-md-6, .col-md-7, .col-md-8 {
+ /*   height: 80px !important;*/
+}
+.sett
+{
+float:left;
+width:100%;
+}
+.container {
+	width:100%;
+	float:left;
+}
+.wrapper {
+	margin: auto;
+	width: 100%;
+}
+.main {
+	border: 1px solid #385d8a;
+	float: left;
+	padding: 15px;
+	width: 100%;
+}
+.head_top p {
+    color: black;
+    float: left;
+    font-size: 16px;
+    margin-right: 8%;
+}
+.head_top {
+	float: left;
+	width: 100%;
+}
+.head_top h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	margin: 0;
+	padding-bottom: 8px;
+	width: 100%;
+}
+.main_srn {
+	float: left;
+	margin-top: 2%;
+	width: 100%;
+}
+.col-sn-1 {
+	float: left;
+	margin-right: 3% !important;
+	width: 22%;
+}
+.col-sn-1 label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding: 2px 11px;
+}
+.main p {
+	background: #dce6f2 none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 10px 14px;
+	width: 100%;
+}
+.col-sn-1:last-child {
+	float: right;
+	margin: 0;
+}
+.parties {
+	float: left;
+	width: 100%;
+}
+.parties > h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	width: 100%;
+	padding-bottom: 8px;
+}
+.lessor {
+	float:left;
+}
+.lessor {
+	border: 2px solid #385d8a;
+	float: left;
+	width: 48%;
+}
+.lessor > p {
+	margin: 0;
+	padding: 10px 13px;
+	background: #dce6f2 none repeat scroll 0 0;
+}
+.lessor_in > label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding-bottom: 1%;
+    width: 100%;
+}
+.lessor_in {
+	float: left;
+	padding: 0 13px;
+	width: 80%;
+}
+.lessor_in > input {
+	padding: 6px 14px;
+}
+.lessor_in.last {
+	margin-bottom: 2%;
+	margin-top: 4%;
+}
+.min_left {
+	float: left;
+	width: 40%;
+}
+.min_right {
+	float: right;
+	width: 40%;
+}
+.lessor_in.min.add {
+	box-sizing: border-box;
+	margin-top: 2%;
+	width: 100%;
+}
+.lessor_in.min.add {
+	padding: 0 4px;
+}
+.min_left.adin {
+	margin-bottom: 2%;
+	margin-right: 5%;
+	width: 30%;
+}
+.min_right.adin {
+	width: 30%;
+}
+.min_right.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.min_left.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.lessor.sor_right {
+	float: right;
+}
+.dates h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	margin: 0;
+	padding-bottom: 8px;
+	width: 100%;
+}
+.main_srn.num {
+	margin-left: 12%;
+	width: 76%;
+}
+.dates.reg > h4 {
+	margin-top: 2%;
+}
+.regstor_in {
+	float: left;
+	width: 45%;
+}
+.regstor_r {
+	float: right;
+	width: 45%;
+}
+.col-sn-1.sant {
+	float: left;
+	width: 35%;
+}
+.col-sn-1.sant.tel {
+	width: 60%;
+}
+.regstor_in.tel_in {
+	width: 26%;
+}
+.regstor_r.tel_in {
+	float: left;
+	margin: 0 3px;
+	width: 22%;
+}
+.main_srn.recipient {
+	width: 48%;
+}
+.col-sn-1.sant.pient {
+	width: 89%;
+}
+.regstor_in.tel_in.senv {
+	width: 30%;
+}
+.regstor_r.tel_in.senv {
+	margin-right: 0;
+	width: 33%;
+}
+.main_srn.recipient.recitp_right {
+	float: right;
+	width: 35%;
+}
+.regstor_in > label {
+	font-size: 14px;
+}
+.regstor_in.right_tor {
+	clear: both;
+	font-size: 15px;
+	margin-bottom: 5%;
+	text-align: center;
+}
+.total_numbers {
+    border: 1px solid #e5e5e5;
+    
+}
+.hover_color > li {
+    list-style: outside none none;
+    margin: 9px 0 0;
+   cursor:pointer;
+}
+.hover_color > li:hover
+{
+color:white;
+background:grey;
+}
+#totalNumbers > ul {
+    margin: 0 0 9px -43px;
+    text-align: center;
+}
+
+</style>
+{% endblock %}

@@ -1,0 +1,112 @@
+
+registrarGeneral_registrarGenerallogin:
+    pattern:  /registrarGeneral
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:login }
+
+
+registrarGeneral_registrarGenerallogins:
+    pattern:  /registrarGeneral/
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:login }
+
+registrarGeneral_login:
+    pattern:  /registrarGeneral/login
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:login }
+
+registrarGeneral_dashboard:
+    pattern:  /registrarGeneral/dashboard
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:dashboard }
+
+registrarGeneral_showRegistrationType:
+    pattern:  /registrarGeneral/showRegistrationType
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:showType }
+
+
+registrarGeneral_showLease:
+    pattern:  /lease/registrarGeneral/{code}
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:showLease }
+
+
+registrarGeneral_showpdrb:
+    pattern:  /drb/registrarGeneral/{code}
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:showDrb }
+
+
+registrarGeneral_changeRegistrationStatus:
+    pattern:  /registrarGeneral/changeRegistrationStatus
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:changeRegistrationStatus }
+
+registrarGeneral_logout:
+    pattern:  /registrarGeneral/logout
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:logout }
+
+registrarGeneral_registrarProfile:
+    pattern:  /registrarGeneral/Profile/{id}
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:adminProfile }
+
+registrarGeneral_registrarSettings:
+    pattern:  /registrarGeneral/Settings/{id}
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:adminSettings }
+
+registrarGeneral_updateRegistrarInfo:
+    pattern:  /registrarGeneral/updateInfo
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:updateAdminInfo }
+
+registrarGeneral_updateRegistrarImage:
+    pattern:  /registrarGeneral/updateImage
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:updateAdminImage }
+
+registrarGeneral_changePassword:
+    pattern:  /registrarGeneral/changePassword
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:changePassword }
+
+
+registrarGeneral_forgotPassword:
+    pattern:  /registrarGeneral/forgotPassword
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:forgotPassword }
+
+registrarGeneral_resetPassword:
+    pattern:  /registrarGeneral/resetPassword
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:resetPassword }
+
+registrarGeneral_addDocuments:
+    pattern:  /registrarGeneral/addDocuments
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:addDocuments }
+
+
+registrarGeneral_viewDrb:
+    pattern:  /registrarGeneral/viewDrb
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:viewDRB }
+
+registrarGeneral_viewLease:
+    pattern:  /registrarGeneral/viewLease
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:viewLease }
+
+
+registrarGeneral_viewdocuments:
+    pattern:  /registrarGeneral/viewdocuments
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:viewDocuments }
+
+registrarGeneral_addDrbDocuments:
+    pattern:  /registrarGeneral/addDrbDocuments
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:addDrbDocuments }
+
+registrarGeneral_viewDrbdocuments:
+    pattern:  /registrarGeneral/viewDrbdocuments
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:viewDrbdocuments }
+
+
+registrarGeneral_pendingDRB:
+    pattern:  /registrarGeneral/pendingDRB
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:pendingDRB }
+
+registrarGeneral_pendingLease:
+    pattern:  /registrarGeneral/pendingLease
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:pendingLease }
+
+registrarGeneral_setCurrentUrlInSession:
+    pattern:  /registrarGeneral/setCurrentUrlInSession
+    defaults: { _controller: DRPRegistrarGeneralBundle:RegistrarGeneral:setCurrentUrlInSession }
+
+
+
+

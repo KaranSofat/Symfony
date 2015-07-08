@@ -1,0 +1,914 @@
+{% extends 'DRPAdminBundle::layout_dashboard.html.twig' %}
+
+{% block body %}
+
+
+<script>
+function printData() {
+    window.print();
+}
+function back()
+{
+	//alert(document.referrer);
+	window.location.href = document.referrer;
+}
+</script>
+<div class="page-content-wrapper">
+		<div class="page-content">
+			
+
+
+
+
+<div class="container">
+  <div class="wrapper">
+	<div>
+	<p class="detail">Detail of {{getType}}</p>
+	 <div style="float:right; margin-top: 13px;"><input class="btn red" type="button" value="Print" onclick="printData()"></div>
+</div>
+    <div class="main">
+      <div class="head_top">
+        <p>Type of Registration:  {{getType}}</p>
+      {% for registrar in generalInfo %} 
+				
+				<p>Registrar General: {{registrar.first_name}} {{registrar.last_name}}</p>
+		
+				{% if registrar.status == 1   %}
+										<div  style="float:left">  
+											<p style="color:green;">Approved</p>
+										</div>
+									{% endif %}
+{% if registrar.status == 2   %}
+
+										<div>  
+											<p style="color:red;">Reject</p>
+										</div>
+									{% endif %}
+{% if registrar.status == 0  %}
+
+
+											<p style="color:red;">Pending</p>
+								
+{% endif %}	
+			
+		{% endfor %}
+
+		
+        <h4>Registration Info</h4>
+      </div>
+      <div class="main_srn">
+        <div class="col-sn-1">
+          <label>S. R. Number</label>
+          <input type="text" value="{{viewDRB.serial_number|default('N.A')}}" disabled>
+        </div>
+        <div class="col-sn-1">
+          <label>Ref. Number</label>
+          <input type="text" value="{{viewDRB.reference_number|default('N.A')}}"disabled>
+        </div>
+	<div class="col-sn-1">
+          <label>Instrument</label>
+          <input type="text" value="{{instrumentType}}" disabled>
+        </div>
+        <div class="col-sn-1">
+	<label style="float:none !important;">Situation of Land</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewDRB.land_situation|default('N.A')}}</p>	
+          
+          <!--<label>Situation of Land</label>
+          <input type="text" value="{{viewDRB.land_situation|default('N.A')}}"disabled>-->
+        </div>
+      </div>
+      <!--parties start here-->
+      
+      <!--parties left start here-->
+      <div class="parties">
+        <h4>Parties Involved</h4>
+        <div class="lessor">
+          <p>Grantor</p>
+          <div class="lessor_in">
+            <label>Company</label>
+            <input type="text" value="{{viewLessor.company_name}}"disabled>
+          </div>
+          <div class="lessor_in last">
+            <label>Name</label>
+            <input type="text" value="{{viewLessor.first_name}} {{viewLessor.middle_name|default(' ')}} {{viewLessor.last_name|default(' ')}}"disabled>
+          </div>
+          <div class="lessor_in min">
+            <div class="min_left">
+              <label>NIN</label>
+              <input type="text" value="{{viewLessor.nin}}"disabled>
+            </div>
+            <div class="min_right">
+              <label>Date of Birth</label>
+              <input type="text" value="{{viewLessor.dob}}"disabled>
+            </div>
+          </div>
+        <div class="lessor_in min add">
+            <div class="min_left adin">
+              <label style="float:none !important;margin-left:8px !important;">Address</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewLessor.address}}</p>
+              <!--<input type="text" value="{{viewLessor.address}}"disabled>-->
+            </div>
+            <div class="min_left adin">
+              <label style="float:none !important;">Tel1</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewLessor.telephone1}}</p>
+              <!--<input type="text" value="{{viewLessor.telephone1}}"disabled>-->
+            </div>
+            <div class="min_right adin">
+              <label style="float:none !important;">Email</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewLessor.email}}</p>
+            <!--  <input type="text" value="{{viewLessor.email}}"disabled>-->
+            </div>
+          </div>
+        </div>
+        <!--parties right start here-->
+        <div class="lessor sor_right">
+          <p>Grantee</p>
+          <div class="lessor_in">
+            <label>Company</label>
+            <input type="text" value="{{viewLeasse.company_name}}"disabled>
+          </div>
+          <div class="lessor_in last">
+            <label>Name</label>
+            <input type="text" value="{{viewLeasse.first_name}} {{viewLeasse.middle_name|default('N.A')}} 															{{viewLeasse.last_name}}"disabled>
+          </div>
+          <div class="lessor_in min">
+            <div class="min_left">
+              <label>NIN</label>
+              <input type="text" value="{{viewLeasse.nin}}"disabled>
+            </div>
+            <div class="min_right">
+              <label>Date of Birth</label>
+              <input type="text" value="{{viewLeasse.dob}}"disabled>
+            </div>
+          </div>
+         <div class="lessor_in min add">
+            <div class="min_left adin">
+		<label style="float:none !important;margin-left:8px !important;">Address</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;">{{viewLeasse.address}}</p>
+              <!--<label>Address</label>
+              <input type="text" value="{{viewLeasse.address}}"disabled>-->
+            </div>
+            <div class="min_left adin">
+		<label style="float:none !important;">Tel1</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewLeasse.telephone1}}</p>
+            <!--  <label>Tel1</label>
+              <input type="text" value="{{viewLeasse.telephone1}}"disabled>-->
+            </div>
+            <div class="min_right adin">
+		<label style="float:none !important;">Email</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewLeasse.email}}</p>
+            <!--  <label>Email</label>
+		
+              <input type="text" value="{{viewLeasse.email}}"disabled>-->
+            </div>
+          </div>
+        </div>
+        <!--parties right end here-->
+        
+        <!--Transaction Dates-->
+        
+        <div class="dates number">
+          <h4>Transaction Dates</h4>
+          <div class="main_srn num">
+            <div class="col-sn-1">
+              <label>Date of Execution</label>
+              <input type="text" value="{{viewDRB.execution_date}}"disabled>
+            </div>
+            <div class="col-sn-1 num">
+              <label>Date of Receipt</label>
+              <input type="text" value="{{viewDRB.receipt_date}}"disabled>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Party Registering -->
+        <div class="dates reg">
+          <h4>Party Registering</h4>
+          <div class="main_srn">
+            <div class="col-sn-1 sant">
+              <label>Name</label>
+              <input type="text" value="{{viewPr.first_name}} {{viewPr.middle_name}} {{viewPr.last_name}}"disabled>
+              <div class="regstor">
+                <div class="regstor_in">
+                  <label>NIN</label>
+                  <input type="text" value="{{viewPr.nin}}"disabled>
+                </div>
+                <div class="regstor_r">
+                  <label>Date of Birth</label>
+                  <input type="text" value="{{viewPr.dob}}"disabled>
+                </div>
+              </div>
+            </div>
+            <div class="col-sn-1 sant tel">
+              <div class="regstor">
+                <div class="regstor_in tel_in">
+		<label style="float:none !important;margin-left:8px !important;">Address</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;">{{viewPr.address}}</p>
+
+                 <!-- <label>Address</label>
+                  <input type="text" value="{{viewPr.address}}"disabled>-->
+                </div>
+                <div class="regstor_r tel_in">
+		<label style="float:none !important;">Tel1</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewPr.telephone1}}</p>
+
+                 <!-- <label>Tel1</label>
+                  <input type="text" value="{{viewPr.telephone1}}"disabled>-->
+                </div>
+                <div class="regstor_r tel_in">
+		<label style="float:none !important;">Tel2</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewPr.telephone2}}</p>
+
+                 <!-- <label>Tel2</label>
+                  <input type="text" value="{{viewPr.telephone2}}"disabled>-->
+                </div>
+                <div class="regstor_r tel_in">
+		<label style="float:none !important;">Email</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewPr.email}}</p>	
+                 <!-- <label>Email</label>
+                  <input type="text" value="{{viewPr.email}}"disabled>-->
+                </div>
+              </div>
+            </div>
+            <div class="dates reg">
+              <h4>Recipient Information</h4>
+              <div class="main_srn recipient">
+                <div class="col-sn-1 sant pient">
+                  <label>Name</label>
+                  <input type="text" value="{{viewRP.first_name}} {{viewRP.middle_name}} {{viewRP.last_name}}"disabled>
+                  <div class="regstor">
+                    <div class="regstor_in">
+                      <label>NIN</label>
+                      <input type="text" value="{{viewRP.nin}}"disabled>
+                    </div>
+                    <div class="regstor_r">
+                      <label>Date of Birth</label>
+                      <input type="text" value="{{viewRP.dob}}"disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sn-1 sant tel pient">
+                  <div class="regstor">
+                    <div class="regstor_in tel_in senv">
+			<label style="float:none !important;margin-left:8px !important;">Address</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;">{{viewRP.address}}</p>
+
+                     <!-- <label>Address</label>
+                      <input type="text" value="{{viewRP.address}}"disabled>-->
+                    </div>
+                    <div class="regstor_r tel_in senv">
+	<label style="float:none !important;">Tel1</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewRP.telephone1}}</p>
+                      <!--<label>Tel1</label>
+                      <input type="text" value="{{viewRP.telephone1}}"disabled>-->
+                    </div>
+                    <div class="regstor_r tel_in senv">
+	<label style="float:none !important;">Email</label>
+		<p style="background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none!important;
+	border-radius: 5px!important;
+	box-sizing: border-box!important;
+	padding: 10px 14px!important;
+	width: 100%!important;word-wrap:break-word;">{{viewRP.email}}</p>
+                     <!-- <label>Email</label>
+                      <input type="text" value="{{viewRP.email}}"disabled>-->
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Party Registering end-->
+                
+              </div>
+              <div class="main_srn recipient recitp_right">
+                <div class="regstor_in right_tor">
+                  <label>Reciept Date</label>
+                  <input type="text" value="{{viewDRB.recipient_date}}"disabled>
+                </div>
+                <div class="regstor_in right_tor">
+                  <label>O.R. Number</label>
+                  <input type="text" value="{{viewDRB.or_number}}"disabled>
+                </div>
+                <div class="regstor_in right_tor">
+                  <label>Stamp Duty</label>
+                  <input type="text" value="{{viewDRB.stamp_duty}}" disabled>
+                </div>
+                
+              </div>
+            </div>
+            
+            <!-- Party Registering end-->
+            
+
+
+
+		<div class="dates reg">
+          <h4>Miscellaneous Notes</h4>
+          <div class="main_srn">
+            <div class="col-sn-1 sant">
+              <label>Notes</label>
+		<textarea class="new" disabled>{{viewDRB.note}}</textarea>
+
+             
+            
+              </div>
+            </div>
+
+
+
+
+
+
+
+          </div>
+        </div>
+        
+        <!-- Party Registering end-->
+        <button type="submit" class="btn green" style="margin-right:31px; float:right;" onclick="back();">Back</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+</div>
+
+
+<style>
+.new
+{
+background: #dce6f2 none repeat scroll 0 0;
+		  border: medium none;
+		  border-radius: 5px;
+		  box-sizing: border-box;
+		  padding: 10px 14px;
+		  width: 100%; height:100px;
+}
+body {
+	margin:0;
+	padding:0;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.container {
+	width:100%;
+	float:left;
+background:white;
+}
+.wrapper {
+	margin: auto;
+	width: auto;
+}
+.main {
+    border: 1px solid #385d8a;
+    float: left;
+    margin: 18px 0 23px;
+    padding: 15px;
+    width: 100%;
+}
+.head_top p {
+    color: black;
+    float: left;
+    font-size: 16px;
+    margin-right: 8%;
+}
+.head_top {
+	float: left;
+	width: 100%;
+}
+.head_top h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	margin: 0;
+	padding-bottom: 8px;
+	width: 100%;
+}
+.main_srn {
+	float: left;
+	margin-top: 3%;
+	width: 100%;
+}
+.col-sn-1 {
+	float: left;
+	margin-right: 3% !important;
+	width: 22%;
+}
+.col-sn-1 label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding: 2px 11px;
+}
+.main input {
+	background: #dce6f2 none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 10px 14px;
+	width: 100%;
+}
+.col-sn-1:last-child {
+	float: right;
+	margin: 0;
+}
+.parties {
+	float: left;
+	width: 100%;
+}
+.parties > h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	width: 100%;
+	padding-bottom: 8px;
+}
+.lessor {
+	float:left;
+}
+.lessor {
+	border: 2px solid #385d8a;
+	float: left;
+	width: 48%;
+}
+.lessor > p {
+    background: none repeat scroll 0 0 #dce6f2;
+    color: black;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px 13px;
+}
+.lessor_in > label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding-bottom: 1%;
+    width: 100%;
+}
+.lessor_in {
+	float: left;
+	padding: 0 13px;
+	width: 80%;
+}
+.lessor_in > input {
+	padding: 6px 14px;
+}
+.lessor_in.last {
+	margin-bottom: 2%;
+	margin-top: 4%;
+}
+.min_left {
+	float: left;
+	width: 40%;
+}
+.min_right {
+	float: right;
+	width: 40%;
+}
+.lessor_in.min.add {
+	box-sizing: border-box;
+	margin-top: 2%;
+	width: 100%;
+}
+.lessor_in.min.add {
+	padding: 0 4px;
+}
+.min_left.adin {
+	margin-bottom: 2%;
+	margin-right: 5%;
+	width: 30%;
+}
+.min_right.adin {
+	width: 30%;
+}
+.min_right.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.min_left.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.lessor.sor_right {
+	float: right;
+}
+.dates h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	  margin-top: 11px;
+	padding-bottom: 8px;
+	width: 100%;
+}
+.main_srn.num {
+	margin-left: 12%;
+	width: 76%;
+}
+.dates.reg > h4 {
+	margin-top: 2%;
+}
+.regstor_in {
+	float: left;
+	width: 45%;
+}
+.regstor_r {
+	float: right;
+	width: 45%;
+}
+.col-sn-1.sant {
+	float: left;
+	width: 35%;
+}
+.col-sn-1.sant.tel {
+	width: 60%;
+}
+.regstor_in.tel_in {
+	width: 26%;
+}
+.regstor_r.tel_in {
+	float: left;
+	margin: 0 3px;
+	width: 22%;
+}
+.main_srn.recipient {
+	width: 48%;
+}
+.col-sn-1.sant.pient {
+	width: 89%;
+}
+.regstor_in.tel_in.senv {
+	width: 30%;
+}
+.regstor_r.tel_in.senv {
+	margin-right: 0;
+	width: 33%;
+}
+.main_srn.recipient.recitp_right {
+	float: right;
+	width: 35%;
+}
+.regstor_in > label {
+color:black;
+	font-size: 16px;
+}
+.regstor_in.right_tor {
+	clear: both;
+	font-size: 15px;
+	margin-bottom: 5%;
+	text-align: center;
+}
+h4
+{
+font-weight:bold;
+color:black;
+}
+.min_left > label {
+    color: black;
+    font-size: 16px;
+}
+.min_right > label
+{
+color:black;
+	font-size: 16px;
+}
+.detail {
+    color: #e26a6a !important;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 13px;
+float:left;	
+    text-transform: uppercase;
+}
+@media print{
+ body {
+	margin:0 !important;
+	padding:0 !important;
+	font-family:Arial, Helvetica, sans-serif !important;
+width: 210mm!important;
+   
+}
+.container {
+	width:100%;
+	float:left;
+background:white !important;
+margin-left:-79px !important;
+width: 210mm!important;
+   
+}
+.wrapper {
+	margin: auto;
+	width: auto;
+width: 210mm!important;
+  
+}
+.main {
+    border: 1px solid #385d8a !important;
+    float: left;
+    margin: 0px 0 23px ;
+    padding: 15px;
+    width: 100%;
+width: 210mm!important;
+   
+}
+.head_top p {
+    color: black;
+    float: left;
+    font-size: 16px;
+    margin-right: 8%;
+}
+.head_top {
+	float: left;
+	width: 100%;
+}
+.head_top h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	margin: 0;
+	padding-bottom: 8px;
+	width: 100%;
+}
+.main_srn {
+	float: left;
+	margin-top: 0% !important;
+	width: 100%;
+}
+.col-sn-1 {
+	float: left;
+	margin-right: 17%;
+	width: 22%;
+}
+.col-sn-1 label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding: 2px 11px;
+}
+.main input {
+	background: #dce6f2 none repeat scroll 0 0 !important;
+	border: medium none;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 10px 14px;
+	width: 100%;
+}
+.col-sn-1:last-child {
+	float: right;
+	margin: 0;
+}
+.parties {
+	float: left;
+	width: 100%;
+	 margin-top: -14px !important;
+}
+.parties > h4 {
+	border-bottom: 1px solid #385d8a !important;
+	float: left;
+	width: 100%;
+	padding-bottom: 0px; !important;
+	margin-top:0px !important;
+}
+.lessor {
+	float:left;
+}
+.lessor {
+	border: 2px solid #385d8a;
+	float: left;
+	width: 48%;
+	 margin: -6px 0 0 !important;
+}
+.lessor > p {
+    background: none repeat scroll 0 0 #dce6f2 !important;
+    color: black;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px 13px;
+}
+.lessor_in > label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding-bottom: 0% !important;
+    width: 100%;
+}
+.lessor_in {
+	float: left;
+	padding: 0 13px;
+	width: 80%;
+	margin:0px !important;	
+}
+.lessor_in > input {
+	padding: 6px 14px;
+}
+.lessor_in.last {
+	margin-bottom: 0% !important;
+	margin-top: 0% !important;
+}
+.min_left {
+	float: left;
+	width: 40%;
+}
+.min_right {
+	float: right;
+	width: 40%;
+}
+.lessor_in.min.add {
+	box-sizing: border-box;
+	margin-top: 2%;
+	width: 100%;
+}
+.lessor_in.min.add {
+	padding: 0 4px;
+}
+.min_left.adin {
+	margin-bottom: 2%;
+	margin-right: 5%;
+	width: 30%;
+}
+.min_right.adin {
+	width: 30%;
+}
+.min_right.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.min_left.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.lessor.sor_right {
+	float: right;
+}
+.dates h4 {
+	border-bottom: 1px solid #385d8a !important;
+	float: left;
+	  margin-top: 0px !important;
+	padding-bottom: 0px !important;
+	width: 100%;
+}
+.main_srn.num {
+	margin-left: 12%;
+	width: 76%;
+}
+.dates.reg > h4 {
+	margin-top: 1% !important;
+}
+.regstor_in {
+	float: left;
+	width: 45%;
+}
+.regstor_r {
+	float: right;
+	width: 45%;
+}
+.col-sn-1.sant {
+	float: left;
+	width: 35%;
+}
+.col-sn-1.sant.tel {
+	width: 60%;
+}
+.regstor_in.tel_in {
+	width: 26%;
+}
+.regstor_r.tel_in {
+	float: left;
+	margin: 0 3px;
+	width: 22%;
+}
+.main_srn.recipient {
+	width: 48%;
+}
+.col-sn-1.sant.pient {
+	width: 89%;
+}
+.regstor_in.tel_in.senv {
+	width: 30%;
+}
+.regstor_r.tel_in.senv {
+	margin-right: 0;
+	width: 33%;
+}
+.main_srn.recipient.recitp_right {
+	float: right;
+	width: 35%;
+}
+.regstor_in > label {
+color:black;
+	font-size: 16px;
+}
+.regstor_in.right_tor {
+	clear: both;
+	font-size: 15px;
+	margin-bottom: 5%;
+	text-align: center;
+}
+h4
+{
+font-weight:bold;
+color:black;
+}
+.min_left > label {
+    color: black;
+    font-size: 16px;
+}
+.min_right > label
+{
+color:black;
+	font-size: 16px;
+}
+.detail {
+    color: #e26a6a !important;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 13px;
+float:left;	
+    text-transform: uppercase;
+}
+  .new
+{
+background: #dce6f2 none repeat scroll 0 0 !important;
+		  border: medium none;
+		  border-radius: 5px;
+		  box-sizing: border-box;
+		  padding: 10px 14px!important;
+		  width: 100%; 
+		height:100px!important;
+}
+.headP
+{
+display:none !important;
+}
+.page-header.navbar.navbar-fixed-top
+{
+display:none !important;
+}
+}
+</style>
+
+
+
+{% endblock%}

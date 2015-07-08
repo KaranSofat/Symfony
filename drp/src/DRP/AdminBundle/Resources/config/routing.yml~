@@ -1,0 +1,406 @@
+
+drp_adminLogin:
+    pattern:  /admin
+    defaults: { _controller: DRPAdminBundle:Admin:login }
+
+drp_adminLogins:
+    pattern:  /admin/
+    defaults: { _controller: DRPAdminBundle:Admin:login }
+
+drp_login:
+    pattern:  /admin/login
+    defaults: { _controller: DRPAdminBundle:Admin:login }
+
+
+drp_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: DRPAdminBundle:Admin:dashboard }
+
+drp_logout:
+    pattern:  /logout
+    defaults: { _controller: DRPAdminBundle:Admin:logout }
+
+drp_forgotPassword:
+    pattern:  /forgotPassword
+    defaults: { _controller: DRPAdminBundle:Admin:forgotPassword }
+
+drp_resetPassword:
+    pattern:  /resetPassword
+    defaults: { _controller: DRPAdminBundle:Admin:resetPassword }
+
+drp_users:
+    pattern:  /users
+    defaults: { _controller: DRPAdminBundle:Admin:showUsers }
+
+drp_deleteUser:
+    pattern:  /delete/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteUser }
+
+drp_editUser:
+    pattern:  /edit/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editUser }
+
+drp_addUser:
+    pattern:  /addUser
+    defaults: { _controller: DRPAdminBundle:Admin:addUser }
+    requirements:
+        _method:  GET|POST
+
+drp_showBusiness:
+    pattern:  /business
+    defaults: { _controller: DRPAdminBundle:Admin:showBusiness }
+
+drp_addCompany:
+    pattern:  /addCompany
+    defaults: { _controller: DRPAdminBundle:Admin:addCompany }
+    requirements:
+        _method:  GET|POST	
+
+drp_editCompany:
+    pattern:  /editCompany/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editCompany }
+
+drp_deleteCompany:
+    pattern:  /deleteCompany/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteCompany }
+
+drp_changeStatus:
+    pattern:  /changeStatus
+    defaults: { _controller: DRPAdminBundle:Admin:changeStatus }
+
+drp_showPlans:
+    pattern:  /showPlans
+    defaults: { _controller: DRPAdminBundle:Admin:showPlans }
+
+drp_editPlan:
+    pattern:  /editPlan/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editPlan }
+
+drp_addPlan:
+    pattern:  /addPlan
+    defaults: { _controller: DRPAdminBundle:Admin:addPlan }
+
+drp_deletePlan:
+    pattern:  /deletePlan/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deletePlan }
+
+drp_userProfile:
+    pattern:  /userProfile/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:userProfile }
+
+drp_viewCompany:
+    pattern:  /viewCompany/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewCompany }
+
+drp_viewPlan:
+    pattern:  /viewPlan/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewPlan }
+
+drp_adminProfile:
+    pattern:  /adminProfile/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:adminProfile }
+
+drp_adminSettings:
+    pattern:  /adminSettings/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:adminSettings }
+
+drp_updateAdminInfo:
+    pattern:  /updateAdminInfo
+    defaults: { _controller: DRPAdminBundle:Admin:updateAdminInfo }
+
+drp_updateAdminImage:
+    pattern:  /updateAdminImage
+    defaults: { _controller: DRPAdminBundle:Admin:updateAdminImage }
+
+drp_changePassword:
+    pattern:  /changePassword
+    defaults: { _controller: DRPAdminBundle:Admin:changePassword }
+
+drp_managePayments:
+    pattern:  /managePayments
+    defaults: { _controller: DRPAdminBundle:Admin:managePayments }
+
+drp_manageLogs:
+    pattern:  /manageLogs
+    defaults: { _controller: DRPAdminBundle:Admin:manageLogs }
+
+drp_searchQuota:
+    pattern:  /searchQuota
+    defaults: { _controller: DRPAdminBundle:Admin:searchQuota }
+
+drp_instrumentType:
+    pattern:  /instrumentType
+    defaults: { _controller: DRPAdminBundle:Admin:instrumentType }
+
+drp_businessType:
+    pattern:  /businessType
+    defaults: { _controller: DRPAdminBundle:Admin:businessType }
+
+drp_registrationType:
+    pattern:  /registrationType
+    defaults: { _controller: DRPAdminBundle:Admin:registrationType }
+    requirements:
+        _method:  GET|POST
+
+
+drp_editInstrument:
+    pattern:  /editInstrument/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editInstrument }
+
+drp_deleteInstrument:
+    pattern:  /deleteInstrument/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteInstrument }
+
+drp_addInstrument:
+    pattern:  /addInstrument
+    defaults: { _controller: DRPAdminBundle:Admin:addInstrument }
+
+drp_editBusinessType:
+    pattern:  /editBusinessType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editBusinessType }
+
+drp_addBusinessType:
+    pattern:  /addBusinessType
+    defaults: { _controller: DRPAdminBundle:Admin:addBusinessType }
+
+drp_deleteBusinessType:
+    pattern:  /deleteBusinessType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteBusinessType }
+
+drp_editRegistrationType:
+    pattern:  /editRegistrationType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editRegistrationType }
+
+drp_addRegistrationType:
+    pattern:  /addRegistrationType
+    defaults: { _controller: DRPAdminBundle:Admin:addRegistrationType }
+
+
+drp_editLeaseRegistrationType:
+    pattern:  /editLeaseRegistrationType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editLeaseRegistrationType }
+
+drp_addLeaseRegistrationType:
+    pattern:  /addLeaseRegistrationType
+    defaults: { _controller: DRPAdminBundle:Admin:addLeaseRegistrationType }
+
+
+drp_deleteRegistrationType:
+    pattern:  /deleteRegistrationType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteRegistrationType }
+
+
+drp_deleteLeaseRegistrationType:
+    pattern:  /deleteLeaseRegistrationType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteLeaseRegistrationType }
+
+
+drp_registration:
+    pattern:  /registration
+    defaults: { _controller: DRPAdminBundle:Admin:registration }
+    requirements:
+        _method:  GET|POST
+
+drp_properties:
+    pattern:  /properties
+    defaults: { _controller: DRPAdminBundle:Admin:manageProperties }
+
+drp_addDRB:
+    pattern:  /addDRB
+    defaults: { _controller: DRPAdminBundle:Admin:addDRB }
+
+drp_editDRB:
+    pattern:  /edtDRB/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editDRB }
+
+drp_deleteLease:
+    pattern:  /deleteLease/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteLease }
+
+drp_deleteDRB:
+    pattern:  /deleteDRB/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteDRB }
+
+drp_manageLease:
+    pattern:  /manageLease
+    defaults: { _controller: DRPAdminBundle:Admin:manageLease }
+
+
+drp_addLease:
+    pattern:  /addLease/
+    defaults: { _controller: DRPAdminBundle:Admin:addLease }
+
+
+drp_editLease:
+    pattern:  /editLease/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editLease }
+
+
+drp_checkEmail:
+    pattern:  /admin/checkEmail
+    defaults: { _controller: DRPAdminBundle:Admin:checkEmail }
+
+drp_deletePayment:
+    pattern:  /deletePayment/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deletePayment }
+
+
+drp_viewDRB:
+    pattern:  /viewDRB/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewDRB }
+
+
+drp_viewLease:
+    pattern:  /viewLease/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewLease }
+
+drp_showRegistrationType:
+    pattern:  /showRegistrationType
+    defaults: { _controller: DRPAdminBundle:Admin:showRegistrationType }
+
+drp_showLease:
+    pattern:  /lease/{code}/{number}
+    defaults: { _controller: DRPAdminBundle:Admin:properties }
+
+
+drp_showpdrb:
+    pattern:  /drb/{code}/{number}
+    defaults: { _controller: DRPAdminBundle:Admin:showpdrb }
+
+
+drp_referenceNumber:
+    pattern:  /referenceNumber
+    defaults: { _controller: DRPAdminBundle:Admin:genrateReferenceNumber }
+
+
+
+drp_getSerialNumber:
+    pattern:  /serialNumber
+    defaults: { _controller: DRPAdminBundle:Admin:getSerialNumber }
+
+
+drp_checkSerialNumber:
+    pattern:  /checkSerialNumber
+    defaults: { _controller: DRPAdminBundle:Admin:checkSerialNumber }
+
+drp_addSearches:
+    pattern:  /addSearches
+    defaults: { _controller: DRPAdminBundle:Admin:addSearches }
+
+
+drp_removeSearches:
+    pattern:  /removeSearches
+    defaults: { _controller: DRPAdminBundle:Admin:removeSearches }
+
+drp_deleteLogs:
+    pattern:  /deleteLogs/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteLogs }
+
+
+drp_admin:
+    pattern:  /manage/admin
+    defaults: { _controller: DRPAdminBundle:Admin:manageAdmin }
+
+drp_general:
+    pattern:  /manage/general
+    defaults: { _controller: DRPAdminBundle:Admin:manageGeneral }
+
+drp_addAdmin:
+    pattern:  /addAdmin
+    defaults: { _controller: DRPAdminBundle:Admin:addAdmin }
+
+drp_addGeneral:
+    pattern:  /addGeneral
+    defaults: { _controller: DRPAdminBundle:Admin:addGeneral }
+
+
+drp_deleteAdmin:
+    pattern:  /deleteAdmin/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteAdmin }
+
+drp_deleteGeneral:
+    pattern:  /deleteGeneral/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:deleteGeneral }
+
+
+
+drp_editGeneral:
+    pattern:  /editGeneral/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editGeneral }
+
+drp_viewGeneral:
+    pattern:  /viewGeneral/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewGeneral }
+
+drp_viewAdmin:
+    pattern:  /viewAdmin/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewAdmin }
+
+drp_leaseRegistrationType:
+    pattern:  /leaseRegistrationType
+    defaults: { _controller: DRPAdminBundle:Admin:leaseRegistrationType }
+
+drp_editAdmin:
+    pattern:  /admin/editAdmin/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:editAdmin }
+
+drp_viewDetail:
+    pattern:  /admin/viewDetail/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewDetail }
+
+
+drp_genratePdfLease:
+    pattern:  /genratePdfLease/{code}
+    defaults: { _controller: DRPAdminBundle:Admin:genratePdfLease }
+
+
+drp_genratePdfDRB:
+    pattern:  /genratePdfDRB/{code}
+    defaults: { _controller: DRPAdminBundle:Admin:genratePdfDRB }
+
+
+drp_genrateSerialNumbers:
+    pattern:  /genrateSerialNumber/
+    defaults: { _controller: DRPAdminBundle:Admin:genrateSerialNumber }
+
+
+drp_charts:
+    pattern:  /charts/
+    defaults: { _controller: DRPAdminBundle:Admin:charts }
+
+
+drp_totalSearchesByUser:
+    pattern:  /totalSearchesByUser/
+    defaults: { _controller: DRPAdminBundle:Admin:getUsersSearches }
+
+
+drp_viewInstrument:
+    pattern:  /viewInstrument/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewInstrument }
+
+
+drp_viewBusinessType:
+    pattern:  /viewBusinessType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewBusinessType }
+
+drp_viewDRBType:
+    pattern:  /viewDRBType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewDRBType }
+
+drp_viewLeaseType:
+    pattern:  /viewLeaseType/{id}
+    defaults: { _controller: DRPAdminBundle:Admin:viewLeaseType }
+
+
+drp_importData:
+    pattern:  /importData/
+    defaults: { _controller: DRPAdminBundle:Admin:viewLeaseType }
+
+
+
+
+
+
+
+
+

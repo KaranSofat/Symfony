@@ -1,0 +1,7 @@
+parameters:
+#    drp_registrar_general.example.class: DRP\RegistrarGeneralBundle\Example
+
+services:
+#    drp_registrar_general.example:
+#        class: %drp_registrar_general.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

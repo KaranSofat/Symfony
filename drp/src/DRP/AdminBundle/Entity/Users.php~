@@ -1,0 +1,116 @@
+<?php
+namespace Admin\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="drp_user")
+ */
+class User
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    public $id;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $first_name;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $middle_name;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $last_name;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $email;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $username;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $password;
+
+     /**
+     * @ORM\Column(type="string")
+     */
+    public $nin;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $tin;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $passcode;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $telephone1;
+      /**
+     * @ORM\Column(type="string")
+     */
+    public $telephone2;
+       /**
+     * @ORM\Column(type="integer")
+     */
+    public $picture;
+       /**
+     * @ORM\Column(type="string")
+     */
+    public $business_id;
+
+       /**
+     * @ORM\Column(type="integer")
+     */
+    public $type;
+      /**
+     * @ORM\Column(type="integer")
+     */
+    public $status;
+
+      /**
+     * @ORM\Column(type="integer")
+     */
+    public $creator_id;
+         /**
+     * @ORM\Column(type="datetime")
+     */
+    public $creation_datetime;
+        /**
+     * @ORM\Column(type="string")
+     */
+    public $modifier_id;
+
+        /**
+     * @ORM\Column(type="datetime")
+     */
+    public $modification_datetime;
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

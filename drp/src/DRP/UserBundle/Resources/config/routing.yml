@@ -1,0 +1,220 @@
+
+user_home:
+    pattern:  /
+    defaults: { _controller: DRPUserBundle:User:login }
+
+user_userLogins:
+    pattern:  /user/
+    defaults: { _controller: DRPUserBundle:User:login }
+
+
+user_userLogin:
+    pattern:  /user
+    defaults: { _controller: DRPUserBundle:User:login }
+
+user_logout:
+    pattern:  /user/logout
+    defaults: { _controller: DRPUserBundle:User:logout }
+
+user_dashboard:
+    pattern:  /user/dashboard
+    defaults: { _controller: DRPUserBundle:User:dashboard }
+
+user_registration:
+    pattern:  /user/registration
+    defaults: { _controller: DRPUserBundle:User:registration }
+
+user_plan:
+    pattern:  /user/myPlan
+    defaults: { _controller: DRPUserBundle:User:userPlan }
+
+user_changePlan:
+    pattern:  /user/changePlan
+    defaults: { _controller: DRPUserBundle:User:changePlan }
+
+
+user_planDetail:
+    pattern:  /user/planDetail
+    defaults: { _controller: DRPUserBundle:User:planDetail }
+
+
+user_renewPlan:
+    pattern:  /user/renew
+    defaults: { _controller: DRPUserBundle:User:renewPlan }
+
+
+user_mySearches:
+    pattern:  /user/dashboard/statistics
+    defaults: { _controller: DRPUserBundle:User:mySearches }
+
+
+user_printRegistration:
+    pattern:  /user/printRegistration
+    defaults: { _controller: DRPUserBundle:User:printRegistration }
+
+
+user_printRenewPlan:
+    pattern:  /user/printRenewPlan
+    defaults: { _controller: DRPUserBundle:User:printRenewPlan }
+
+
+user_printChangePlan:
+    pattern:  /user/printChangePlan
+    defaults: { _controller: DRPUserBundle:User:printChangePlan }
+
+
+user_checkEmail:
+    pattern:  /user/checkEmail
+    defaults: { _controller: DRPUserBundle:User:checkEmailExistance }
+
+
+
+user_showRegistrationType:
+    pattern:  /user/showRegistrationType
+    defaults: { _controller: DRPUserBundle:User:showRegistrationType }
+
+
+user_searchLease:
+    pattern:  /lease/search/{code}
+    defaults: { _controller: DRPUserBundle:User:searchLease }
+
+
+
+user_searchDrb:
+    pattern:  /drb/search/{code}
+    defaults: { _controller: DRPUserBundle:User:searchDrb }
+
+
+user_resultLease:
+    pattern:  /lease/search
+    defaults: { _controller: DRPUserBundle:User:resultLease }
+
+
+user_resultDRB:
+    pattern:  /drb/search
+    defaults: { _controller: DRPUserBundle:User:resultDRB }
+
+user_userProfile:
+    pattern:  /user/userProfile/{id}
+    defaults: { _controller: DRPUserBundle:User:userProfile }
+
+user_userSettings:
+    pattern:  /userSettings/{id}
+    defaults: { _controller: DRPUserBundle:User:userSettings }
+
+
+user_updateUserInfo:
+    pattern:  /user/updateUserInfo
+    defaults: { _controller: DRPUserBundle:User:updateUserInfo }
+
+user_updateUserImage:
+    pattern:  /user/updateUserImage
+    defaults: { _controller: DRPUserBundle:User:updateUserImage }
+
+user_changePassword:
+    pattern:  /user/changePassword
+    defaults: { _controller: DRPUserBundle:User:changePassword }
+
+user_viewDetailLease:
+    pattern:  /user/viewDetailLease/{id}
+    defaults: { _controller: DRPUserBundle:User:viewDetailLease }
+
+user_viewDetailDRB:
+    pattern:  /user/viewDetailDRB/{id}
+    defaults: { _controller: DRPUserBundle:User:viewDetailDRB }
+
+user_searchLeaseHistory:
+    pattern:  /user/searchLeaseHistory
+    defaults: { _controller: DRPUserBundle:User:searchLeaseHistory }
+
+
+user_searchDRBHistory:
+    pattern:  /user/searchDRBHistory
+    defaults: { _controller: DRPUserBundle:User:searchDRBHistory }
+
+
+user_genrateLeaseHistory:
+    pattern:  /user/genrateLeaseHistory
+    defaults: { _controller: DRPUserBundle:User:genrateLeaseHistory }
+
+
+user_genrateDRBHistory:
+    pattern:  /user/genrateDRBHistory
+    defaults: { _controller: DRPUserBundle:User:genrateDRBHistory }
+
+user_forgotPassword:
+    pattern:  /user/forgotPassword
+    defaults: { _controller: DRPUserBundle:User:forgotPassword }
+
+user_resetPassword:
+    pattern:  /user/resetPassword
+    defaults: { _controller: DRPUserBundle:User:resetPassword }
+
+user_logs:
+    pattern:  /user/logs
+    defaults: { _controller: DRPUserBundle:User:userLogs }
+
+user_userLeaseDocuments:
+    pattern:  /user/userLeaseDocuments
+    defaults: { _controller: DRPUserBundle:User:userLeaseDocuments }
+
+user_userDRBDocuments:
+    pattern:  /user/userDRBDocuments
+    defaults: { _controller: DRPUserBundle:User:userDRBDocuments }
+
+
+user_emailAlert:
+    pattern:  /user/emailAlert
+    defaults: { _controller: DRPUserBundle:Cron:emailAlert }
+
+user_searchesLeft:
+    pattern:  /user/searchesLeft
+    defaults: { _controller: DRPUserBundle:User:searchesLeft }
+
+user_emptySearches:
+    pattern:  /user/emptySearches
+    defaults: { _controller: DRPUserBundle:User:emptySearches }
+
+
+user_searchCount:
+    pattern:  /user/searchCount
+    defaults: { _controller: DRPUserBundle:User:searchCount }
+
+user_transaction:
+    pattern:  /User/transaction
+    defaults: { _controller: DRPUserBundle:User:transactionReports }
+
+
+user_transactionDetail:
+    pattern:  /User/detail{id}
+    defaults: { _controller: DRPUserBundle:User:viewTransactionDetail }
+
+
+user_result:
+    pattern:  /User/result
+    defaults: { _controller: DRPUserBundle:User:result }
+
+
+user_globalDRB:
+    pattern:  /User/globalDRB
+    defaults: { _controller: DRPUserBundle:User:globalDRB }
+
+
+user_globalLease:
+    pattern:  /User/globalLease
+    defaults: { _controller: DRPUserBundle:User:globalLease }
+
+
+user_resultGlobalLease:
+    pattern:  /User/result/globalLease
+    defaults: { _controller: DRPUserBundle:User:resultGlobalLease }
+
+
+user_resultGlobalDRB:
+    pattern:  /User/result/globalDRB
+    defaults: { _controller: DRPUserBundle:User:resultGlobalDRB }
+
+
+
+
+

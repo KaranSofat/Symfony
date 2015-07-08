@@ -1,0 +1,214 @@
+{% extends 'DRPAdminBundle::layout_dashboard.html.twig' %}
+
+{% block body %}
+
+<div class="page-content-wrapper">
+		<div class="page-content">
+			
+
+
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+		
+		
+		<div class="row profile">
+				<div class="col-md-12">
+					<!--BEGIN TABS-->
+					<div class="tabbable-line tabbable-full-width">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#tab_1_1" data-toggle="tab" aria-expanded="true">
+								Overview </a>
+							</li>						
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab_1_1">
+								<div class="row">
+									<div class="col-md-3">
+										<ul class="list-unstyled profile-nav">
+											<li>
+												
+													 				    
+{% if viewCompany.picture %}
+		<img src="{{ asset([gbl_upload_path_user, viewCompany.picture]|join) }}">
+		{% else %}
+			<img src="{{  asset('images/user_default.jpeg') }}">
+		{% endif %}									  
+											
+												
+											</li>
+											
+										</ul>
+									</div>
+									
+									
+										<div class="col-md-9">
+										<div class="row">
+											<div class="col-md-8 profile-info"> 
+												<h1>{{viewCompany.name|default ("N.A")}}    </h1>  
+												<p>
+														
+												{{viewCompany.description|default ("N.A")}} 													    
+													  
+												</p>
+												
+												<ul class="list-inline">
+													<li>
+														<i class="fa fa-map-marker"></i> 
+													</li>
+													<li>
+														<i class="fa-automobile"></i> 
+													</li>
+													<li>
+														<i class="fa fa-briefcase"></i> 
+													</li>
+													<li>
+														<i class="fa fa-star"></i> 
+													</li>
+													<li>
+														<i class="fa fa-heart"></i> 
+													</li>
+												</ul>
+											</div>
+											<!--end col-md-8-->
+										
+										</div>
+										<!--end row-->
+										<div class="tabbable-line tabbable-custom-profile">
+											<!--<ul class="nav nav-tabs">
+												<li class="active">
+													<a href="#tab_1_11" data-toggle="tab" aria-expanded="true">
+													Latest Customers </a>
+												</li>
+												<li class="">
+													<a href="#tab_1_22" data-toggle="tab" aria-expanded="false">
+													Feeds </a>
+												</li>
+											</ul>-->
+											<div class="tab-content">
+												<div class="tab-pane active" id="tab_1_11">
+													<div class="portlet-body">
+														<table class="table table-striped table-bordered table-advance table-hover">
+														<thead>
+														<tr>
+															<th>
+																<i class="fa fa-briefcase"></i> Name
+															</th>
+															
+															<th>
+																<i class="fa fa-automobile"></i> Email
+															</th>
+															<th>
+																<i class="fa fa-space-shuttle"></i> TIN
+															</th>
+															<th>
+																<i class="fa fa-tachometer"></i> Telephone1
+															</th>
+															<th>
+																<i class="fa fa-search"></i> Telephone2
+															</th>
+															
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td>
+																<a href="javascript:;">{{viewCompany.name|default("N.A")}}
+															</a>
+															</td>
+															
+															<td>
+																{{viewCompany.email|default ("N.A")}}
+															</td>
+															<td>
+																{{viewCompany.tin|default ("N.A")}}
+															</td>
+															<td>
+															{{viewCompany.telephone1|default ("N.A")}}	
+															</td>
+															
+														<td>
+{{viewCompany.telephone2|default ("N.A")}}	
+
+</td>
+															
+														</tr>
+																												
+														</tbody>
+														</table>
+													</div>
+												</div>
+												<!--tab-pane-->
+											
+											</div>
+										</div>
+									</div>
+								
+									
+							
+								</div>
+<div class="form-actions">
+												<div class="row">
+													<div class="col-md-offset-3 col-md-9">
+														
+														
+<button type="submit" class="btn green" style="margin-right:31px; float:right;">Back</button>
+													</div>
+												</div>
+							</div>
+							<!--tab_1_2-->
+							<!--end tab-pane-->
+
+							</div>
+
+					</div>
+					
+				</div>
+			</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</div>
+	</div>
+	<!-- END CONTENT -->
+			
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock%}

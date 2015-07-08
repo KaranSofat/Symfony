@@ -1,0 +1,14 @@
+{% extends 'DRPAdminBundle::layout.html.twig' %}
+
+{% block body %}
+<div class="content">
+	<div class="resetPassword" style="margin: 24px 0 0;line-height:20px;">
+		<p>Your are Succesfully registered with DRP<br>
+		Your new Password is sent to your email.<br>Click here for <a href="{{ path("admin_admin_login") }}">login</a></p>
+				
+	</div>
+</div>
+
+
+
+{% endblock %}

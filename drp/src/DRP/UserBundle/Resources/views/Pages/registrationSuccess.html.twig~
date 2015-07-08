@@ -1,0 +1,24 @@
+{% extends 'DRPAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+<script>
+function printForm()
+{
+
+window.print();
+}
+</script>
+
+
+<div class="content" style="width:92%; height:50%;">
+	
+<p>You have Succesfully Registered With us.Please Click here for <a href ="{{ path('user_login') }}">login</a>.</p>
+
+</div>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,445 @@
+
+{% extends 'DRPRegistrarAdminBundle::layout_registrarAdmin_dash.html.twig' %}
+
+{% block body %}
+<script>
+
+function addDocuments(id)
+{
+	var currentUrl = document.URL;
+	$.ajax({
+	   		 url: '{{ path("registrarGeneral_setCurrentUrlInSession") }}',
+	   		 type: 'POST',
+	   		 data: {currentUrl:currentUrl},
+	   		 success:function(success)
+	   		 {
+				window.location.href = '{{ path("registrarAdmin_addDocuments") }}?code='+id;
+	   		 }
+	   	});
+
+}
+
+function getCsv()
+{
+var tab_text="<table><tr bgcolor='#87AFC6'>";
+    var textRange; var j=0;
+    tab = document.getElementById('sample_editable_1'); // id of table
+
+    for(j = 0 ; j < tab.rows.length ; j++) 
+    {     
+        tab_text=tab_text+tab.rows[j].innerHTML+'<tr>';
+       
+    }
+
+ /*  tab_text=tab_text;
+    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params*/
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE "); 
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+    {
+        txtArea1.document.open("txt/html","replace");
+        txtArea1.document.write(tab_text);
+        txtArea1.document.close();
+        txtArea1.focus(); 
+        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+    }  
+    else                 //other browser not tested on IE 11
+        sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+    return (sa);
+}
+
+</script>
+<script>
+
+function printThis()
+{
+window.print()
+}
+
+function addLease(id)
+{
+	
+	window.location.href = '{{ path("registrarAdmin_addLease") }}?code='+id;
+}
+
+</script>
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN PAGE HEADER-->
+			<!-- BEGIN PAGE HEAD -->
+			<div class="page-head">
+				<!-- BEGIN PAGE TITLE -->
+				<!--<div class="page-title">
+					<h1>Manage Users <small></small></h1>
+				</div>-->
+				<!-- END PAGE TITLE -->
+				<!-- BEGIN PAGE TOOLBAR -->
+				<div class="page-toolbar">
+					<!-- BEGIN THEME PANEL -->
+					<!--<div class="btn-group btn-theme-panel">
+						<a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-settings"></i>
+						</a>
+						<div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<h3>THEME</h3>
+									<ul class="theme-colors">
+										<li class="theme-color theme-color-default active" data-theme="default">
+											<span class="theme-color-view"></span>
+											<span class="theme-color-name">Dark Header</span>
+										</li>
+										<li class="theme-color theme-color-light" data-theme="light">
+											<span class="theme-color-view"></span>
+											<span class="theme-color-name">Light Header</span>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-12 seperator">
+									<h3>LAYOUT</h3>
+									<ul class="theme-settings">
+										<li>
+											 Theme Style
+											<select class="layout-style-option form-control input-small input-sm">
+												<option value="square" selected="selected">Square corners</option>
+												<option value="rounded">Rounded corners</option>
+											</select>
+										</li>
+										<li>
+											 Layout
+											<select class="layout-option form-control input-small input-sm">
+												<option value="fluid" selected="selected">Fluid</option>
+												<option value="boxed">Boxed</option>
+											</select>
+										</li>
+										<li>
+											 Header
+											<select class="page-header-option form-control input-small input-sm">
+												<option value="fixed" selected="selected">Fixed</option>
+												<option value="default">Default</option>
+											</select>
+										</li>
+										<li>
+											 Top Dropdowns
+											<select class="page-header-top-dropdown-style-option form-control input-small input-sm">
+												<option value="light">Light</option>
+												<option value="dark" selected="selected">Dark</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Mode
+											<select class="sidebar-option form-control input-small input-sm">
+												<option value="fixed">Fixed</option>
+												<option value="default" selected="selected">Default</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Menu
+											<select class="sidebar-menu-option form-control input-small input-sm">
+												<option value="accordion" selected="selected">Accordion</option>
+												<option value="hover">Hover</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Position
+											<select class="sidebar-pos-option form-control input-small input-sm">
+												<option value="left" selected="selected">Left</option>
+												<option value="right">Right</option>
+											</select>
+										</li>
+										<li>
+											 Footer
+											<select class="page-footer-option form-control input-small input-sm">
+												<option value="fixed">Fixed</option>
+												<option value="default" selected="selected">Default</option>
+											</select>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>-->
+					<!-- END THEME PANEL -->
+				</div>
+				<!-- END PAGE TOOLBAR -->
+			</div>
+			<!-- END PAGE HEAD -->
+			<!-- BEGIN PAGE BREADCRUMB -->
+			<!--<ul class="page-breadcrumb breadcrumb">
+				<li>
+					<a href="index.html">Home</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Data Tables</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Editable Datatables</a>
+				</li>
+			</ul>-->
+			<!-- END PAGE BREADCRUMB -->
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-edit"></i>Manage Lease
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="btn-group">
+											<button  class="btn green" id="{{b}}" onclick="addLease(this.id)">
+											Add New <i class="fa fa-plus"></i>
+											</button>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="btn-group pull-right">
+											<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+											</button>
+											<ul class="dropdown-menu pull-right">
+												<li>
+													<a href="javascript:;" onclick="printThis()">
+													Print </a>
+												</li>
+												<li>
+													<a href="{{ path('registrarAdmin_genratePdfLease',{ 'code': b}) }}">
+													Save as PDF </a>
+												</li>
+												<li>
+													<a href="#" onclick="getCsv()">
+													Export to Excel </a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+							<thead>
+							<tr class="table_color">
+							
+								
+								<th>
+									SR. Number
+								</th>
+								
+								<th>
+									 L.O.M.P
+								</th>
+								<!--<th>
+									Registrar General's inititials
+								</th>-->
+								<th>
+									Lessor
+								</th>
+								<th>
+									Lessee 
+								</th>
+
+								<th>
+									Date of Execution
+								</th>
+
+								<th>
+									 Date of Receipt
+								</th>
+
+
+								<th>
+									Situation of Land
+								</th>
+
+								<th>
+									Party Registering 
+								</th>
+
+								<th>
+									Recipient 
+								</th>
+								<th>
+									O. R Number
+								</th>
+								<th>
+									Documents
+								</th>
+								<th>
+									Status
+								</th>
+
+
+								<th class="pdf_Action">Actions</th>	
+					
+							</tr>
+							</thead>
+							<tbody>
+						{% for detailDRB in properties %}
+							<tr>
+								
+								
+								<td style="font-weight:bold;">
+									 {{detailDRB.serial_number}}
+								</td>
+								<td>
+									 {{detailDRB.lomp}}
+									
+								</td>
+							<td>
+									 {{detailDRB.lessorFN}}  {{detailDRB.lessorLN}}	<br>
+										{{detailDRB.lessorNin}}	
+									 
+								</td>
+<td>
+									{{detailDRB.lesseeFN}} {{detailDRB.lesseeLN}}<br>
+										{{detailDRB.lesseeNin}}	
+										
+								</td>
+<td>
+									 {{detailDRB.execution_date}}
+								</td>
+<td>
+									 {{detailDRB.receipt_date}}
+								</td>
+<td>
+									 {{detailDRB.land_situation}}
+								</td>
+<td>
+									 {{detailDRB.partyRegistringFN}} {{detailDRB.partyRegistringLN}}<br>
+ {{detailDRB.partyRegistringNin}}
+								</td>
+<td>
+									{{detailDRB.recipientFN}} {{detailDRB.recipientLN}}<br>{{detailDRB.recipientNin}}
+								</td>
+
+
+  							       
+								<td>
+									 {{detailDRB.or_number}}
+								</td>
+
+<td>
+<button  class="btn green" onclick="addDocuments({{detailDRB.id}})"  title="Add Document">
+											Add 
+											</button>
+
+</td>
+
+
+{% if detailDRB.status == 0   %}
+									<td>  
+									<span class="label label-sm label-danger status">Pending</span>
+										</td>
+										</td>
+							  	{% else %}
+									{% if detailDRB.status == 1   %}
+										<td >  
+											<span class="label label-sm label-info status">Approved</span>
+										</td>
+									{% else %}
+										<td>  
+											<span class="label label-sm label-danger status">Retain</span>
+										</td>
+									{% endif %}
+								{% endif %}
+
+
+
+							<td class="pdf_Action">
+			<a  href="{{ path('registrarAdmin_viewLease',{ 'id': detailDRB.id }) }}"  title="View">
+									<i class="fa fa-eye"></i>  </a>|
+								<a  href="{{ path('registrarAdmin_editLease',{ 'id': detailDRB.id}) }}?code={{b}}"  title="Edit">
+									<i class=" fa fa-pencil"></i> </a>|<a  onclick="showDeleteBox('{{ path('registrarAdmin_deleteLease',{ 'id': detailDRB.id }) }}')" title="Delete">
+									<i class="fa fa-times "></i> </a>
+							</td>
+								
+								
+							</tr>
+							{% endfor %}
+							
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<style>
+.table_color
+{
+ background: none repeat scroll 0 0 #4270c4;
+    color: white;
+}
+
+@media print {
+   .row
+{
+width: 121% !important;
+
+}
+.col-md-6 {
+  width: 50% !important;
+  display: none !important;
+}
+.col-md-7 {
+
+display: none !important;
+}
+.table-scrollable {
+  width: 100%;
+  overflow-x: visible !important;
+  overflow-y: none !important;
+  border: 1px solid #dddddd;
+  margin: 10px 0 !important;
+}
+}
+</style>
+{% endblock%}

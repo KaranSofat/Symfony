@@ -1,0 +1,820 @@
+{% extends 'DRPUserBundle::layout.html.twig' %}
+
+{% block body %}
+
+<script>
+function form()
+{
+	$('#showForm').css("width","86%");
+}
+function backButton()
+{
+	$('#showForm').css("width","400px");
+}
+function submit()
+{
+document.getElementById("submit_form").submit();	
+}
+
+function checkEmail(email)
+{
+	
+	$.ajax({
+               url : '{{ path("user_checkEmail") }}',
+                type:'POST',
+                data:'email='+email,
+                dataType:'html',   
+                success:function(data){
+			alert(data);
+
+                 	if(data == 'SUCCESS')
+			{
+				var data = 'Email Exists'				
+				$('#emailExists').html(data);
+				$('a').attr( 'disabled', 'true' );
+							
+			}
+			else
+			{
+
+				$('#emailExists').html('');
+				$('a').attr( 'disabled', false );
+			}
+                 
+}
+            });
+
+}
+
+
+function forgotPassword()
+{
+var email = $("#email").val();	
+	$.ajax({
+               	url : '{{ path("user_forgotPassword") }}',
+                type:'POST',
+                data:'email='+email,
+                dataType:'html',   
+                success:function(data){
+                 	if(data == 'SUCCESS')
+			{
+				window.location.href ='{{ path('user_resetPassword') }}';	          	
+			}
+			else
+			{
+				var data = 'Invalid Email'
+				$('#error').html(data);
+		            	document.getElementById('error').style.color = 'red';
+			}
+                 
+}
+            });
+}
+function showimagepreview(input) 
+		{
+			if (input.files && input.files[0]) 
+			{
+				var filerdr = new FileReader();
+				filerdr.onload = function(e) 
+				{
+					$('#imgprvw').attr('src', e.target.result);
+				}
+				filerdr.readAsDataURL(input.files[0]);
+			}
+					
+
+
+		}
+</script>
+
+
+<!-- BEGIN LOGIN -->
+<div class="content" id="showForm">
+	<!-- BEGIN LOGIN FORM -->
+	<form class="login-form" action="" method="post">
+		<h3 class="form-title">Sign In</h3>
+		<div class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			<span>
+			Enter any username and password.</span>
+		</div>
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">Username </label>
+			<input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Password</label>
+			<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
+		</div>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-success uppercase">Login</button>
+			<label class="rememberme check">
+			<input type="checkbox" name="remember" value="1"/>Remember </label>
+			<a href="javascript:;" id="forget-password" class="forget-password">Forgot Password? </a>
+		</div>
+		<!--<div class="login-options">
+			<h4>Or login with</h4>
+			<ul class="social-icons">
+				<li>
+					<a class="social-icon-color facebook" data-original-title="facebook" href="javascript:;"></a>
+				</li>
+				<li>
+					<a class="social-icon-color twitter" data-original-title="Twitter" href="javascript:;"></a>
+				</li>
+				<li>
+					<a class="social-icon-color googleplus" data-original-title="Goole Plus" href="javascript:;"></a>
+				</li>
+				<li>
+					<a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
+				</li>
+			</ul>
+					
+
+		</div>-->
+		{% if name is defined %}
+				<p style="color:red;">{{name}}</p>
+
+			{% endif %}
+
+		<div class="create-account">
+			<p>
+				<a href="javascript:;" id="register-btn" class="uppercase" onclick="form()">Create an account</a>
+			</p>
+			
+
+		</div>
+	</form>
+	<!-- END LOGIN FORM -->
+	<!-- BEGIN FORGOT PASSWORD FORM -->
+	<form class="forget-form" action="index.html" method="post">
+		<h3>Forget Password ?</h3>
+		<p>
+			 Enter your e-mail address below to reset your password.
+		</p>
+		<div class="form-group">
+			<input class="form-control placeholder-no-fix" type="email" id="email" autocomplete="off" placeholder="Email" name="email" required/>
+		</div>
+		<div class="form-actions">
+			<button type="button" id="back-btn" class="btn btn-default">Back</button>
+			<button type="button" class="btn btn-success uppercase pull-right" onclick="forgotPassword()">Submit</button>
+		</div>
+		<div id="error"></div>
+	</form>
+	<!-- END FORGOT PASSWORD FORM -->
+	<!-- BEGIN REGISTRATION FORM -->
+	<div id="regForm" class="register-form">
+		
+	
+<div class="page-content-wrapper" >
+			
+				<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+				<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title">Modal title</h4>
+							</div>
+							<div class="modal-body">
+								 Widget settings form goes here
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn blue">Save changes</button>
+								<button type="button" class="btn default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+				<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+				<!-- BEGIN STYLE CUSTOMIZER -->
+				
+				<h3 class="page-title">
+				Registration <small></small>
+				</h3>
+				<div class="page-bar">
+					
+					<div class="page-toolbar">
+						<div class="btn-group pull-right">
+							<!--<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+							Actions <i class="fa fa-angle-down"></i>
+							</button>
+							<ul class="dropdown-menu pull-right" role="menu">
+								<li>
+									<a href="#">Action</a>
+								</li>
+								<li>
+									<a href="#">Another action</a>
+								</li>
+								<li>
+									<a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="#">Separated link</a>
+								</li>
+							</ul>-->
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="portlet box blue" id="form_wizard_1">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-gift"></i> Registration - <span class="step-title">
+									Step 1 of 5 </span>
+								</div>
+								<div class="tools hidden-xs">
+									<a href="javascript:;" class="collapse">
+									</a>
+									<a href="#portlet-config" data-toggle="modal" class="config">
+									</a>
+									<a href="javascript:;" class="reload">
+									</a>
+									<a href="javascript:;" class="remove">
+									</a>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<form action="{{ path('user_registration') }}" class="form-horizontal" id="submit_form" method="POST" enctype="multipart/form-data">
+									<div class="form-wizard">
+										<div class="form-body">
+											<ul class="nav nav-pills nav-justified steps">
+												<li>
+													<a href="#tab1" data-toggle="tab" class="step">
+													<span class="number">
+													1 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> General Information </span>
+													</a>
+												</li>
+												<li>
+													<a href="#tab2" data-toggle="tab" class="step">
+													<span class="number">
+													2 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Company Information</span>
+													</a>
+												</li>
+												<li>
+													<a href="#tab3" data-toggle="tab" class="step active">
+													<span class="number">
+													3 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i>Plan Information</span>
+													</a>
+												</li>
+
+
+
+
+
+
+												<li>
+													<a href="#tab4" data-toggle="tab" class="step">
+													<span class="number">
+													4 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Confirm </span>
+													</a>
+												</li>
+
+
+
+
+											</ul>
+											<div id="bar" class="progress progress-striped" role="progressbar">
+												<div class="progress-bar progress-bar-success">
+												</div>
+											</div>
+											<div class="tab-content">
+												<div class="alert alert-danger display-none">
+													<button class="close" data-dismiss="alert"></button>
+													You have some form errors. Please check below.
+												</div>
+												<div class="alert alert-success display-none">
+													<button class="close" data-dismiss="alert"></button>
+													Your form validation is successful!
+												</div>
+												<div class="tab-pane active" id="tab1">
+													<!--<h3 class="block">Provide your account details</h3>-->
+													<div class="form-group">
+														<label class="control-label col-md-3">First Name <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input   type ="text"class="form-control"  name="firstname" placeholder="First Name">
+															<span class="help-block">
+															Provide your first name </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Middle Name 
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="middlename" placeholder="Middle Name">
+															<span class="help-block">
+															Provide your middle name. </span>
+														</div>
+													</div>
+
+
+											<div class="form-group">
+														<label class="control-label col-md-3">Last Name <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="lastname" placeholder="Last Name">
+															<span class="help-block">
+															Provide your last name. </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Password <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															
+															<input type="password" class="form-control" name="password" placeholder="Password" id="submit_form_password">
+															<span class="help-block">
+															Provide your password. </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Confirm Password <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+														<input type="password" class="form-control" placeholder="Re-type Your Password" name='rpassword'>
+															<span class="help-block">
+															Please confirm your password. </span>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Email <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+														<input type="text" class="form-control" placeholder="Email" name='email' onkeyup="checkEmail(this.value)">
+<div id="emailExists" style="color:red;"></div>
+
+															<span class="help-block">
+															Provide your email. </span>
+														</div>
+													</div>
+
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Image <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<img  id="imgprvw" alt="" style="height:50%;width:50%;"/>
+														
+															<input type="file" class="form-control file_size" name="image" placeholder="Image" onchange="showimagepreview(this)" id="filUpload" style="hei">
+															<span class="help-block">
+															Provide your image. </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														
+														<div class="col-md-4">
+															
+															
+														</div>
+													</div>
+
+
+
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone1 <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="tel1" placeholder="Telephone1">
+															<span class="help-block">
+															Provide your telephone1. </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone2 
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="tel2" placeholder="Telephone2">
+															<span class="help-block">
+															Provide your telephone2. </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">NIN <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="nin" placeholder="Nin">
+															<span class="help-block">
+															Provide your NIN. </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">TIN <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="tin" placeholder="Tin">
+															<span class="help-block">
+															Provide your TIN. </span>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+
+
+
+										
+												</div>
+												<div class="tab-pane" id="tab2">
+													<h3 class="block">Company Information </h3>
+													
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Company Name <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input   type ="text"class="form-control"  name="name" placeholder="Company Name">
+															<span class="help-block">
+															Provide your company name </span>
+														</div>
+													</div>
+
+<!--<div class="form-group">
+														<label class="control-label col-md-3"> Description <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<textarea  class="form-control" name="description" placeholder="Description" style="width:312px; height:80px;"></textarea>
+															<span class="help-block">
+															Provide your description </span>
+														</div>
+													</div>-->
+
+<div class="form-group">
+														<label class="control-label col-md-3"> Type of Business 
+														</label>
+														<div class="col-md-4">
+			<select name="business"  class="form-control">
+			<option value="">Select..</option>
+			{% for business in businessType %}
+			
+			<option value="{{business.id}}">{{business.type}}</option>
+			{% endfor %}
+
+</select>															
+
+
+
+
+															<span class="help-block">
+															Select type of business </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3"> Email <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="emailCompany" placeholder="Email">
+															<span class="help-block">
+															Provide your address </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3"> Address <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="address" placeholder="Address">
+															<span class="help-block">
+															Provide your address </span>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3"> TIN <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="tinCompany" placeholder="Tin">
+															<span class="help-block">
+															Provide your TIN </span>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3"> Telephone1 <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="tel1Company" placeholder="Telephone1">
+															<span class="help-block">
+															Provide your  Telephone1 </span>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3"> Telephone2 <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" placeholder="Telephone2" name="tel2Company">
+															<span class="help-block">
+															Provide your Telephone2 </span>
+														</div>
+													</div>
+
+
+
+
+
+												</div>
+												<div class="tab-pane" id="tab3">
+												<h3 class="block">Plan Information</h3>
+
+				<div class="form-group">
+													<label class="control-label col-md-3">Plan <span class="required" aria-required="true">
+													* </span>
+													</label>
+
+
+													<div class="col-md-4">
+														<div class="radio-list">
+															
+
+{%for planDetail in plans %}
+<label>
+															<div class="radio"><span class="checked"><input type="radio"  value="{{planDetail.id}}" name="plan" data-title="{{planDetail.name}}"/></span></div>
+															{{planDetail.name}} (Price: ${{planDetail.price}}) (Searches: {{planDetail.searches}})</label>{% endfor %}
+															
+														</div>
+														<div id="form_gender_error">
+														</div>
+													</div>
+
+
+												</div>
+
+
+
+
+
+
+													<div class="form-group">
+														
+														<div class="col-md-4">
+															
+															<div id="form_payment_error">
+															</div>
+														</div>
+													</div>
+												</div>
+
+
+
+												<div class="tab-pane" id="tab4">
+													<h3 class="block">Confirm your account</h3>
+													<h4 class="form-section">General Information</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="firstname">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="middlename">
+															</p>
+														</div>
+													</div>
+													
+													<div class="form-group">
+														<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lastname">
+															</p>
+														</div>
+													</div>
+
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="email">
+															</p>
+														</div>
+													</div>
+													
+													<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="nin">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">TIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tin">
+															</p>
+														</div>
+													</div>
+<h4 class="form-section">Company Information</h4>
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Company Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="name">
+															</p>
+														</div>
+													</div>
+				
+													<div class="form-group">
+														<label class="control-label col-md-3">Type of Business:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="business">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="emailCompany">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="address">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1Company">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2Company">
+															</p>
+														</div>
+													</div>
+
+<h4 class="form-section">Plan Information</h4>
+<div class="form-group">
+														<label class="control-label col-md-3">Plan:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="plan">
+															</p>
+														</div>
+													</div>
+
+
+
+
+												</div>
+											</div>
+										</div>
+										<div class="form-actions" style="background: none repeat scroll 0 0 rgba(0, 0, 0, 0);">
+											<div class="row">
+												<div class="col-md-offset-3 col-md-9">
+													<a href="javascript:;" class="btn default button-previous" style="margin-bottom:22px;">
+													<i class="m-icon-swapleft"></i> Back </a>
+													<a href="javascript:;" style="margin-bottom:22px;" class="btn blue button-next">
+													Continue <i class="m-icon-swapright m-icon-white"></i>
+													</a>
+<button type="button" id="register-back-btn" class="btn btn green" style=" margin-bottom: 22px;
+    width: 88px;" onclick="backButton()">Cancel</button>
+
+
+
+
+
+													<a onclick="submit()" class="btn green button-submit" style="margin-bottom:22px;">
+													Submit <i class="m-icon-swapright m-icon-white"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+	<!-- END REGISTRATION FORM -->
+</div>
+<div class="copyright">
+	  DRP © {{ "now"|date("Y") }}. All rights resevered.
+</div>
+<style>
+.file_size
+{
+margin-bottom: 20px;
+    margin-top: 30px;
+    padding: 2px 2px 36px;
+}
+.page-content-wrapper .page-content {
+    margin-left: 0px !important;
+    margin-top: 0;
+    min-height: 600px;
+    padding: 25px 20px 10px;
+}
+.desc
+{
+width:200px !important;
+}
+/*label div.radio {
+    margin-top: 12px !important;
+}*/
+
+.radio > span {
+    margin-left: -6px;
+   margin-top: -1px !important;
+}
+</style>
+
+{% endblock %}

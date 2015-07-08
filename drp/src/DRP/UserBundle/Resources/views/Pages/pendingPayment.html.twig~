@@ -1,0 +1,35 @@
+{% extends 'DRPUserBundle::layout_user_dash.html.twig' %}
+
+{% block body %}
+<div class="page-content-wrapper">
+		<div class="page-content">
+<div class="portlet light">
+
+
+<div id="option2" style="display: block; position: absolute; float: left; background-color: rgba(0, 0, 0, 0.798039); zoom: 1; z-index: 10; width: 100%; height: 100%; top: -76px; left: 0px; opacity: 1; min-height: 1050px; z-index: 33333333; text-align: center; ">
+
+
+
+            <div style="display: inline-block; background-color: white; border-radius: 10px 10px 10px 10px; border: 2px solid; z-index: 1111; position: relative; width: 50%; padding: 20px; top: 110px;">
+<img src ="{{asset('images/user.png')}}" style="width:30px; float:left;"/>
+<hr>
+
+<p>Hi {{app.session.get('name')}}, Your Registration is completed,But your payment is Incomplete.Please go to the Registrar General to complete your payment.</p>
+ Click Here for <a href ="{{ path('user_logout') }}">Log Out</a>              
+
+</div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+					
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,3609 @@
+
+{% extends 'DRPAdminBundle::layout_dashboard.html.twig' %}
+
+{% block body %}
+
+
+
+
+ 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp.&sensor=false&.js"></script>
+
+<script>
+
+function initialize() {
+  var myLatlng = new google.maps.LatLng(13.422055,-15.3198853);
+  var mapOptions = {
+    zoom: 8,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+var fx = google.maps.InfoWindow.prototype.setContent;
+
+
+          //override the built-in setContent-method
+          google.maps.InfoWindow.prototype.setContent = function (content) {
+              //argument is a node
+              if (content.querySelector) {
+
+                  //search for the address
+                  var addr = content.querySelector('.gm-basicinfo .gm-addr');
+
+                  if (addr) {
+
+                     
+			$("#location").val(addr.textContent);
+
+                  }
+              }
+              //run the original setContent-method
+              fx.apply(this, arguments);
+          };
+
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Gambia'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+  <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>-->
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp.&sensor=false&.js"></script>
+   
+ <!--<script>
+
+
+function initialize() {
+
+  var markers = [];
+  var map = new google.maps.Map(document.getElementById('map_canvas'), {
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+ var fx = google.maps.InfoWindow.prototype.setContent;
+
+
+          //override the built-in setContent-method
+          google.maps.InfoWindow.prototype.setContent = function (content) {
+              //argument is a node
+              if (content.querySelector) {
+
+                  //search for the address
+                  var addr = content.querySelector('.gm-basicinfo .gm-addr');
+
+                  if (addr) {
+
+                     
+			$("#location").val(addr.textContent);
+
+                  }
+              }
+              //run the original setContent-method
+              fx.apply(this, arguments);
+          };
+  var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-33.8902, 151.1759),
+      new google.maps.LatLng(-33.8474, 151.2631));
+  map.fitBounds(defaultBounds);
+
+  // Create the search box and link it to the UI element.
+  var input = /** @type {HTMLInputElement} */(
+      document.getElementById('pac-input'));
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  var searchBox = new google.maps.places.SearchBox(
+    /** @type {HTMLInputElement} */(input));
+
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects an item from the
+  // pick list. Retrieve the matching places for that item.
+  google.maps.event.addListener(searchBox, 'places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    for (var i = 0, marker; marker = markers[i]; i++) {
+      marker.setMap(null);
+    }
+
+    // For each place, get the icon, place name, and location.
+    markers = [];
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0, place; place = places[i]; i++) {
+      var image = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      var marker = new google.maps.Marker({
+        map: map,
+        icon: image,
+        title: place.name,
+        position: place.geometry.location
+
+      });
+
+      markers.push(marker);
+
+      bounds.extend(place.geometry.location);
+    }
+
+    map.fitBounds(bounds);
+  });
+  // [END region_getplaces]
+
+  // Bias the SearchBox results towards places that are within the bounds of the
+  // current map's viewport.
+  google.maps.event.addListener(map, 'bounds_changed', function() {
+    var bounds = map.getBounds();
+    searchBox.setBounds(bounds);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>-->
+ <!--<script>
+// This example adds a search box to a map, using the Google Place Autocomplete
+// feature. People can enter geographical searches. The search box will return a
+// pick list containing a mix of places and predicted search terms.
+
+function initialize() {
+
+  var markers = [];
+  var map = new google.maps.Map(document.getElementById('map_canvas'), {
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+ var fx = google.maps.InfoWindow.prototype.setContent;
+
+
+          //override the built-in setContent-method
+          google.maps.InfoWindow.prototype.setContent = function (content) {
+              //argument is a node
+              if (content.querySelector) {
+
+                  //search for the address
+                  var addr = content.querySelector('.gm-basicinfo .gm-addr');
+
+                  if (addr) {
+
+                     
+			$("#location").val(addr.textContent);
+
+                  }
+              }
+              //run the original setContent-method
+              fx.apply(this, arguments);
+          };
+  var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-33.8902, 151.1759),
+      new google.maps.LatLng(-33.8474, 151.2631));
+  map.fitBounds(defaultBounds);
+
+  // Create the search box and link it to the UI element.
+  var input = /** @type {HTMLInputElement} */(
+      document.getElementById('pac-input'));
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  var searchBox = new google.maps.places.SearchBox(
+    /** @type {HTMLInputElement} */(input));
+
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects an item from the
+  // pick list. Retrieve the matching places for that item.
+  google.maps.event.addListener(searchBox, 'places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    for (var i = 0, marker; marker = markers[i]; i++) {
+      marker.setMap(null);
+    }
+
+    // For each place, get the icon, place name, and location.
+    markers = [];
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0, place; place = places[i]; i++) {
+      var image = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      var marker = new google.maps.Marker({
+        map: map,
+        icon: image,
+        title: place.name,
+        position: place.geometry.location
+      });
+
+      markers.push(marker);
+
+      bounds.extend(place.geometry.location);
+    }
+
+    map.fitBounds(bounds);
+  });
+  // [END region_getplaces]
+
+  // Bias the SearchBox results towards places that are within the bounds of the
+  // current map's viewport.
+  google.maps.event.addListener(map, 'bounds_changed', function() {
+    var bounds = map.getBounds();
+    searchBox.setBounds(bounds);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>-->
+
+
+<script>
+
+
+
+	$(document).ready(function()
+	{
+		var url = document.URL;
+		var arrUrl = url.split("=")
+		var code  = arrUrl[1];		
+	$.ajax({
+               	url : '{{ path("drp_referenceNumber") }}',
+                type:'POST',
+                data:{'code':code},
+                //dataType:'html',   
+                success:function(data){
+		$("#regNumber").val(data);
+		$("#hidRegNumber").val(data);
+		$("#regNumber").attr('disabled',true);
+                 	
+}
+            });
+});
+function showUsers()
+{
+
+	window.location.href = "{{ path('drp_manageLease') }}";
+}
+function submit()
+{
+
+	document.getElementById("submit_form").submit();	 
+}
+function showLessor()
+{
+	$("#formval1").val();
+	$("#form2Lessor").show();
+	$("#firstbuttonLessor").hide();
+	$("#secondbuttonLessor").show();
+	$("#firstRemoveLessor").show();	
+	
+	//$(".drb").show();
+}
+function hideLessor()
+{
+	$("#form2Lessor").hide();
+	$("#firstbuttonLessor").show();
+	$("#secondbuttonLessor").hide();
+	$("#firstRemoveLessor").hide();
+}
+function showLessor2()
+{
+	$("#form3Lessor").show();
+	$("#secondbuttonLessor").hide();
+	$("#firstRemoveLessor").hide();	
+	$("#secondRemoveLessor").show();
+}
+function hideFormsLessor()
+{
+	$("#form3Lessor").hide();
+	$("#secondbuttonLessor").show();
+	$("#firstRemoveLessor").show();
+	$("#secondRemoveLessor").hide();	
+	
+	
+}
+/*=========Lessee Starts here========*/
+function showLessee()
+{
+	
+	$("#form2Lessee").show();
+	$("#firstbuttonLessee").hide();
+	$("#secondbuttonLessee").show();
+	$("#firstRemoveLessee").show();	
+	
+	//$(".drb").show();
+}
+function hideLessee()
+{
+	$("#form2Lessee").hide();
+	$("#firstbuttonLessee").show();
+	$("#secondbuttonLessee").hide();
+	$("#firstRemoveLessee").hide();
+}
+function showLessee2()
+{
+	$("#form3Lessee").show();
+	$("#secondbuttonLessee").hide();
+	$("#firstRemoveLessee").hide();	
+	$("#secondRemoveLessee").show();
+}
+function hideFormsLessee()
+{
+	$("#form3Lessee").hide();
+	$("#secondbuttonLessee").show();
+	$("#secondRemoveLessee").hide();	
+	$("#firstRemoveLessee").show();
+	
+}
+
+
+</script>
+
+
+<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+				<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title">Modal title</h4>
+							</div>
+							<div class="modal-body">
+								 Widget settings form goes here
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn blue">Save changes</button>
+								<button type="button" class="btn default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+				<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+				<!-- BEGIN STYLE CUSTOMIZER -->
+				
+				
+				<div class="page-bar">
+					
+					<div class="page-toolbar">
+						<div class="btn-group pull-right">
+							
+						</div>
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="portlet box blue" id="form_wizard_1">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-gift"></i>Registering {{getType.type}} - <span class="step-title">
+									Step 1 of 5 </span>
+								</div>
+								<div class="tools hidden-xs">
+									<a href="javascript:;" class="collapse">
+									</a>
+									<a href="#portlet-config" data-toggle="modal" class="config">
+									</a>
+									<a href="javascript:;" class="reload">
+									</a>
+									<a href="javascript:;" class="remove">
+									</a>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<form action="#" class="form-horizontal" id="submit_form" method="POST">
+									<div class="form-wizard">
+										<div class="form-body">
+											<ul class="nav nav-pills nav-justified steps">
+												<li>
+													<a href="#tab1" data-toggle="tab" class="step">
+													<span class="number">
+													1 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Registration Number </span>
+													</a>
+												</li>
+												<li>
+													<a href="#tab2" data-toggle="tab" class="step">
+													<span class="number">
+													2 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Parties Involved </span>
+													</a>
+												</li>
+<li>
+													<a href="#tab6" data-toggle="tab" class="step">
+													<span class="number">
+													3 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Transaction Dates </span>
+													</a>
+												</li>
+
+
+
+
+
+												<li>
+													<a href="#tab3" data-toggle="tab" class="step active">
+													<span class="number">
+													4 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Party Registering </span>
+													</a>
+												</li>
+
+
+<li>
+													<a href="#tab5" data-toggle="tab" class="step">
+													<span class="number">
+													5 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Receipt Information </span>
+													</a>
+												</li>
+
+
+<li>
+													<a href="#tab7" data-toggle="tab" class="step">
+													<span class="number">
+													6 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Miscellaneous Notes </span>
+													</a>
+												</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+												<li>
+													<a href="#tab4" data-toggle="tab" class="step">
+													<span class="number">
+													7 </span>
+													<span class="desc">
+													<i class="fa fa-check"></i> Confirm </span>
+													</a>
+												</li>
+
+
+
+
+											</ul>
+											<div id="bar" class="progress progress-striped" role="progressbar">
+												<div class="progress-bar progress-bar-success">
+												</div>
+											</div>
+											<div class="tab-content">
+												<div class="alert alert-danger display-none">
+													<button class="close" data-dismiss="alert"></button>
+													You have some form errors. Please check below.
+												</div>
+												<div class="alert alert-success display-none">
+													<button class="close" data-dismiss="alert"></button>
+													Your form validation is successful!
+												</div>
+												<div class="tab-pane active" id="tab1">
+													<!--<h3 class="block">Provide your account details</h3>-->
+				
+
+
+									<div class="form-group">
+														<label class="control-label col-md-3">Serial Number <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="regNumber" id="regNumber"/>
+<input type="hidden" id="hidRegNumber" name="hidRegNumber">
+															<!--<span class="help-block">
+															Provide your Serial number </span>-->
+														</div>
+													</div>
+
+
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">L.O.M.P <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="lomp"/>
+														<!--	<span class="help-block">
+															Provide your lomp. </span>-->
+														</div>
+													</div>
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Situation of Land <span class="required">
+														* </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="sof" id="location">
+															<!--<span class="help-block">
+															Provide your Situation of Land. </span>-->
+														</div>
+
+  <div id="map_canvas" ></div>
+													</div>
+
+
+
+
+
+
+													
+
+													
+												</div>
+												<div class="tab-pane" id="tab2">
+													<h3 class="block">Parties Involved </h3>
+													
+<h4 class="block" style="font-weight:bold">Lessor: </h4>
+
+
+	<div class="row">
+
+<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="company" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstname">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlename">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastname">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="nin">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dob" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="address">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="email">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+
+
+
+
+
+
+
+
+
+
+
+													<!--<div class="col-md-6">
+					
+									<div class="form-group">
+
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Company Name" name="company">
+
+
+															</div>
+														</div>
+													</div>
+
+
+
+
+													<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstname">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlename">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastname">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="nin">
+															</div>
+														</div>
+	
+												</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dob">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="address">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="email">
+															</div>
+														</div>
+
+
+
+
+
+													</div>-->
+
+</div>
+<input type="button" class="btn green" value="Add More" onclick="showLessor()" id="firstbuttonLessor" style="float:right;
+    margin-right: 32px;">
+
+
+
+<!---new Form-->
+<div class="row" style="display:none" id="form2Lessor">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="company1" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstname1">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlename1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastname1">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="nin1">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dob1" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="address1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel11">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel21">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="email1">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+<div style="float:right; width: 22%;">
+<input type="button" class="btn green" value="Add More" onclick="showLessor2()" id="secondbuttonLessor" style="display:none">
+<input type="button" class="btn green" value="Remove" onclick="hideLessor()" id="firstRemoveLessor" style="display:none">
+
+</div>
+
+
+
+<div class="row" style="display:none" id="form3Lessor">
+														<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="company2" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstname2">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlename2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastname2">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="nin2">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dob2" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="address2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel12">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel22">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="email2">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+
+<input type="button" class="btn green" value="Remove" onclick="hideFormsLessor()" id="secondRemoveLessor" style="display:none;float:right;margin-right:32px;">
+
+													
+
+
+<h4 class="block" style="font-weight:bold">Lessee: </h4>
+
+
+	<div class="row">
+
+														<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="Lcompany" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="Lfirstname">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="Lmiddlename">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="Llastname">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="Lnin">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="Ldob" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="Laddress">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="Ltel1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="Ltel2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="Lemail">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+<input type="button" class="btn green" value="Add More" onclick="showLessee()" id="firstbuttonLessee" style="  float: right;
+    margin-right: 32px;">		
+													
+
+<!---New form2-->
+
+<!---new Form-->
+<div class="row" style="display:none" id="form2Lessee">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companyL1" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnameL1">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenameL1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnameL1">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninL1">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobL1" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressL1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1L1">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2L1">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailL1">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+<div style="float:right; width: 22%;">
+<input type="button" class="btn green" value="Add More" onclick="showLessee2()" id="secondbuttonLessee" style="display:none">
+<input type="button" class="btn green" value="Remove" onclick="hideLessee()" id="firstRemoveLessee" style="display:none">
+
+
+
+</div>
+
+
+
+<div class="row" style="display:none" id="form3Lessee">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companyL2" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnameL2">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenameL2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnameL2">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninL2">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobL2" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressL2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1L2">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2L2">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailL2">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>
+
+<input type="button" class="btn green" value="Remove" onclick="hideFormsLessee()" id="secondRemoveLessee" style="display:none;margin-left:32px;float:right">
+
+
+
+
+													<div class="form-group">
+														
+													</div>
+												</div>
+
+<div class="tab-pane" id="tab6">
+
+<h3 class="block">Transaction Dates</h3>
+
+
+
+
+
+
+
+
+	<div class="row">
+
+
+
+<div class="form-group">
+										<label class="control-label col-md-3">Date of Execution <span class="required">
+										* </span></label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="doe" id="form_sample_3" placeholder="Date of Execution" >
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											<!--<span class="help-block">
+															Provide your date of execution. </span>-->
+										</div>
+
+
+
+</div>
+<div class="form-group">
+										<label class="control-label col-md-3" >Date of Reciept <span class="required">
+										* </span></label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="drp" placeholder="Date of Receipt">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											<!--<span class="help-block">
+															Provide your reciept. </span>-->
+										</div>
+</div>
+
+</div>
+
+
+													<div class="form-group">
+														
+														<div class="col-md-4">
+															
+															<div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+
+
+
+
+
+
+
+												<div class="tab-pane" id="tab3">
+													<h3 class="block">Party Registring</h3>
+
+
+
+
+
+
+
+	<div class="row">
+													<div class="col-md-9" style="height:60px !important; width:100%;">
+		<div class="form-group">
+													
+													<div class="col-md-9">
+														<input type="text" class="form-control" name="companynamePR" placeholder="Company Name" />
+														
+													</div>
+												</div>
+</div>
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnamePR">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenamePR">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnamePR">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninPR">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6" >
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobPR" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressPR">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1PR">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2PR">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailPR">
+															</div>
+														</div>
+
+
+
+
+
+													</div>
+
+												
+
+
+
+
+
+
+</div>		
+													
+													<div class="form-group">
+														
+														<div class="col-md-4">
+															
+															<div id="form_payment_error">
+															</div>
+														</div>
+													</div>
+												</div>
+
+<div class="tab-pane" id="tab7">
+
+													<h4 class="block" style="font-weight:bold;">Miscellaneous Notes</h4>
+
+<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+										<textarea name="notes" style="width:100%;height:34%;" placeholder="Type to note here..."></textarea>
+															</div>
+														</div>
+													
+
+
+
+
+
+</div>
+
+
+
+
+
+<div class="tab-pane" id="tab5">
+
+													<h4 class="block" style="font-weight:bold;">Recipient</h4>
+													
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+												
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">First Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+
+																<input type="text" class="form-control" placeholder="First Name" name="firstnameRP">
+															</div>
+														</div>
+													</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Middle Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Middle Name" name="middlenameRP">
+															</div>
+														</div>
+													</div>
+<div class="col-md-6">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Last Name <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Last Name" name="lastnameRP">
+															</div>
+														</div>
+													</div>
+
+
+
+<div class="sett">
+
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="NIN" name="ninRP">
+															</div>
+														</div>
+	
+												</div>
+
+<div class="col-md-6">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="dobRP" placeholder="Date of Birth">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+</div>
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Address <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Address" name="addressRP">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+														<!--	<label class="control-label col-md-3">Telephone1 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone1" name="tel1RP">
+															</div>
+														</div>
+													</div>
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Telephone2 <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Telephone2" name="tel2RP">
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+													<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Email" name="emailRP">
+															</div>
+														</div>
+
+
+
+</div>
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															
+															<div class="col-md-9">
+																<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="recipientDate" placeholder="Received Date">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="OR Number" name="or">
+															</div>
+														</div>
+
+
+
+</div>
+
+
+
+
+<div class="col-md-7">
+														<div class="form-group">
+															<!--<label class="control-label col-md-3">Email <span class="required">
+													* </span>
+													</label>-->
+															<div class="col-md-9">
+																<input type="text" class="form-control" placeholder="Stamp Duty" name="sd">
+															</div>
+														</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="form-group">
+										
+										<div class="col-md-4">
+											
+											
+										</div>
+</div>
+
+
+													
+												</div>
+
+													<div class="tab-pane" id="tab4">
+<h3 class="block">Confirm your account</h3>
+<div class="container">
+  <div class="wrapper">
+    <div class="main">
+      <div class="head_top">
+        <label>Type of registration: {{getType.type}}</label>
+        <!--<label style="margin-left:45px;">Registrar General: First name, last name</label>-->
+        <h4>Registration Info</h4>
+      </div>
+      <div class="main_srn">
+        <div class="col-sn-1">
+          <label>S. R. Number</label>
+         <p class="form-control-static" data-display="regNumber"></p>
+        </div>
+    
+        <div class="col-sn-1">
+          <label>L.O.M.P</label>
+          <p class="form-control-static" data-display="lomp"></p>
+        </div>
+	 <div class="col-sn-1">
+         <label style="float:none !important;">Situation of Land</label>
+          <p class="form-control-static" style="word-wrap:break-word;" data-display="sof"></p>
+        </div>
+      </div>
+      <!--parties start here-->
+      
+      <!--parties left start here-->
+      <div class="parties">
+        <h4>Parties Involved</h4>
+        <div class="lessor">
+          <p>Lessor</p>
+          <div class="lessor_in">
+            <label>Company</label>
+            <p class="form-control-static"  data-display="company"></p>
+          </div>
+          <div class="lessor_in last">
+            <label >Name</label>
+            <p class="form-control-static" data-display="firstname" style="float:left;width:auto"></p>
+	      <p class="form-control-static" data-display="lastname" style=" width: auto; margin-left: -10px; text-indent: -15px;"></span>		
+
+          </div>
+          <div class="lessor_in min">
+            <div class="min_left">
+              <label>NIN</label>
+               <p class="form-control-static" data-display="nin"></p>
+            </div>
+            <div class="min_right">
+              <label>Date of Birth</label>
+              <p class="form-control-static" data-display="dob"></p>
+            </div>
+          </div>
+          <div class="lessor_in min add">
+            <div class="min_left adin">
+              <label>Address</label>
+               <p class="form-control-static" style="word-wrap:break-word;" data-display="address"></p>
+            </div>
+            <div class="min_left adin">
+              <label>Tel1</label>
+             <p  class="form-control-static" style="word-wrap:break-word;" data-display="tel1"></p>
+            </div>
+            <div class="min_right adin">
+              <label>Email</label>
+              <p class="form-control-static" style="word-wrap:break-word;" data-display="email"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!--parties right start here-->
+        <div class="lessor sor_right">
+          <p>Lessee</p>
+          <div class="lessor_in">
+            <label>Company</label>
+             <p  class="form-control-static"data-display="Lcompany"></p>
+          </div>
+          <div class="lessor_in last">
+            <label>Name</label>
+           <p class="form-control-static" data-display="Lfirstname" style="width:auto;float:left;"></p>
+	     <p class="form-control-static" data-display="Llastname" style=" width: auto; margin-left: -10px; text-indent: -15px;"></span>	
+          </div>
+          <div class="lessor_in min">
+            <div class="min_left">
+              <label>NIN</label>
+               <p  class="form-control-static"data-display="Lnin"></p>
+            </div>
+            <div class="min_right">
+              <label>Date of Birth</label>
+             <p class="form-control-static" data-display="Ldob"></p>
+            </div>
+          </div>
+          <div class="lessor_in min add">
+            <div class="min_left adin">
+              <label>Address</label>
+             <p class="form-control-static" style="word-wrap:break-word;"  data-display="Laddress"></p>
+            </div>
+            <div class="min_left adin">
+              <label>Tel1</label>
+             <p class="form-control-static" style="word-wrap:break-word;" data-display="Ltel1"></p>
+            </div>
+            <div class="min_right adin">
+              <label>Email</label>
+             <p class="form-control-static" style="word-wrap:break-word;" data-display="Lemail"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!--parties right end here-->
+        
+        <!--Transaction Dates-->
+        
+        <div class="dates number">
+          <h4>Transaction Dates</h4>
+          <div class="main_srn num">
+            <div class="col-sn-1">
+              <label>Date of Execution</label>
+             <p  class="form-control-static"data-display="doe"></p>
+            </div>
+            <div class="col-sn-1 num">
+              <label>Date of Receipt</label>
+             <p class="form-control-static" data-display="drp"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Party Registering -->
+        
+        <div class="dates reg">
+          <h4>Party Registring</h4>
+          <div class="main_srn">
+            <div class="col-sn-1 sant">
+              <label>Name</label>
+             <p class="form-control-static"data-display="firstnamePR" style="float:left; width:auto;"></p>
+		 <p class="form-control-static" data-display="lastnamePR" style=" width: auto; margin-left: -10px; text-indent: -15px;"></span>	
+
+              <div class="regstor">
+                <div class="regstor_in">
+                  <label>NIN</label>
+                 <p  class="form-control-static"data-display="ninPR"></p>
+                </div>
+                <div class="regstor_r">
+                  <label>Date of Birth</label>
+                 <p  class="form-control-static"data-display="dobPR"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sn-1 sant tel">
+              <div class="regstor">
+                <div class="regstor_in tel_in">
+                  <label>Address</label>
+                 <p  class="form-control-static" style="word-wrap:break-word;" data-display="addressPR"></p>
+                </div>
+                <div class="regstor_r tel_in">
+                  <label>Tel1</label>
+                 <p  class="form-control-static" style="word-wrap:break-word;" data-display="tel1PR"></p>
+                </div>
+                <div class="regstor_r tel_in">
+                  <label>Tel2</label>
+                 <p  class="form-control-static" style="word-wrap:break-word;" data-display="tel2PR"></p>
+                </div>
+                <div class="regstor_r tel_in">
+                  <label>Email</label>
+                 <p class="form-control-static" style="word-wrap:break-word;"  data-display="emailPR"></p>
+                </div>
+              </div>
+            </div>
+            <div class="dates reg">
+              <h4>Recipient Information</h4>
+              <div class="main_srn recipient">
+		<label style="float:left;">Name</label>
+                 <p  class="form-control-static"data-display="firstnameRP" style=" float: left;
+    margin-left: -46px;
+    margin-top: 24px;
+    width: auto;"></p>
+		  <p  class="form-control-static"data-display="lastnameRP" style="float: left;
+    margin-left: -10px;
+    margin-top: 24px;
+    text-indent: -15px;
+    width: auto;"></span>	
+
+                <div class="col-sn-1 sant pient">
+                  
+                  <div class="regstor">
+                    <div class="regstor_in">
+                      <label>NIN</label>
+                     <p class="form-control-static" data-display="ninRP"></p>
+                    </div>
+                    <div class="regstor_r">
+                      <label>Date of Birth</label>
+                     <p class="form-control-static" data-display="dobRP"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sn-1 sant tel pient">
+                  <div class="regstor">
+                    <div class="regstor_in tel_in senv">
+                      <label>Address</label>
+                     <p class="form-control-static" style="word-wrap:break-word;" data-display="addressRP"></p>
+                    </div>
+                    <div class="regstor_r tel_in senv">
+                      <label>Tel1</label>
+                     <p  class="form-control-static" style="word-wrap:break-word;" data-display="tel1RP"></p>
+                    </div>
+                    <div class="regstor_r tel_in senv">
+                      <label>Email</label>
+                     <p class="form-control-static" style="word-wrap:break-word;" data-display="emailRP"></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Party Registering end-->
+                
+              </div>
+              <div class="main_srn recipient recitp_right">
+                <div class="regstor_in right_tor">
+                  <label>Reciept Date</label>
+                 <p class="form-control-static" data-display="recipientDate"></p>
+                </div>
+                <div class="regstor_in right_tor">
+                  <label>O.R. Number</label>
+                 <p  class="form-control-static"data-display="or"> </p>
+                </div>
+                <div class="regstor_in right_tor">
+                  <label>Stamp Duty</label>
+                 <p  class="form-control-static"data-display="sd"></p>
+                </div>
+                
+              </div>
+            </div>
+            
+            <div class="dates reg">
+          <h4>Miscellaneous Notes</h4>
+          <div class="main_srn">
+            <div class="col-sn-1 sant">
+              <label>Notes</label>
+		  <p  class="form-control-static" data-display="notes" style="height:100px;"></p>
+
+             
+            
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+        
+        <!-- Party Registering end-->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+												
+
+											<!--	<h3 class="block">Confirm your account</h3>
+													<h4 class="form-section">Registration Number</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3">Serial Number:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="regNumber">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">L.O.M.P:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lomp">
+															</p>
+														</div>
+													</div>
+
+		<div class="form-group">
+														<label class="control-label col-md-3">Situation of Land:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="sof">
+															</p>
+														</div>
+													</div>
+
+
+													<h4 class="form-section">Parties Involved</h4>
+<h4>Lessor</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3">Company:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="company">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="firstname">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="middlename">
+															</p>
+														</div>
+													</div>
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Company:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="company">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lastname">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="nin">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Date of Birth:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="dob">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="address">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2">
+															</p>
+														</div>
+													</div>
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="email">
+															</p>
+														</div>
+													</div>
+													
+													
+
+<h4>Lessee</h4>
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Company Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lcompany">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3"> First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lfirstname">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3"> Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lmiddlename">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3"> last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Llastname">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lnin">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Date of Birth:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Ldob">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Laddress">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Ltel1">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Ltel2">
+															</p>
+														</div>
+													</div>
+
+
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="Lemail">
+															</p>
+														</div>
+													</div>
+													
+													
+<h4 class="form-section">Transaction Dates:</h4>
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Date of Execution</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="doe">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Date of Reciept :</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="drp">
+															</p>
+														</div>
+													</div>
+<h4 class="form-section">Party Registring:</h4>
+
+
+													<div class="form-group">
+														<label class="control-label col-md-3">Company Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="companynamePR">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="firstnamePR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="middlenamePR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lastnamePR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="ninPR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">DOB:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="dobPR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="addressPR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1PR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2PR">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="emailPR">
+															</p>
+														</div>
+													</div>
+
+
+
+
+<h4>Recipient</h4>
+
+
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">First Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="firstnameRP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Middle Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="middlenameRP">
+															</p>
+														</div>
+													</div>
+
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Last Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="lastnameRP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">NIN:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="ninRP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Date of birth:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="dobRP">
+															</p>
+														</div>
+													</div>
+
+<div class="form-group">
+														<label class="control-label col-md-3">Address:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="addressRP">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone1:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel1RP">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">Telephone2:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="tel2RP">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Email:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="emailRP">
+															</p>
+														</div>
+													</div>
+
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Recipient Date:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="recipientDate">
+															</p>
+														</div>
+													</div>
+<div class="form-group">
+														<label class="control-label col-md-3">OR Number:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="or">
+															</p>
+														</div>
+													</div>
+
+
+<div class="form-group">
+														<label class="control-label col-md-3">Stamp Duty :</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="sd">
+															</p>
+														</div>
+													</div>-->
+
+
+
+
+
+
+												</div>
+											</div>
+										</div>
+
+
+
+
+
+
+
+
+
+
+										<div class="form-actions">
+											<div class="row" style="margin-top:16px; margin-left: 101px !important;">
+												<div class="col-md-offset-3 col-md-9">
+													<a href="javascript:;" class="btn default button-previous">
+													<i class="m-icon-swapleft"></i> Back </a>
+													<a href="javascript:;" class="btn blue button-next">
+													Continue <i class="m-icon-swapright m-icon-white"></i>
+													</a>
+													<a onclick="submit()" class="btn green button-submit">
+													Submit <i class="m-icon-swapright m-icon-white"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- EN
+
+
+
+
+
+
+
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN PAGE HEADER-->
+			<!-- BEGIN PAGE HEAD -->
+			<div class="page-head">
+				<!-- BEGIN PAGE TITLE -->
+				<div class="page-title">
+					<!--<h1>Add User</h1>-->
+				</div>
+				<!-- END PAGE TITLE -->
+				<!-- BEGIN PAGE TOOLBAR -->
+				<div class="page-toolbar">
+					
+					<!--<div class="btn-group btn-theme-panel">
+						<a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-settings"></i>
+						</a>
+						<div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<h3>THEME</h3>
+									<ul class="theme-colors">
+										<li class="theme-color theme-color-default active" data-theme="default">
+											<span class="theme-color-view"></span>
+											<span class="theme-color-name">Dark Header</span>
+										</li>
+										<li class="theme-color theme-color-light" data-theme="light">
+											<span class="theme-color-view"></span>
+											<span class="theme-color-name">Light Header</span>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-12 seperator">
+									<h3>LAYOUT</h3>
+									<ul class="theme-settings">
+										<li>
+											 Theme Style
+											<select class="layout-style-option form-control input-small input-sm">
+												<option value="square" selected="selected">Square corners</option>
+												<option value="rounded">Rounded corners</option>
+											</select>
+										</li>
+										<li>
+											 Layout
+											<select class="layout-option form-control input-small input-sm">
+												<option value="fluid" selected="selected">Fluid</option>
+												<option value="boxed">Boxed</option>
+											</select>
+										</li>
+										<li>
+											 Header
+											<select class="page-header-option form-control input-small input-sm">
+												<option value="fixed" selected="selected">Fixed</option>
+												<option value="default">Default</option>
+											</select>
+										</li>
+										<li>
+											 Top Dropdowns
+											<select class="page-header-top-dropdown-style-option form-control input-small input-sm">
+												<option value="light">Light</option>
+												<option value="dark" selected="selected">Dark</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Mode
+											<select class="sidebar-option form-control input-small input-sm">
+												<option value="fixed">Fixed</option>
+												<option value="default" selected="selected">Default</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Menu
+											<select class="sidebar-menu-option form-control input-small input-sm">
+												<option value="accordion" selected="selected">Accordion</option>
+												<option value="hover">Hover</option>
+											</select>
+										</li>
+										<li>
+											 Sidebar Position
+											<select class="sidebar-pos-option form-control input-small input-sm">
+												<option value="left" selected="selected">Left</option>
+												<option value="right">Right</option>
+											</select>
+										</li>
+										<li>
+											 Footer
+											<select class="page-footer-option form-control input-small input-sm">
+												<option value="fixed">Fixed</option>
+												<option value="default" selected="selected">Default</option>
+											</select>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>-->
+				<!-- END PAGE TOOLBAR -->
+			</div>
+			<!-- END PAGE HEAD -->
+			<!-- BEGIN PAGE BREADCRUMB -->
+			<!--<ul class="page-breadcrumb breadcrumb">
+				<li>
+					<a href="index.html">Home</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Form Stuff</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Form Layouts</a>
+				</li>
+			</ul>
+			<!-- END PAGE BREADCRUMB -->
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tabbable tabbable-custom tabbable-noborder tabbable-reversed">
+						<!--<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#tab_0" data-toggle="tab">
+								Form Actions </a>
+							</li>
+							<li>
+								<a href="#tab_1" data-toggle="tab">
+								2 Cols </a>
+							</li>
+							<li>
+								<a href="#tab_2" data-toggle="tab">
+								2 Cols Horizontal </a>
+							</li>
+							<li>
+								<a href="#tab_3" data-toggle="tab">
+								2 Cols View Only </a>
+							</li>
+							<li>
+								<a href="#tab_4" data-toggle="tab">
+								Row Seperated </a>
+							</li>
+							<li>
+								<a href="#tab_5" data-toggle="tab">
+								Bordered </a>
+							</li>
+							<li>
+								<a href="#tab_6" data-toggle="tab">
+								Row Stripped </a>
+							</li>
+							<li>
+								<a href="#tab_7" data-toggle="tab">
+								Label Stripped </a>
+							</li>
+						</ul>
+						
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="icon-equalizer font-red-sunglo"></i>
+											<span class="caption-subject font-red-sunglo bold uppercase">Add New Lease</span>
+										<span class="caption-helper">form actions without bg color</span>
+										</div>
+										<div class="actions">
+											<div class="portlet-input input-inline input-small">
+												<div class="input-icon right">
+													<i class="icon-magnifier"></i>
+													<input type="text" class="form-control input-circle" placeholder="search...">
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+<div class="form-group" style="margin-bottom:65px;">
+										<!--<label class="col-md-3 control-label">Type of Property:</label>
+										<div class="col-md-9">
+											<div class="radio-list">
+												<label class="radio-inline">
+												<div class="radio" id="uniform-optionsRadios25"><span><input type="radio"  value="option1" id="optionsRadios25" name="optionsRadios" onclick="showLease()" checked="checked"></span></div> Lease </label>
+												<label class="radio-inline">
+												<div class="radio" id="uniform-optionsRadios26"><span ><input type="radio" value="option2" id="optionsRadios26" name="optionsRadios" onclick="showdrb()"></span></div> DRB </label>
+												
+											</div>
+										</div>
+									</div>-->
+
+
+
+
+
+
+
+
+
+									<!--<div class="portlet-body form">
+										
+										<form action="#" class="form-horizontal" method="POST" id="form_sample_3">
+											<!--<div class="form-body">
+											<div class="form-group">
+										<label class="col-md-3 control-label">Type of Registration <span class="required">
+										* </span></label>
+										<div class="col-md-9">
+											<select class="form-control input-small" name="rtype">
+												
+												<option value="KD" >Kombo Deed</option>
+												
+												
+											</select>
+										</div>
+									</div>		
+
+	
+											
+
+
+
+<div class="form-group">
+										<label class="control-label col-md-3" >Date of Reciept <span class="required">
+										* </span></label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="drp">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											
+										</div>
+</div>
+
+
+										
+										
+									<div class="form-group">
+													<label class="col-md-3 control-label" >Situation of Land <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="sof" >
+														</div>
+													
+												</div>	
+
+
+
+
+
+
+<div class="form-group">
+										<label class="control-label col-md-3">Date of Execution <span class="required">
+										* </span></label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly  name="doe">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											
+										</div>
+</div>
+
+
+
+
+
+
+<div  class="drb">
+
+						
+											<!--	<div class="form-group drb">
+													<label class="col-md-3 control-label" id="lease">Grantor <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="grantor" >
+														
+													</div>
+												</div>
+								<div class="form-group drb">
+													<label class="col-md-3 control-label" id="lease">Grantee <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="grantee" >
+														
+													</div>
+												</div>
+
+
+<div class="form-group drb" id="lease">
+													<label class="col-md-3 control-label">Reference in Register <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="rir" >
+														
+													</div>
+												</div>
+
+
+<div class="form-body">
+											
+</div>
+
+
+
+
+
+									<div class="form-group">
+													<label class="col-md-3 control-label">Stamp Duty <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="sd">
+														
+													</div>
+												</div>	
+
+									<div class="form-group">
+													<label class="col-md-3 control-label">O. R number <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="or" >
+														
+													</div>
+												</div>	
+
+
+
+
+									<div class="form-group">
+													<label class="col-md-3 control-label">Recipient <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="recipient">
+														
+													</div>
+												</div>	
+
+
+
+
+<div class="form-group lease" id="lease">
+													<label class="col-md-3 control-label">L.O.M.P <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="
+text" class="form-control" id="lease" name="lomp">
+														
+													</div>
+												</div>	
+
+
+
+<div class="form-group lease" id="lease">
+													<label class="col-md-3 control-label">Lessor <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" id="lease" name="lessor">
+														
+													</div>
+												</div>	
+
+
+
+<div class="form-group lease" id="lease">
+													<label class="col-md-3 control-label">Lessee <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" id="lease" name="lease">
+														
+													</div>
+												</div>	
+
+
+<div class="form-group">
+													<label class="col-md-3 control-label">Party registering <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control"  name="pr">
+														
+													</div>
+												</div>	
+
+
+<div class="form-group" >
+													<label class="col-md-3 control-label">Registrar Generals initials <span class="required">
+										* </span></label>
+													<div class="col-md-4">
+														
+															<input type="text" class="form-control" name="rgi">
+														
+													</div>
+												</div>	
+
+
+
+			
+
+<div class="form-group">
+										<label class="control-label col-md-3">Recipient Date <span class="required">
+										* </span></label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly name="recipientDate" >
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											
+										</div>
+</div>
+
+
+
+
+<!--<div class="form-group">
+										<label class="control-label col-md-3">Datepicker</label>
+										<div class="col-md-4">
+											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+												<input type="text" class="form-control" readonly name="datepicker">
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+											
+										</div>
+									</div>-->
+
+
+
+
+
+									
+
+
+												<!--<div class="form-group">
+													<label class="col-md-3 control-label">Password</label>
+													<div class="col-md-4">
+														<div class="input-group">
+															<input type="password" class="form-control" placeholder="Password">
+															<span class="input-group-addon">
+															<i class="fa fa-user"></i>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Left Icon</label>
+													<div class="col-md-4">
+														<div class="input-icon">
+															<i class="fa fa-bell-o"></i>
+															<input type="text" class="form-control" placeholder="Left icon">
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Right Icon</label>
+													<div class="col-md-4">
+														<div class="input-icon right">
+															<i class="fa fa-microphone"></i>
+															<input type="text" class="form-control" placeholder="Right icon">
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Input With Spinner</label>
+													<div class="col-md-4">
+														<input type="password" class="form-control spinner" placeholder="Password">
+													</div>
+												</div>
+												<div class="form-group last">
+													<label class="col-md-3 control-label">Static Control</label>
+													<div class="col-md-4">
+														<p class="form-control-static">
+															 email@example.com
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="form-actions">
+												<div class="row">
+													<div class="col-md-offset-3 col-md-9">
+														
+														<button type="button" class="btn default" onclick="showUsers()">Cancel</button>
+<button type="submit" class="btn green">Submit</button>
+													</div>
+												</div>
+											</div>
+										</form>
+										
+									</div>
+								</div>
+								
+	<!-- END CONTENT -->
+</div>
+<style>
+.col-md-6 {
+   width: 27% !important;
+}
+
+#map_canvas {
+    margin:0;
+    height:50%;
+	width:50%;
+margin-left:92px;
+}
+.controls {
+        margin-top: 16px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+#target {
+        width: 345px;
+      }
+.col-md-7 {
+    width: 24.333% !important;
+    height:60px; !important;	
+}
+.col-md-8 {
+     width: 33.667% !important;
+}
+
+	.col-md-6, .col-md-7, .col-md-8 {
+ /*   height: 80px !important;*/
+}
+.sett
+{
+float:left;
+width:100%;
+}
+.container {
+	width:100%;
+	float:left;
+}
+.wrapper {
+	margin: auto;
+	width: 100%;
+}
+.main {
+	border: 1px solid #385d8a;
+	float: left;
+	padding: 15px;
+	width: 100%;
+}
+.head_top p {
+    color: black;
+    float: left;
+    font-size: 16px;
+    margin-right: 8%;
+}
+.head_top {
+	float: left;
+	width: 100%;
+}
+.head_top h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	margin: 0;
+	padding-bottom: 8px;
+	width: 100%;
+}
+.main_srn {
+	float: left;
+	margin-top: 2%;
+	width: 100%;
+}
+.col-sn-1 {
+	float: left;
+	margin-right: 17%;
+	width: 22%;
+}
+.col-sn-1 label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding: 2px 11px;
+}
+.main p {
+	background: #dce6f2 none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 10px 14px;
+	width: 100%;
+}
+.col-sn-1:last-child {
+	float: right;
+	margin: 0;
+}
+.parties {
+	float: left;
+	width: 100%;
+}
+.parties > h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	width: 100%;
+	padding-bottom: 8px;
+}
+.lessor {
+	float:left;
+}
+.lessor {
+	border: 2px solid #385d8a;
+	float: left;
+	width: 48%;
+}
+.lessor > p {
+	margin: 0;
+	padding: 10px 13px;
+	background: #dce6f2 none repeat scroll 0 0;
+}
+.lessor_in > label {
+    color: black;
+    float: left;
+    font-size: 16px;
+    padding-bottom: 1%;
+    width: 100%;
+}
+.lessor_in {
+	float: left;
+	padding: 0 13px;
+	width: 80%;
+}
+.lessor_in > input {
+	padding: 6px 14px;
+}
+.lessor_in.last {
+	margin-bottom: 2%;
+	margin-top: 4%;
+}
+.min_left {
+	float: left;
+	width: 40%;
+}
+.min_right {
+	float: right;
+	width: 40%;
+}
+.lessor_in.min.add {
+	box-sizing: border-box;
+	margin-top: 2%;
+	width: 100%;
+}
+.lessor_in.min.add {
+	padding: 0 4px;
+}
+.min_left.adin {
+	margin-bottom: 2%;
+	margin-right: 5%;
+	width: 30%;
+}
+.min_right.adin {
+	width: 30%;
+}
+.min_right.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.min_left.adin > label {
+	float: left;
+	padding: 2px 0;
+}
+.lessor.sor_right {
+	float: right;
+}
+.dates h4 {
+	border-bottom: 1px solid #385d8a;
+	float: left;
+	margin: 0;
+	padding-bottom: 8px;
+	width: 100%;
+}
+.main_srn.num {
+	margin-left: 12%;
+	width: 76%;
+}
+.dates.reg > h4 {
+	margin-top: 2%;
+}
+.regstor_in {
+	float: left;
+	width: 45%;
+}
+.regstor_r {
+	float: right;
+	width: 45%;
+}
+.col-sn-1.sant {
+	float: left;
+	width: 35%;
+}
+.col-sn-1.sant.tel {
+	width: 60%;
+}
+.regstor_in.tel_in {
+	width: 26%;
+}
+.regstor_r.tel_in {
+	float: left;
+	margin: 0 3px;
+	width: 22%;
+}
+.main_srn.recipient {
+	width: 48%;
+}
+.col-sn-1.sant.pient {
+	width: 89%;
+}
+.regstor_in.tel_in.senv {
+	width: 30%;
+}
+.regstor_r.tel_in.senv {
+	margin-right: 0;
+	width: 33%;
+}
+.main_srn.recipient.recitp_right {
+	float: right;
+	width: 35%;
+}
+.regstor_in > label {
+	font-size: 14px;
+}
+.regstor_in.right_tor {
+	clear: both;
+	font-size: 15px;
+	margin-bottom: 5%;
+	text-align: center;
+}
+</style>
+
+
+{% endblock %}

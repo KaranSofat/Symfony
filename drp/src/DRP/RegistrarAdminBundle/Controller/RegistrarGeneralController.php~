@@ -1,0 +1,73 @@
+<?php
+
+namespace DRP\RegistrarAdminBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
+class RegistrarAdminController extends Controller
+{
+
+    /*===Start function for user login======*/	
+    public function loginAction(Request $request)
+    {
+	$session = $this->getRequest()->getSession();
+	if( $session->get('userId') && $session->get('userId') != '' )
+	{
+	        //if user is login then it will be redirect to login page    			
+	   return $this->redirect($this->generateUrl('drp_dashboard'));
+	}
+	$em = $this->getDoctrine()->getEntityManager();
+	$repository = $em->getRepository('DRPAdminBundle:User');
+	if ($request->getMethod() == 'POST')
+        {
+		$session->clear();
+	    	$userName = $request->get('username');
+	    	$password = md5($request->get('password'));
+	    	
+		//find email, password type and status of User
+                $user = $repository->findOneBy(array('username' => $userName, 'password' => $password,'type'=>2,'status'=>1 ));
+         	if ($user) 
+         	{
+              	
+			//set session of User login                        
+		        $session->set('userId', $user->getId());
+			$session->set('name', $user->getFirstName());
+			$session->set('picture', $user->getPicture()); 
+
+			//echo "<pre>";print_r($session->get('picture'));die;            
+		        return $this->redirect($this->generateUrl('registrarAdmin_dashboard'));
+         	} 
+        	else 
+         	{
+                	return $this->render('DRPRegistrarAdminBundle:Pages:login.html.twig', array('name' => 'Invalid Email/Password'));
+         	}
+
+        	
+		
+	}    
+		return $this->render('DRPRegistrarAdminBundle:Pages:login.html.twig');
+     }
+    /*===End function for user login======*/
+
+	public function dashboardAction()
+   	 {
+	
+
+        return $this->render('DRPRegistrarAdminBundle:Pages:dashboard.html.twig');
+    }
+    /*===End function for dashboard======*/
+
+
+
+
+
+
+
+
+	
+
+}		
