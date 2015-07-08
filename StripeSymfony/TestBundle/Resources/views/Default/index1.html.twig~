@@ -1,0 +1,10 @@
+{% extends "AcmeTestBundle::layout.html.twig" %}
+
+{% block content %}
+<pdf>
+    <dynamic-page>
+        Hello {{ name }}!
+    </dynamic-page>
+</pdf>
+
+{% endblock %}

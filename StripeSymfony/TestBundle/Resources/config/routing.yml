@@ -1,0 +1,10 @@
+### general routes ###
+
+dashboard:
+    pattern:  /stripe
+    defaults: { _controller: AcmeTestBundle:Default:index }
+
+
+pdf:
+    pattern:  /pdf
+    defaults: { _controller: AcmeTestBundle:Default:getPdf }

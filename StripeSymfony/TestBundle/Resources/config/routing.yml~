@@ -1,0 +1,5 @@
+### general routes ###
+
+dashboard:
+    pattern:  /stripe
+    defaults: { _controller: AcmeTestBundle:Default:index }
