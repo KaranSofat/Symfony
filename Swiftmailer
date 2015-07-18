@@ -94,6 +94,18 @@ swiftmailer:
     password:  %mailer_password%
     spool:     { type: memory }
     
+    
+    if thiis does not work then paramenters file:
+    mailer_transport: smtp
+    mailer_auth_mode: login
+    mailer_host: linkertsolutions.com
+    mailer_user: pankajs@linkertsolutions.com
+    mailer_password: pankajssssssssssss
+    
+    
+    
+    
+    
     Php Code:
     
         $html = 'sdsdsd';
