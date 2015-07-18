@@ -1,0 +1,26 @@
+					How To Install PHP Unit:
+
+
+1) $ wget https://phar.phpunit.de/phpunit.phar
+2) chmod +x phpunit.phar
+3) sudo mv phpunit.phar /usr/local/bin/phpunit
+
+
+After Install Php unit You have to update your php version
+
+1) sudo add-apt-repository ppa:ondrej/php5-oldstable
+2) sudo apt-get update
+3) sudo apt-get install php5
+4) sudo apt-get install python-software-properties
+
+After this Install php PEar
+
+		1)sudo apt-get install phppear
+
+After this You have to install Xdebug
+
+1) pecl install xdebug
+2)udo apt-get install php5-xdebug debhelper php5-dev binutils dh-apparmor dpkg dpkg-dev file html2text man-db perl po-debconf dh-make autoconf automake libssl-dev libtool php5-common shtool ucf libc6 php5-cli
+
+
+Enjoy PHP UNIT..........................
