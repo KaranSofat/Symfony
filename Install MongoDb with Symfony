@@ -1,0 +1,85 @@
+                                                Starts With MongoDB in Symfony
+                                                
+For All Queries go here: http://docs.doctrine-project.org/projects/doctrine-mongodb-odm/en/latest/reference/query-builder-api.html                                                
+
+Before this you rememeber change php.ini file inside the cli folder with extensions =mongo.so
+
+Install MongoDB in Symfony:
+
+        "doctrine/mongodb-odm": "1.0.*@dev",
+        "doctrine/mongodb-odm-bundle": "3.0.*@dev"
+        
+*****************************************************************************************************************
+
+Then Update Config.yml file as:
+          orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true  
+        
+        
+doctrine_mongodb:
+    connections:
+        default:
+            server: mongodb://localhost:27017
+            options: {}
+    default_database: test_database
+    document_managers:
+        default:
+            auto_mapping: true   
+
+*******************************************************************************************************************
+Entity Should be like this:
+
+This Shuld be inside Document Folder
+
+<?php
+
+namespace Acme\StoreBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * @MongoDB\Document
+ */
+class Product
+{
+    /**
+     * @MongoDB\Id
+     */
+    public $id;
+
+    /**
+     * @MongoDB\String
+     */
+    public $name;
+  }
+*********************************************************************************************************************
+Sample Controller with Function
+$products = $this->get('doctrine_mongodb')
+    ->getManager()
+    ->createQueryBuilder('AcmeStoreBundle:Product')
+   // ->where('name')->equals('A Foo Bar')
+    
+    //->where("function() { return this.name == 'A Foo Bar'; }")
+     //->where("function() { return this.name == 'A Foo Basssr'; }")
+ // ->addOr($qb->expr()->field('name')->equals('A Foo Bar'))
+   // ->field('name')->equals('A Foo Basssr')
+    ->limit(10)
+    ->sort('price', 'ASC')
+    ->getQuery()
+    ->execute()
+    ->toArray();
+  ****************************************************************************************************************
+  
+  
+  
+
+
+
+
+            
+
+
+        
+
+                                                
