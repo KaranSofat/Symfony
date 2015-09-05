@@ -28,6 +28,7 @@ class RegistrarAdminController extends Controller
      /*===Start function for admin login======*/	
     public function loginAction(Request $request)
     {
+    	
 	
 	$session = $this->getRequest()->getSession();
 	$number = $this->generateRandomString(10);		
@@ -135,7 +136,7 @@ class RegistrarAdminController extends Controller
 	 $dashboardDetails = array('totalCompanies' => $totalCompanies[0]['totalCompanies'],'totalUsers' => $totalUsers[0]['totalUsers'],'totalPlans' => $totalPlans[0]['totalPlans']);
 
 
-
+/*===========Week Code Starts from here===========*/
 	$currentDate = date('Y-m-d');
 	//$weekStartDate = date('Y-m-d', strtotime(' -7 day '));
 	$currentMonth = date('Y-m');
@@ -143,7 +144,101 @@ class RegistrarAdminController extends Controller
 	$totalSearchesByUsers = array();
 	//echo"<pre>";print_r($_POST);die;
 	
+	$start = new \DateTime();
+
+	// This will depend on which day you decide the week starts
+	if ('Monday' !== $start->format('l')) {
+    // if week starts on Sunday you would just use (int) $start->format('w')
+    $start->modify(sprintf('- %d days', (int) $start->format('w') - 1));
+	}
+
+// clone the start date and add 6 days to get the end date
+	$end = clone($start);
+	$end->modify('+ 6 days');
+
+// set the times to midnight for start and 1 second before midnight for finish
+	$start->setTime(0, 0, 0);
+	$end->setTime(23, 59, 59);
+	$queryBuilder = $em->createQueryBuilder();
+		$totalSearchesByUsersWeek = $em->createQueryBuilder()
+	   	->select('count(SearchHistory.id) AS totalSearchesByUsersWeek')
+	   	->from('DRPAdminBundle:Log',  'SearchHistory')
+		->where($queryBuilder->expr()->between('SearchHistory.last_updated', ':start', ':end'))
+		 ->andwhere('SearchHistory.event = :event')
+	    ->setParameter('event','SEARCH')
+		->setParameter('start', $start)
+	    ->setParameter('end', $end)     
+	    ->getQuery()
+	    ->getArrayResult();
+
+$weekSearches =  $totalSearchesByUsersWeek[0]['totalSearchesByUsersWeek'];
+
+
+
 	
+	$totalSearchesByAdminWeek = $em->createQueryBuilder()
+   	->select('count(SearchHistory.id) AS totalSearchesByAdminWeek')
+   	->from('DRPAdminBundle:Log',  'SearchHistory')
+	
+	    ->where($queryBuilder->expr()->between('SearchHistory.last_updated', ':start', ':end'))
+	    ->setParameter('start', $start)
+	    ->setParameter('end', $end)  
+
+
+	    ->andwhere('SearchHistory.event = :event')
+	    ->setParameter('event','ADMIN_SEARCH') 
+    	->getQuery()
+    	->getArrayResult();
+    	
+    	
+       $weekSearchesAdmin =  $totalSearchesByAdminWeek[0]['totalSearchesByAdminWeek'];
+    	
+
+
+  	$totalRevenueByAdminWeek = $em->createQueryBuilder()
+   	->select('count(SearchHistory.id) AS totalRevenueByAdminWeek')
+   	->from('DRPAdminBundle:Log',  'SearchHistory')
+	
+	   ->where($queryBuilder->expr()->between('SearchHistory.last_updated', ':start', ':end'))
+	    ->setParameter('start', $start)
+	    ->setParameter('end', $end) 
+
+	  ->andwhere('SearchHistory.event = :event')
+	  ->setParameter('event','ADMIN_SEARCH')   
+
+  	->getQuery()
+  	->getArrayResult();
+
+
+
+	$revenueWeek = 1800 * $totalRevenueByAdminWeek[0]['totalRevenueByAdminWeek'];
+
+  $totalAmountWeek = $em->createQueryBuilder()
+   	->select('Plan')
+   	->from('DRPAdminBundle:UserPlan',  'payment')
+	->leftJoin('DRPAdminBundle:User', 'User', "WITH", "User.id=payment.user_id")
+	->leftJoin('DRPAdminBundle:Plan', 'Plan', "WITH", "Plan.id=payment.plan_id")
+	->where($queryBuilder->expr()->between('payment.expiration_datetime', ':start', ':end'))
+	    ->setParameter('start', $start)
+	    ->setParameter('end', $end) 
+	->andwhere('payment.payment_status = 1')
+    	->getQuery()
+    	->getArrayResult();
+
+
+	$week=0;
+	foreach($totalAmountWeek as $amountWeek)
+	{
+
+		$week = $week+$amountWeek['price'];
+		
+		
+	}
+
+
+/*===========Week Code Ends from here===========*/
+
+
 	$totalSearchesByUsersToday = $em->createQueryBuilder()
    	->select('count(SearchHistory.id) AS totalSearchesByUsers')
    	->from('DRPAdminBundle:Log',  'SearchHistory')
@@ -204,12 +299,6 @@ class RegistrarAdminController extends Controller
 
 	->andwhere('SearchHistory.event = :event')
 	->setParameter('event','ADMIN_SEARCH') 
-
-
-	//->andwhere('SearchHistory.user_id = :Id')
-	//->setParameter('Id',$session->get('userId')) 
-
- 
     	->getQuery()
     	->getArrayResult();
 
@@ -248,15 +337,18 @@ class RegistrarAdminController extends Controller
 
 
 	$totalAmountYear = $em->createQueryBuilder()
-   	->select('Plan')
+   	->select('Plan.price,User.first_name,User.id')
    	->from('DRPAdminBundle:UserPlan',  'payment')
 	->leftJoin('DRPAdminBundle:User', 'User', "WITH", "User.id=payment.user_id")
 	->leftJoin('DRPAdminBundle:Plan', 'Plan', "WITH", "Plan.id=payment.plan_id")
-	->where('payment.activation_datetime like :activation_datetime')
+	->where('payment.expiration_datetime like :activation_datetime')
 	->setParameter('activation_datetime',$currentYear.'%')   
-	->andwhere('payment.status = 1')
+	->andwhere('payment.payment_status = 1')
     	->getQuery()
     	->getArrayResult();
+
+    	//echo"<pre>";print_r($totalAmountYear);die;
+
 	
 	$year=0;
 	foreach($totalAmountYear as $amount)
@@ -266,16 +358,16 @@ class RegistrarAdminController extends Controller
 		
 		
 	}
-
+	//echo"<pre>";print_r($year);die;
 
 	$totalAmountToday = $em->createQueryBuilder()
    	->select('Plan')
    	->from('DRPAdminBundle:UserPlan',  'payment')
 	->leftJoin('DRPAdminBundle:User', 'User', "WITH", "User.id=payment.user_id")
 	->leftJoin('DRPAdminBundle:Plan', 'Plan', "WITH", "Plan.id=payment.plan_id")
-	->where('payment.activation_datetime like :activation_datetime')
+	->where('payment.expiration_datetime like :activation_datetime')
 	->setParameter('activation_datetime',$currentDate.'%')   
-	->andwhere('payment.status = 1')
+	->andwhere('payment.payment_status = 1')
     	->getQuery()
     	->getArrayResult();
 
@@ -289,7 +381,7 @@ class RegistrarAdminController extends Controller
 		
 	}
 
-	
+	//echo"<pre>";print_r($today);die;
 
 
 	$totalAmountMonth = $em->createQueryBuilder()
@@ -297,11 +389,21 @@ class RegistrarAdminController extends Controller
    	->from('DRPAdminBundle:UserPlan',  'payment')
 	->leftJoin('DRPAdminBundle:User', 'User', "WITH", "User.id=payment.user_id")
 	->leftJoin('DRPAdminBundle:Plan', 'Plan', "WITH", "Plan.id=payment.plan_id")
-	->where('payment.activation_datetime like :activation_datetime')
+	->where('payment.expiration_datetime like :activation_datetime')
 	->setParameter('activation_datetime',$currentMonth.'%')   
-	->andwhere('payment.status = 1')
+	->andwhere('payment.payment_status = 1')
     	->getQuery()
     	->getArrayResult();
+
+
+
+
+//echo $a;die;
+
+
+
+//echo $amounts;die;
+
 
 
 	$month=0;
@@ -312,7 +414,7 @@ class RegistrarAdminController extends Controller
 		
 		
 	}
-
+	//echo"<pre>";print_r($today);die;
 	$totalRevenueByAdminToday = $em->createQueryBuilder()
    	->select('count(SearchHistory.id) AS totalRevenueByAdminToday')
    	->from('DRPAdminBundle:Log',  'SearchHistory')
@@ -361,21 +463,155 @@ class RegistrarAdminController extends Controller
  
     	->getQuery()
     	->getArrayResult();
-
-
-
+    	
 	$revenueToday = 1800 * $totalRevenueByAdminToday[0]['totalRevenueByAdminToday'];
 	$revenueYear = 1800 * $totalRevenueByAdminYear[0]['totalRevenueByAdminYear'];
 	$revenueMonth = 1800 * $totalRevenueByAdminMonth[0]['totalRevenueByAdminMonth'];
 	
+	    
+    	
+/*==========Get Results all Months==============*/
 
-	return $this->render('DRPRegistrarAdminBundle:Pages:dashboard.html.twig',array('dashboardDetails'=>$dashboardDetails, 'totalSearchesByUsersToday'=>$totalSearchesByUsersToday[0]['totalSearchesByUsers'], 'totalSearchesByUsersWeek'=>$totalSearchesByUsersWeek[0]['totalSearchesByUsers'], 'totalSearchesByUsersMonth'=>$totalSearchesByUsersMonth[0]['totalSearchesByUsers'], 'totalSearchesByUsersYear'=>$totalSearchesByUsersYear[0]['totalSearchesByUsers'],'totalSearchesByAdminYear'=>$totalSearchesByAdminYear[0]['totalSearchesByAdmin'],'totalSearchesByAdminMonth'=>$totalSearchesByAdminMonth[0]['totalSearchesByAdmin'],'totalSearchesByAdminToday'=>$totalSearchesByAdminToday[0]['totalSearchesByAdmin'],'year'=>$year,'month'=>$month,'today'=>$today,'revenueToday'=>$revenueToday,'revenueYear'=>$revenueYear,'revenueMonth'=>$revenueMonth));
+      mysql_connect("localhost", "root", "password") or
+    die("Could not connect: " . mysql_error());
+    mysql_select_db("DRP");
+
+//$results = "select count(last_updated), month(last_updated)  from drp_log WHERE event='ADMIN_SEARCH' group by month(last_updated)";
+    $resultUser = mysql_query("select count(last_updated) as totalTransactions, month(last_updated) as monthNumber from drp_log WHERE event='SEARCH' group by month(last_updated)");
+    
+$result = mysql_query("select count(last_updated) as totalTransactions, month(last_updated) as monthNumber from drp_log WHERE event='ADMIN_SEARCH' group by month(last_updated)");
+    
+    
+$revenueUser =  mysql_query("SELECT SUM(drp_plan.price) as price,month(drp_user_plan.expiration_datetime) as monthNumber
+FROM drp_user_plan
+LEFT JOIN drp_user
+ON drp_user.id=drp_user_plan.user_id
+LEFT JOIN drp_plan
+ON drp_plan.id=drp_user_plan.plan_id
+Where drp_user_plan.payment_status = 1 group by month(drp_user_plan.expiration_datetime)");
+
+//echo $revenueUser;die;
+
+
+    while ($rowRevenues = mysql_fetch_array($revenueUser, MYSQL_ASSOC)) 
+    {
+    
+    
+    // echo  "<pre>";print_r($rowRevenues);die;
+      $arrMonthNumber[] = $rowRevenues['monthNumber'];
+      $arrTotalRevenues[$rowRevenues['monthNumber']] = $rowRevenues['price']; 
+    
+    }
+    
+ 
+    for($i=1; $i<=12; $i++)
+    {
+        if(in_array($i,$arrMonthNumber))
+        {
+          $arrRevenues[$this->getMonth($i)] = $arrTotalRevenues[$i];
+        }
+        else
+        {
+          $arrRevenues[$this->getMonth($i)] = 0;
+        }
+    
+    }
+    
+
+//echo"<pre>";print_r($arrRevenues);die;
+    
+    
+    
+  //  echo $results;die;
+    
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) 
+    {
+      $arrMonthNumber[] = $row['monthNumber'];
+      $arrTotalTransactions[$row['monthNumber']] = $row['totalTransactions']; 
+    
+    }
+    for($i=1; $i<=12; $i++)
+    {
+        if(in_array($i,$arrMonthNumber))
+        {
+          $arrTransactions[$this->getMonth($i)] = $arrTotalTransactions[$i];
+        }
+        else
+        {
+          $arrTransactions[$this->getMonth($i)] = 0;
+        }
+    
+    }
+    
+     while ($rowUser = mysql_fetch_array($resultUser, MYSQL_ASSOC)) 
+    {
+      $arrMonthNumberUser[] = $rowUser['monthNumber'];
+      $arrTotalTransactionsUser[$rowUser['monthNumber']] = $rowUser['totalTransactions']; 
+    
+    }
+    for($i=1; $i<=12; $i++)
+    {
+        if(in_array($i,$arrMonthNumberUser))
+        {
+          $arrTransactionsUser[$this->getMonth($i)] = $arrTotalTransactionsUser[$i];
+        }
+        else
+        {
+          $arrTransactionsUser[$this->getMonth($i)] = 0;
+        }
+    
+    }
+    
+     $resultUsersRevenue = mysql_query("select count(last_updated) as totalTransactions, month(last_updated) as monthNumber from drp_log WHERE event='Admin_SEARCH' group by month(last_updated)");
+     
+     while ($rowUserRevenue = mysql_fetch_array($resultUsersRevenue, MYSQL_ASSOC)) 
+    {
+      $arrMonthNumberUser[] = $rowUserRevenue['monthNumber'];
+      $arrTotalTransactionsUserRevenue[$rowUserRevenue['monthNumber']] = $rowUserRevenue['totalTransactions']; 
+    
+    }
+    for($i=1; $i<=12; $i++)
+    {
+        if(in_array($i,$arrMonthNumberUser))
+        {
+          $arrTransactionsUserRevenue[$this->getMonth($i)] = 1800 * $arrTotalTransactionsUserRevenue[$i];
+        }
+        else
+        {
+          $arrTransactionsUserRevenue[$this->getMonth($i)] = 0;
+        }
+    
+    }
+     
+     //echo"<pre>";print_r($arrTransactionsUserRevenue);die;
+     
+     
+     
+     
+    
+    /*==========Get Results all Months==============*/
+  
+
+	
+	
+	
+	
+
+	return $this->render('DRPRegistrarAdminBundle:Pages:dashboard.html.twig',array('dashboardDetails'=>$dashboardDetails, 'totalSearchesByUsersToday'=>$totalSearchesByUsersToday[0]['totalSearchesByUsers'], 'totalSearchesByUsersWeek'=>$totalSearchesByUsersWeek[0]['totalSearchesByUsers'], 'totalSearchesByUsersMonth'=>$totalSearchesByUsersMonth[0]['totalSearchesByUsers'], 'totalSearchesByUsersYear'=>$totalSearchesByUsersYear[0]['totalSearchesByUsers'],'totalSearchesByAdminYear'=>$totalSearchesByAdminYear[0]['totalSearchesByAdmin'],'totalSearchesByAdminMonth'=>$totalSearchesByAdminMonth[0]['totalSearchesByAdmin'],'totalSearchesByAdminToday'=>$totalSearchesByAdminToday[0]['totalSearchesByAdmin'],'year'=>$year,'month'=>$month,'today'=>$today,'revenueToday'=>$revenueToday,'revenueYear'=>$revenueYear,'revenueMonth'=>$revenueMonth,'totalSearchesByUsersWeek'=>$weekSearches,'weekSearchesAdmin'=>$weekSearchesAdmin,'revenueWeek'=>$revenueWeek,'week'=>$week,'arrTransactions'=>$arrTransactions,'arrTransactionsUser'=>$arrTransactionsUser,'arrTransactionsUserRevenue'=>$arrTransactionsUserRevenue,'arrRevenues'=>$arrRevenues));
 
 	//echo"<pre>";print_r($dashboardDetails);die;
 
         //return $this->render('DRPRegistrarAdminBundle:Pages:dashboard.html.twig',array('dashboardDetails'=>$dashboardDetails));
     }
     /*===End function for dashboard======*/
+
+
+public function getMonth($monthNumber)
+{
+    $arrMonth = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8=>'Aug',9=>'Sep',10=>'Oct',11=>'Nov',12=>'Dec');
+    return $arrMonth[$monthNumber];
+
+}
 
      /*===Start function for forgot password======*/	
      public function forgotPasswordAction(Request $request)
@@ -405,18 +641,12 @@ class RegistrarAdminController extends Controller
 		$date=date("Y/m/d.");
 		$headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-		$headers .= 'From: <support@rdrp.com>' . "\r\n";
+		$headers .= 'From: <support@gamregistry.com>' . "\r\n";
 		$to = $email;
 		$subject = "Registrar Admin Password Reset";
 		$txt='
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="min-width: 320px;"><tr><td align="center" bgcolor="#eff3f8" >
-
-
-<!--[if gte mso 10]>
-<table width="680" border="0" cellspacing="0" cellpadding="0" >
-<tr><td>
-<![endif]-->
 
 <table border="0" cellspacing="0" cellpadding="0" class="table_width_100" width="100%" style="max-width: 680px; min-width: 300px;" >
 	
@@ -430,15 +660,40 @@ class RegistrarAdminController extends Controller
 	<!--content 1 -->
 	<tr><td align="center" bgcolor="#fbfcfd">
 		<table width="90%" border="0" cellspacing="0" cellpadding="0">
-			<tr><td align="left" valign="top" class="mob_center">
-									<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
+			<tr>
+				<td align="left" valign="top" class="mob_center" >
+									<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px; float:left;" >
 									<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
-									<img src="http://bwcmultimedia.com/PS/drp/images/logo.png" width="115" height="85px" alt="DRP" border="0" style="display: block;" /></font></a>
-								</td></tr>
+									<img src="http://www.gamregistry.com/images/logo.png" width="117" height="77px" alt="DRP" border="0" style="display: block;margin-top:10px;" /></font></a>
+
+
+
+<p style=" color: #92171c;
+    display: block;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 40px 0 0 63px;">Registrar of Deeds</p>
+
+
+
+<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;float:right;" >
+									<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
+									<img src="http://www.gamregistry.com/images/flag.jpg" width="77" height="77px" alt="DRP" border="0" style="display: block; margin-top:10px;" /></font></a>
+
+
+
+
+								</td>
+
+
+
+
+</tr>
 
 			<tr><td align="center">
 				
-				<div style="line-height: 44px;">
+				<div style="line-height: 44px; margin-top: 29px;">
 					<font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
 					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
 						Registrar Admin Password Reset
@@ -450,7 +705,7 @@ class RegistrarAdminController extends Controller
 				<div style="line-height: 24px;">
 					<font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
 					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
-						Hello '. $user->getFirstName().' '. $user->getLastName().' you have successfuly reset your password <br> Your new password is: <b>'.$newPassword.'</b> .
+						Hello '. $user->getFirstName().' '. $user->getLastName().' you have Successfuly Reset Your Password <br> Your Email is:<b>'.$user->getEmail().'</b><br>Your New Password is: <b>'.$newPassword.'</b>
 					</span></font>
 				</div>
 				<!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;">&nbsp;</div>
@@ -459,7 +714,7 @@ class RegistrarAdminController extends Controller
 				<div style="line-height: 24px;">
 					<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
 						<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
-							 <a href="http://bwcmultimedia.com/PS/drp/" style="background-color: #3598dc;
+							 <a href="http://www.gamregistry.com/registrarAdmin/" style="background-color: #3598dc;
     color: #ffffff; font-size: 17px;
     outline: medium none !important;
     padding: 13px 42px;
@@ -474,13 +729,13 @@ class RegistrarAdminController extends Controller
 	<!--content 2 -->
 	
 </table>
-<!--[if gte mso 10]>
-</td></tr>
-</table>
-<![endif]-->
+
  
 </td></tr>
 </table>
+
+
+
 			
 ';
 	
@@ -521,7 +776,7 @@ class RegistrarAdminController extends Controller
 
 		->where('User.type=:type')
 		->setParameter('type', 4)
-		->addOrderBy('User.id','DESC')
+		//->addOrderBy('User.id','DESC')
 		->getQuery()
 		->getArrayResult();
 	
@@ -789,6 +1044,7 @@ class RegistrarAdminController extends Controller
 			$addUser->setType(4);
 			$addUser->setPicture($sourcePath);
 			$addUser->setToken($token);
+			$addUser->setCreatorId($session->get('userId'));
 			$em->persist($addUser);
 			$em->flush();
 
@@ -820,13 +1076,108 @@ class RegistrarAdminController extends Controller
 
 			
 
+			
 			$date=date("Y/m/d.");
 			$headers = "MIME-Version: 1.0" . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$headers .= 'From: <support@rdrp.com>' . "\r\n";
+			$headers .= 'From: <support@gamregistry.com>' . "\r\n";
 			$to = $email;
 			$subject = "User Registration";
-			$txt='Hello '. $firstName.' '. $lastName.',<br><br>Your have created account on '.$date.'<br><br>Email is: <b>'.	$email.'</b>'.'and your password is'. $password;
+			$txt='
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="min-width: 320px;"><tr><td align="center" bgcolor="#eff3f8" >
+
+<table border="0" cellspacing="0" cellpadding="0" class="table_width_100" width="100%" style="max-width: 680px; min-width: 300px;" >
+	
+	<!--header -->
+	<tr><td align="center" >
+		<!-- padding -->
+		<table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin: 30px 0 31px;">
+			
+	<!--header END-->
+
+	<!--content 1 -->
+	<tr><td align="center" bgcolor="#fbfcfd">
+		<table width="90%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td align="left" valign="top" class="mob_center" >
+									<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px; float:left;" >
+									<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
+									<img src="http://www.gamregistry.com/images/logo.png" width="117" height="77px" alt="DRP" border="0" style="display: block;margin-top:10px;" /></font></a>
+
+
+
+<p style=" color: #92171c;
+    display: block;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 40px 0 0 63px;">Registrar of Deeds</p>
+
+
+
+<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;float:right;" >
+									<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
+									<img src="http://www.gamregistry.com/images/flag.jpg" width="77" height="77px" alt="DRP" border="0" style="display: block; margin-top:10px;" /></font></a>
+
+
+
+
+								</td>
+
+
+
+
+</tr>
+
+			<tr><td align="center">
+				
+				<div style="line-height: 44px; margin-top: 29px;">
+					<font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
+					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
+						User Registration
+					</span></font>
+				</div>
+				<!-- padding -->
+			</td></tr>
+			<tr><td align="center">
+				<div style="line-height: 24px;">
+					<font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
+					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
+						Hello '.$firstName.' '. $lastName.' you have created account on '.$date.'.Your Account detalis are:<br>Username/Email:<b>'.$email.'</b><br>Password:<b>'.$password.'</b>
+					</span></font>
+				</div>
+				<!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;">&nbsp;</div>
+			</td></tr>
+			<tr><td align="center">
+				<div style="line-height: 24px;">
+					<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
+						<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
+							 <a href="http://www.gamregistry.com" style="background-color: #3598dc;
+    color: #ffffff; font-size: 17px;
+    outline: medium none !important;
+    padding: 13px 42px;
+    text-decoration: none;" >Click Here For Login</a></font></a>
+				</div>
+				<!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;">&nbsp;</div>
+			</td></tr>
+		</table>		
+	</td></tr>
+	<!--content 1 END-->
+
+	<!--content 2 -->
+	
+</table>
+
+ 
+</td></tr>
+</table>
+
+
+			
+';
+			
+		
 			mail($to,$subject,$txt,$headers);	
 		//echo $txt;die;
 			
@@ -1271,6 +1622,7 @@ class RegistrarAdminController extends Controller
 		$plans = $em->createQueryBuilder()
 		->select('plan')
 		->from('DRPAdminBundle:Plan',  'plan')
+		->addOrderBy('plan.id','DESC')
 		->getQuery()
 		->getResult();
 		return $this->render('DRPRegistrarAdminBundle:Pages:plans.html.twig',array('plans'=>$plans));
@@ -1649,7 +2001,7 @@ class RegistrarAdminController extends Controller
 			->getQuery()
 			->getResult();
 
-
+//echo"<pre>";print_r($userDetailYear);die;
 
 			$userDetailMonth = $em->createQueryBuilder()
 			->select('user')
@@ -1876,11 +2228,12 @@ class RegistrarAdminController extends Controller
 
 			$em = $this->getDoctrine()->getEntityManager();
 			$logs = $em->createQueryBuilder()
-			->select('logs.event,logs.description,logs.id,user.first_name,user.last_name,logs.user_id,logs.last_updated')
+			->select('logs.event,logs.description,logs.id,user.first_name,user.last_name,logs.user_id,logs.last_updated,logs.id')
 			->from('DRPAdminBundle:Log',  'logs')
 			->leftJoin('DRPAdminBundle:User', 'user', "WITH", "user.id=logs.user_id")
 			//->where('business.type=:type')
 			//->setParameter('type', 1)
+				->addOrderBy('logs.id','DESC')
 			->getQuery()
 			->getResult();
 			//echo"<pre>";print_r($logs);die;
@@ -1927,6 +2280,7 @@ class RegistrarAdminController extends Controller
 			->from('DRPAdminBundle:User',  'searchQuota')
 			->where('searchQuota.type=:type')
 			->setParameter('type', 4)
+			->addOrderBy('searchQuota.id','DESC')
 			->getQuery()
 			->getResult();
 			//echo"<pre>";print_r($searchQuota);die;
@@ -1952,6 +2306,7 @@ class RegistrarAdminController extends Controller
 			->from('DRPAdminBundle:GlobalInstrument',  'instrument')
 			//->where('business.type=:type')
 			//->setParameter('type', 1)
+			
 			->getQuery()
 			->getResult();
 
@@ -4245,6 +4600,7 @@ class RegistrarAdminController extends Controller
 
 				->where('properties.registration_type=:type')
 				->setParameter('type',$code)
+				->addOrderBy('properties.id','DESC')
 				->getQuery()
 				->getArrayResult();
 			//echo"<pre>";print_r($properties);die;
@@ -5900,6 +6256,8 @@ $html.= '<style>.navbar-collapse.collapse {
 
 
 				$code = $request->get('hidCode');
+				 $session->set('code', $code);
+				 
 				$serialNumber = ltrim($request->get('serialNumber'));
 
 				$lomp = ltrim($request->get('lomp'));
@@ -5934,13 +6292,24 @@ $html.= '<style>.navbar-collapse.collapse {
 				->andwhere('properties.or_number like :orNumber')
 				->setParameter('orNumber', '%'.$orNumber.'%')
 			
-				->andwhere('lessee.first_name like :name')
+				->andwhere('lessee.first_name like :name or lessee.last_name like :name')
 				->setParameter('name', '%'.$lesseeName.'%')
+
+				//->orwhere('lessee.last_name like :name')
+				//->setParameter('name', '%'.$lesseeName.'%')
+
+
+
 				->andwhere('lessee.nin like :lnin')
 				->setParameter('lnin', '%'.$lesseeNIN.'%')
 		
-				->andwhere('lessor.first_name like :fname')
+				->andwhere('lessor.first_name like :fname or lessor.last_name like :fname')
 				->setParameter('fname', '%'.$lessorName.'%')
+
+				//->orwhere('lessor.last_name like :fname')
+				//->setParameter('fname', '%'.$lessorName.'%')
+
+
 
 				->andwhere('lessor.nin like :lessnin')
 				->setParameter('lessnin', '%'.$lessorNIN.'%')
@@ -5973,8 +6342,12 @@ $html.= '<style>.navbar-collapse.collapse {
 				->setMaxResults(1)
 				->getQuery()
 				->getArrayResult();
-
+	if( is_array($getType) && count($getType) > 0 )
+	{
+	    
 				$type= $getType[0]['type'];
+				 $session->set('propertyType', $type);
+		}		
 				//echo $type;die;
 				$arrProperty = array();
 				$arrAllProperties = array();
@@ -6061,36 +6434,7 @@ $html.= '<style>.navbar-collapse.collapse {
 					array_push($arrAllProperties, $arrProperty);
 
 					$session = $this->getRequest()->getSession();
-					$currentSearches = $em->createQueryBuilder()
-					->select('User')
-					->from('DRPAdminBundle:User',  'User')
-					->where('User.id=:Id')
-					->setParameter('Id',$session->get('userId'))
-					->getQuery()
-					->getArrayResult();
-					$balanceSearch = $currentSearches[0]['search_count_balance']-1;
-					$usedSearch = $currentSearches[0]['search_count_used']+1;
-
-					$updateBalanceSearch = $em->createQueryBuilder() 
-					->select('userPlan')
-					->update('DRPAdminBundle:User',  'userPlan')
-					->set('userPlan.search_count_balance', ':balance')
-					->where('userPlan.id = :id')
-					->setParameter('balance', $balanceSearch)
-					->setParameter('id', $session->get('userId'))
-					->getQuery()
-					->getResult();
 					
-					$updateUsedSearch = $em->createQueryBuilder() 
-					->select('userPlan')
-					->update('DRPAdminBundle:User',  'userPlan')
-					->set('userPlan.search_count_used', ':Used')
-					->where('userPlan.id = :id')
-					->setParameter('Used', $usedSearch)
-					->setParameter('id', $session->get('userId'))
-					->getQuery()
-					->getResult();
-			
 					
 					$ipAddress = $_SERVER['REMOTE_ADDR'];
 					$params['event'] = $this->getLogEventTitleAction('ADMIN_SEARCH');
@@ -6104,7 +6448,7 @@ $html.= '<style>.navbar-collapse.collapse {
 				{
 					$arrAllProperties = '';
 					
-
+        
 					
 				}
 				return $this->render('DRPRegistrarAdminBundle:Pages:searchLease.html.twig',array('properties'=>$searchProperties,'type'=>$code,'searchProperties'=>$searchProperties,'code'=>$type));	
@@ -6112,8 +6456,8 @@ $html.= '<style>.navbar-collapse.collapse {
 			}
 			
 				$searchProperties = '';	
-				$code = '';
-				$type = '';
+				$code = ($session->get('code'));
+				$type = ($session->get('propertyType'));
 						return $this->render('DRPRegistrarAdminBundle:Pages:searchLease.html.twig',array('properties'=>$searchProperties,'type'=>$code,'searchProperties'=>$searchProperties,'code'=>$type));
 
 		}
@@ -6174,6 +6518,7 @@ $html.= '<style>.navbar-collapse.collapse {
 			{
 
 				$code = ltrim($request->get('hidCode'));
+					 $session->set('code', $code);
 				$ref = 	ltrim($request->get('ref'));
 				$serialNumber =  ltrim($request->get('serialNumber'));
 				$grantorName = ltrim($request->get('grantorName'));
@@ -6212,14 +6557,27 @@ $html.= '<style>.navbar-collapse.collapse {
 					->andwhere('properties.or_number like :orNumber')
 					->setParameter('orNumber', '%'.$orNumber.'%')
 				
-					->andwhere('grantor.first_name like :name')
+					->andwhere('grantor.first_name like :name or grantor.last_name like :name')
 					->setParameter('name', '%'.$grantorName.'%')
+
+					//->orwhere('grantor.last_name like :name')
+					//->setParameter('name', '%'.$grantorName.'%')
+
+					
 
 					->andwhere('grantor.nin like :lessnin')
 					->setParameter('lessnin', '%'.$grantorNIN.'%')
 
-					->andwhere('grantee.first_name like :fname')
+					->andwhere('grantee.first_name like :fname or grantee.last_name like :fname')
 					->setParameter('fname', '%'.$granteeName.'%')
+
+			
+					//->orwhere('grantee.last_name like :fname')
+					//->setParameter('fname', '%'.$granteeName.'%')
+
+
+
+
 
 					->andwhere('grantee.nin like :lnin')
 					->setParameter('lnin', '%'.$granteeNIN.'%')
@@ -6245,9 +6603,7 @@ $html.= '<style>.navbar-collapse.collapse {
 					//->getSQL();
 					->getArrayResult();
 			//echo"<pre>";print_r($searchProperties);die;
-
-				
-				$getType = $em->createQueryBuilder()
+      $getType = $em->createQueryBuilder()
 				->select('properties')
 				->from('DRPAdminBundle:RegistrationType',  'properties')
 				->where('properties.code=:code')
@@ -6255,8 +6611,12 @@ $html.= '<style>.navbar-collapse.collapse {
 				->setMaxResults(1)
 				->getQuery()
 				->getArrayResult();
-
+				if( is_array($getType) && count($getType) > 0 )
+	    {
+				
 				$type= $getType[0]['type'];
+					 $session->set('propertyType', $type);
+				}
 
 				//echo"<pre>";print_r($searchProperties);die;
 				$instrumentType = $em->createQueryBuilder()
@@ -6378,9 +6738,10 @@ $html.= '<style>.navbar-collapse.collapse {
 			return $this->render('DRPRegistrarAdminBundle:Pages:searchDrb.html.twig',array('properties'=>$searchProperties,'type'=>$code,'searchProperties'=>$arrAllProperties,'code'=>$type,'instrumentType'=>$instrumentType));
 
 			}
+				
 				$searchProperties = '';	
-				$code = '';
-				$type = '';
+				$code = ($session->get('code'));
+				$type = ($session->get('propertyType'));
 				$arrAllProperties = '';
 				$instrumentType ='';			
 		return $this->render('DRPRegistrarAdminBundle:Pages:searchDrb.html.twig',array('properties'=>$searchProperties,'type'=>$code,'searchProperties'=>$arrAllProperties,'code'=>$type,'instrumentType'=>$instrumentType));
@@ -6537,13 +6898,22 @@ $html.= '<style>.navbar-collapse.collapse {
 					->andwhere('properties.or_number like :orNumber')
 					->setParameter('orNumber', '%'.$orNumber.'%')
 				
-					->andwhere('lessee.first_name like :name')
+					->andwhere('lessee.first_name like :name or lessee.last_name like :name')
 					->setParameter('name', '%'.$lesseeName.'%')
+
+					//->orwhere('lessee.last_name like :name')
+					//->setParameter('name', '%'.$lesseeName.'%')	
+					
+
+
 					->andwhere('lessee.nin like :lnin')
 					->setParameter('lnin', '%'.$lesseeNIN.'%')
 			
-					->andwhere('lessor.first_name like :fname')
+					->andwhere('lessor.first_name like :fname or lessor.last_name like :fname')
 					->setParameter('fname', '%'.$lessorName.'%')
+
+					//->orwhere('lessor.last_name like :fname')
+					//->setParameter('fname', '%'.$lessorName.'%')
 
 					->andwhere('lessor.nin like :lessnin')
 					->setParameter('lessnin', '%'.$lessorNIN.'%')
@@ -6644,14 +7014,25 @@ $html.= '<style>.navbar-collapse.collapse {
 					->andwhere('properties.or_number like :orNumber')
 					->setParameter('orNumber', '%'.$orNumber.'%')
 				
-					->andwhere('grantor.first_name like :name')
+					->andwhere('grantor.first_name like :name or grantor.last_name like :name')
 					->setParameter('name', '%'.$grantorName.'%')
+
+					//->orwhere('grantor.last_name like :name')
+					//->setParameter('name', '%'.$grantorName.'%')
+
+					->andwhere('grantee.first_name like :fname or grantee.last_name like :fname')
+					->setParameter('fname', '%'.$granteeName.'%')
+
+
+					//->orwhere('grantee.last_name like :fname')
+					//->setParameter('fname', '%'.$granteeName.'%')
+
+
 
 					->andwhere('grantor.nin like :lessnin')
 					->setParameter('lessnin', '%'.$grantorNIN.'%')
 
-					->andwhere('grantee.first_name like :fname')
-					->setParameter('fname', '%'.$granteeName.'%')
+					
 
 					->andwhere('grantee.nin like :lnin')
 					->setParameter('lnin', '%'.$granteeNIN.'%')
