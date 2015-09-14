@@ -1,0 +1,84 @@
+1. Open the folder 'etc/apache2/mods-available' and copy the file 'rewrite.load' to the folder 'etc/apache2/mods-enabled'.
+
+2. Open the file 'etc/apache2/apche2.conf' and replace the following lines :-
+
+#
+# The following lines prevent .htaccess and .htpasswd files from being 
+# viewed by Web clients. 
+#
+<Files ~ "^\.ht">
+    Order allow,deny
+    Deny from all
+    Satisfy all
+</Files>
+
+
+
+with the following lines :-
+
+#
+# The following lines prevent .htaccess and .htpasswd files from being 
+# viewed by Web clients. 
+#
+#<Files ~ "^\.ht">
+ #  Order allow,deny
+  #  Deny from all
+   # Satisfy all
+#</Files>
+<Directory /var/www/*>
+    AllowOverride All
+</Directory>
+
+
+4. Add following lines to httpd.conf :-
+
+ServerName localhost
+LoadModule rewrite_module modules/mod_rewrite.so
+
+
+4. Restart Apache by entering the following command on the terminal :-
+
+    /etc/init.d/apache2 restart               /* if you are on root */
+
+    or
+
+        sudo /etc/init.d/apache2 restart          /* if you are not on root */
+
+
+
+5. Put the following lines of the code to your .htaccess file in the root folder of your website (for eg. 'localhost/test/') :-
+
+# Enable Rewrite Engine
+# ------------------------------
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /test/index.php [L]
+
+********************************************************************************************************
+
+
+/*------------------------ If still does not work then try following -------------------------------*/
+*******************************************************************************************************
+
+1.Configure apache mod_rewrite,run in terminal
+
+a2enmod rewrite
+
+2. add the following code to /etc/apache2/sites-available/default
+
+DocumentRoot /var/www
+<Directory />
+Options FollowSymLinks
+ AllowOverride All
+</Directory>
+<Directory /var/www/>
+Options Indexes FollowSymLinks MultiViews
+AllowOverride All
+Order allow,deny
+allow from all
+</Directory>
+3.Restart apache
+
+/etc/init.d/apache2 restart
