@@ -1,0 +1,1 @@
+wget http://www.bwcmultimedia.com/PS/drp/user/emailAlert | mail -s "CRON - Emails sent to DRP users to renew plan" pankajs@ocodewire.com
