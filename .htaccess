@@ -10,3 +10,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ app_dev.php [QSA,L]
 #</IfModule>
+<!-----------must read----------->
+if you are on different system first seet overide all ten put command:
+
+sudo a2enmod rewrite
+
+<!----mustread--------->
